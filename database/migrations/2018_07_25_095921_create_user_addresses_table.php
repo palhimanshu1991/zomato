@@ -15,6 +15,11 @@ class CreateUserAddressesTable extends Migration
     {
         Schema::create('user_addresses', function (Blueprint $table) {
             $table->increments('id');
+            $table->string('title');
+            $table->integer('user_id')->unsigned()->unique();
+            $table->foreign('user_id')->references('id')->on('users');
+            $table->integer('address_id')->unsigned();
+            $table->foreign('address_id')->references('id')->on('addresses');
             $table->timestamps();
         });
     }
