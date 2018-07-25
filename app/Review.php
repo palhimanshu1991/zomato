@@ -3,29 +3,39 @@
 namespace App;
 
 use Illuminate\Database\Eloquent\Model;
+use User;
+use Restaurant;
+use Photo;
+use Like;
+use Comment;
 
 class Review extends Model
 {
-    public function user(){
-        return $this->belongsTo('App\User');
+    public function user()
+    {
+        return $this->belongsTo(User::class);
     }
 
-    public function restaurant(){
-        return $this->belongsTo('App\Restaurant');
+    public function restaurant()
+    {
+        return $this->belongsTo(Restaurant::class);
     }
 
-    public function photos(){
-        return $this->morphMany('App\Photo','imageable');
+    public function photos()
+    {
+        return $this->morphMany(Photo::class, 'imageable');
     }
 
-    public function likes(){
-        return $this->morphMany('App\Like','likeable');
+    public function likes()
+    {
+        return $this->morphMany(Like::class, 'likeable');
     }
 
 
-    public function comments(){
-        return $this->morphMany('App\Comment','commentable');
+    public function comments()
+    {
+        return $this->morphMany(Comment::class, 'commentable');
     }
 
-    
+
 }
