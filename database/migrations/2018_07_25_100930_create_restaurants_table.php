@@ -19,7 +19,7 @@ class CreateRestaurantsTable extends Migration
             $table->string('locality');
             $table->string('landmark');
             $table->integer('pincode');
-            $table->integer('address_id')->unsigned();
+            $table->integer('address_id')->unsigned()->unique();
             $table->foreign('address_id')->references('id')->on('addresses');
             $table->integer('category_id')->unsigned();
             $table->foreign('category_id')->references('id')->on('categories');

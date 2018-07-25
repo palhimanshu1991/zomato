@@ -16,3 +16,12 @@ use Illuminate\Http\Request;
 Route::middleware('auth:api')->get('/user', function (Request $request) {
     return $request->user();
 });
+
+Route::get('/restaurants', 'RestaurantsController@index');
+
+Route::post('/restaurants/create', 'RestaurantsController@store');
+
+
+/*Route::get('/categories', 'RestaurantsController@index');
+
+Route::post('/restaurants/create', 'RestaurantsController@store');*/
