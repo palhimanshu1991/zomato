@@ -18,9 +18,10 @@ Route::group([], function () {
     //Reviews
     Route::get('reviews', 'ReviewsController@index');
     Route::get('reviews/post', 'ReviewsController@postRating');
-    Route::post('reviews', 'ReviewsController@store');
+    Route::post('ratings', 'ReviewsController@postRating');
+    Route::post('reviews', 'ReviewsController@postReviews');
     Route::get('reviews/{id}','ReviewsController@show');
-    Route::post('reviews/{id}/comment','ReviewsController@comment');
+    Route::post('reviews/{id}/comment','ReviewsController@createReviewComment');
     Route::post('reviews/{id}/like','ReviewsController@like');
 
 

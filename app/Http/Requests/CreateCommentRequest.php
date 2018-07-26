@@ -24,7 +24,8 @@ class CreateCommentRequest extends FormRequest
     public function rules()
     {
         return [
-            'text'=>'required'
+            'text' => 'required',
+            'review_id' => 'required'
         ];
     }
 }

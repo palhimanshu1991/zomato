@@ -3,9 +3,11 @@
 namespace App\Http\Controllers;
 
 use App\Comment;
+use App\Http\Requests\CreateCommentRequest;
 use App\Http\Requests\CreateReviewRequest;
 use App\Photo;
 use App\Review;
+use App\Tasks\CreateCommentTask;
 use Illuminate\Http\Request;
 use Auth;
 
@@ -30,20 +32,7 @@ class ReviewsController extends Controller
      */
     public function store(CreateReviewRequest $request)
     {
-        $auth = Auth::user();
-        $review = new Review;
-        $review->rating = $request->rating;
-        $review->restaurant_id = $request->restaurant_id;
-        $review->user_id = $auth->id;
-        $review->save();
 
-        if ($request->photo) {
-            $photo = new Photo;
-            $photo->path = $request->path;
-            $review->photos()->save([2]);
-        }
-
-        return response()->json(['success' => 'Created'], 200);
     }
 
 
@@ -73,6 +62,15 @@ class ReviewsController extends Controller
         return [
             'message' => '200'
         ];
+    }
+
+    public function photo(Request $request, $id)
+    {
+        $review = Review::find($id);
+        $photo = new Photo;
+        $photo->path = $request->path;
+        $review->photos()->save($photo);
+
     }
 
     /**
@@ -111,13 +109,20 @@ class ReviewsController extends Controller
     }
 
 
-    public function comment(CreateCommentRequest $request, $id)
+    public function createReviewComment(CreateCommentRequest $request, $id)
     {
-        $review = Review::find($id);
-        $comment = new Comment;
-        $comment->text = $request->text;
-        $review->comments()->save($comment);
+        $review = Review::find($request->review_id);
+
+        $task = (new CreateCommentTask($request->text, $review));
     }
+
+    public function createPhotoComment(CreateCommentRequest $request, $id)
+    {
+        $photo = Photo::find($request->photo_id);
+
+        (new CreateCommentTask($request->text, $photo))->handle();
+    }
+
 
     public function like($id)
     {

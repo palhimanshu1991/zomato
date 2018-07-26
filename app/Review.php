@@ -2,11 +2,20 @@
 
 namespace App;
 
+use App\Contracts\Commentable;
+use App\Contracts\Imageable;
+use App\Contracts\Likeable;
+use App\Traits\HasComments;
+use App\Traits\HasLikes;
+use App\Traits\HasPhotos;
 use Illuminate\Database\Eloquent\Model;
 
-
-class Review extends Model
+class Review extends Model implements Commentable, Likeable, Imageable
 {
+    use HasComments, HasLikes, HasPhotos;
+
+    protected $guarded = ['id'];
+
     public function user()
     {
         return $this->belongsTo(User::class);
@@ -16,22 +25,4 @@ class Review extends Model
     {
         return $this->belongsTo(Restaurant::class);
     }
-
-    public function photos()
-    {
-        return $this->morphMany(Photo::class, 'imageable');
-    }
-
-    public function likes()
-    {
-        return $this->morphMany(Like::class, 'likeable');
-    }
-
-
-    public function comments()
-    {
-        return $this->morphMany(Comment::class, 'commentable');
-    }
-
-
 }
