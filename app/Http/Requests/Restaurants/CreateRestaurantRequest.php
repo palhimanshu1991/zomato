@@ -32,8 +32,8 @@ class CreateRestaurantRequest extends FormRequest
             'pincode' => 'required',
             'state_id' => 'required',
             'district_id' => 'required',
-
-            'category_id' => 'required'
+            'category_id' => 'required',
+            'cuisine_id' => 'required',
         ];
     }
 }

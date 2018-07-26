@@ -8,17 +8,11 @@ $factory->define(App\Address::class, function (Faker $faker) {
         'locality' => $faker->streetName,
         'landmark' => $faker->streetName,
         'pincode' => $faker->randomNumber(6),
-        'state_id' => function ()
-        {
+        'state_id' => function () {
             return factory(App\State::class)->create()->id;
-
         },
-
-        'district_id' => function ()
-        {
+        'district_id' => function () {
             return factory(App\District::class)->create()->id;
-
         }
-
     ];
 });

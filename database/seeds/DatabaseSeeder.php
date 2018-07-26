@@ -19,8 +19,8 @@ class DatabaseSeeder extends Seeder
             UserTableSeeder::class,
             RestaurantTableSeeder::class,
             ReviewTableSeeder::class,
-            CreateCuisineTableSeeder::class
-            ]);
-        //$this->call([UsersTableSeeder::class, ProductsTableSeeder::class]);
+            CreateCuisineTableSeeder::class,
+            UserAddressTableSeeder::class
+        ]);
     }
 }
