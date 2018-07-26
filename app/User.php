@@ -4,6 +4,10 @@ namespace App;
 
 use Illuminate\Notifications\Notifiable;
 use Illuminate\Foundation\Auth\User as Authenticatable;
+use Review;
+use Comment;
+use Like;
+use UserAddress;
 
 class User extends Authenticatable
 {
@@ -23,19 +27,23 @@ class User extends Authenticatable
         'password', 'remember_token',
     ];
 
-    public function reviews(){
-        $this->hasMany('App\Review');
+    public function reviews()
+    {
+        $this->hasMany(Review::class);
     }
 
-    public function comments(){
-        $this->hasMany('App\Comment');
+    public function comments()
+    {
+        $this->hasMany(Comment::class);
     }
 
-    public function likes(){
-        $this->hasMany('App\Like');
+    public function likes()
+    {
+        $this->hasMany(Like::class);
     }
 
-    public function addresses(){
-        $this->hasMany('App\UserAddress');
+    public function addresses()
+    {
+        $this->hasMany(UserAddress::class);
     }
 }
