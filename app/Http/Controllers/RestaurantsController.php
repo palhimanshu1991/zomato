@@ -56,7 +56,10 @@ class RestaurantsController extends Controller
      */
     public function show($id)
     {
-        //
+        $restaurant = Restaurant::find($id);
+
+        return $restaurant->load('address', 'categories', 'cuisines', 'reviews');
     }
+
 
 }

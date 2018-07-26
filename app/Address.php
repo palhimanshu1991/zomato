@@ -23,4 +23,8 @@ class Address extends Model
     public function district(){
         return $this->belongsTo('App\District');
     }
+
+    /*public function Restaurant() {
+        return $this->hasOne('App\Restaurant');
+    }*/
 }
