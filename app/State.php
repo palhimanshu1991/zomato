@@ -11,4 +11,5 @@ class State extends Model
     {
         return $this->hasMAny(Address::class);
     }
+
 }

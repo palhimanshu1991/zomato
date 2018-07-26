@@ -13,12 +13,10 @@ class Category extends Model
     ];
 
 
-    protected $hidden = [
-
-    ];
-
     public function restaurants()
+
     {
         return $this->belongsToMany(Restaurant::class);
     }
+    
 }
