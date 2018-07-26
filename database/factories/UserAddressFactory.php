@@ -2,7 +2,7 @@
 
 use Faker\Generator as Faker;
 
-$factory->define(UserAddress::class, function (Faker $faker) {
+$factory->define(App\UserAddress::class, function (Faker $faker) {
     return [
         'title' => $faker->firstName,
         'user_id' =>function() {

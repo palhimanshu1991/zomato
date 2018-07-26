@@ -3,42 +3,24 @@
 namespace App\Http\Controllers;
 
 use App\Comment;
-use App\Http\Requests\CreateCommentRequest;
-use App\Http\Requests\CreateReviewRequest;
+use App\Http\Requests\Reviews\CreateCommentRequest;
+use App\Http\Requests\Reviews\CreateRatingRequest;
+use App\Http\Requests\Reviews\CreateReviewRequest;
+use App\Like;
 use App\Photo;
 use App\Review;
 use App\Tasks\CreateCommentTask;
+use App\Tasks\CreateLikeTask;
 use Illuminate\Http\Request;
 use Auth;
 
 class ReviewsController extends Controller
 {
-    /**
-     * Display a listing of the resource.
-     *
-     * @return \Illuminate\Http\Response
-     */
-    public function index()
+
+
+    public function postRating(CreateRatingRequest $request)
     {
-        $reviews = Review::with(['comments', 'likes', 'user', 'restaurant', 'photos']);
-        return $reviews->get();
-    }
-
-    /**
-     * Store a newly created resource in storage.
-     *
-     * @param  \Illuminate\Http\Request $request
-     * @return \Illuminate\Http\Response
-     */
-    public function store(CreateReviewRequest $request)
-    {
-
-    }
-
-
-    public function postRating(Request $request)
-    {
-        Review::firstOrCreate([
+        Review::updateOrCreate([
             'user_id' => $request->user_id,
             'restaurant_id' => $request->restaurant_id
         ], [
@@ -50,13 +32,13 @@ class ReviewsController extends Controller
         ];
     }
 
-    public function postReview(Request $request)
+    public function postReview(CreateReviewRequest $request)
     {
-        Review::firstOrCreate([
-            'user_id' => $request->id,
+        Review::updateOrCreate([
+            'user_id' => $request->user_id,
             'restaurant_id' => $request->restaurant_id
         ], [
-            'review' => $request->review,
+            'text' => $request->text,
         ]);
 
         return [
@@ -74,17 +56,20 @@ class ReviewsController extends Controller
     public function show($id)
     {
         $review = Review::find($id);
-        return $review::with(['comments', 'likes', 'user', 'restaurants', 'photos'])->get();
+        return $review->load('comments', 'likes', 'user', 'restaurant');
     }
-
-
 
 
     public function createReviewComment(CreateCommentRequest $request, $id)
     {
-        $review = Review::find($request->review_id);
+        $review = Review::find($id);
 
         $task = (new CreateCommentTask($request->text, $review));
+        $task->handle();
+
+        return [
+            "message" => '200'
+        ];
     }
 
     public function createPhotoComment(CreateCommentRequest $request, $id)
@@ -95,12 +80,17 @@ class ReviewsController extends Controller
     }
 
 
-    public function like($id)
+    public function createReviewLike($id)
     {
         $review = Review::find($id);
-        $like = new like;
-        $auth = Auth::user();
-        $like->user_id = $auth->id;
-        $review->likes()->save($like);
+
+        $task = new CreateLikeTask($review);
+        $task->handle();
+
+        return [
+            "message" => '200'
+        ];
+
+
     }
 }

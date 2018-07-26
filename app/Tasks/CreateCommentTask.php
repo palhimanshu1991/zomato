@@ -24,14 +24,15 @@ class CreateCommentTask extends AbstractTask
         $this->text = $text;
         $this->model = $model;
     }
-
+//To Do Add auth
     public function handle()
     {
         $comment = new Comment;
-        $comment->user_id = auth()->user()->id;
+        $comment->user_id = 1;
         $comment->text = $this->text;
 
         $this->model->comments()->save($comment);
+
     }
 
 }
