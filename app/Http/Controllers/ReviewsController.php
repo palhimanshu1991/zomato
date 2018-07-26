@@ -64,14 +64,6 @@ class ReviewsController extends Controller
         ];
     }
 
-    public function photo(Request $request, $id)
-    {
-        $review = Review::find($id);
-        $photo = new Photo;
-        $photo->path = $request->path;
-        $review->photos()->save($photo);
-
-    }
 
     /**
      * Display the specified resource.
@@ -85,28 +77,7 @@ class ReviewsController extends Controller
         return $review::with(['comments', 'likes', 'user', 'restaurants', 'photos'])->get();
     }
 
-    /**
-     * Update the specified resource in storage.
-     *
-     * @param  \Illuminate\Http\Request $request
-     * @param  int $id
-     * @return \Illuminate\Http\Response
-     */
-    public function update(Request $request, $id)
-    {
-        //
-    }
 
-    /**
-     * Remove the specified resource from storage.
-     *
-     * @param  int $id
-     * @return \Illuminate\Http\Response
-     */
-    public function destroy($id)
-    {
-        //
-    }
 
 
     public function createReviewComment(CreateCommentRequest $request, $id)
