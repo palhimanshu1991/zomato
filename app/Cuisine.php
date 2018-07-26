@@ -3,7 +3,7 @@
 namespace App;
 
 use Illuminate\Database\Eloquent\Model;
-use Restaurant;
+
 
 class Cuisine extends Model
 {

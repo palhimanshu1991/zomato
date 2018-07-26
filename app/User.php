@@ -4,10 +4,7 @@ namespace App;
 
 use Illuminate\Notifications\Notifiable;
 use Illuminate\Foundation\Auth\User as Authenticatable;
-use Review;
-use Comment;
-use Like;
-use UserAddress;
+
 
 class User extends Authenticatable
 {

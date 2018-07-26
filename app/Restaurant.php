@@ -3,11 +3,7 @@
 namespace App;
 
 use Illuminate\Database\Eloquent\Model;
-use Category;
-use Address;
-use Cuisine;
-use Photo;
-use Review;
+
 
 class Restaurant extends Model
 {

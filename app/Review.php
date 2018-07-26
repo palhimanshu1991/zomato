@@ -3,11 +3,7 @@
 namespace App;
 
 use Illuminate\Database\Eloquent\Model;
-use User;
-use Restaurant;
-use Photo;
-use Like;
-use Comment;
+
 
 class Review extends Model
 {

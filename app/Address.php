@@ -4,8 +4,7 @@ namespace App;
 
 use Illuminate\Database\Eloquent\Model;
 
-use State;
-use District;
+
 
 class Address extends Model
 {
