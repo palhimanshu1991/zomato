@@ -15,12 +15,12 @@ class CreateCategoryRestaurantTable extends Migration
     {
         Schema::create('category_restaurant', function (Blueprint $table) {
             
-            $table->increments('id');
+            //$table->increments('id');
             $table->integer('category_id')->unsigned();
             $table->foreign('category_id')->references('id')->on('categories');
             $table->integer('restaurant_id')->unsigned();
             $table->foreign('restaurant_id')->references('id')->on('restaurants');
-            $table->timestamps();
+            //$table->timestamps();
         });
     }
 

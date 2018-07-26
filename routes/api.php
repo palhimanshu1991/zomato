@@ -13,18 +13,17 @@ use Illuminate\Http\Request;
 |
 */
 
-Route::group([], function () {
-
-    //Reviews
-    Route::get('reviews', 'ReviewsController@index');
-    Route::get('reviews/post', 'ReviewsController@postRating');
-    Route::post('ratings', 'ReviewsController@postRating');
-    Route::post('reviews', 'ReviewsController@postReviews');
-    Route::get('reviews/{id}','ReviewsController@show');
-    Route::post('reviews/{id}/comment','ReviewsController@createReviewComment');
-    Route::post('reviews/{id}/like','ReviewsController@like');
-
-
+Route::middleware('auth:api')->get('/user', function (Request $request) {
+    return $request->user();
 });
 
+Route::get('/restaurants', 'RestaurantsController@index');
 
+Route::post('/restaurants/create', 'RestaurantsController@store');
+
+Route::get('/restaurants/{id}', 'RestaurantsController@show');
+
+
+Route::get('/categories', 'CategoriesController@index');
+
+Route::post('/categories/create', 'CategoriesController@store');
