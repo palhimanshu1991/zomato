@@ -3,7 +3,7 @@
 namespace App\Http\Controllers;
 
 use App\Address;
-use App\Http\Requests\CreateRestaurantRequest;
+use App\Http\Requests\Restaurants\CreateRestaurantRequest;
 use Illuminate\Http\Request;
 use App\Restaurant;
 
@@ -42,6 +42,8 @@ class RestaurantsController extends Controller
             'address_id' => $address->id,
             'category_id' => $request->category_id
         ]);
+
+        $restaurant->categories()->attach($request->category_id);
 
         return $restaurant;
     }

@@ -22,6 +22,6 @@ Route::get('/restaurants', 'RestaurantsController@index');
 Route::post('/restaurants/create', 'RestaurantsController@store');
 
 
-/*Route::get('/categories', 'RestaurantsController@index');
+Route::get('/categories', 'RestaurantsController@index');
 
-Route::post('/restaurants/create', 'RestaurantsController@store');*/
+Route::post('/Categories/create', 'RestaurantsController@store');
