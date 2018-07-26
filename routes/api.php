@@ -12,6 +12,9 @@ use Illuminate\Http\Request;
 | is assigned the "api" middleware group. Enjoy building your API!
 |
 */
+Route::middleware('auth:api')->get('/user', function (Request $request) {
+    return $request->user();
+});
 
 Route::group([], function () {
 
@@ -20,10 +23,9 @@ Route::group([], function () {
     Route::get('reviews/post', 'ReviewsController@postRating');
     Route::post('ratings', 'ReviewsController@postRating');
     Route::post('reviews', 'ReviewsController@postReviews');
-    Route::get('reviews/{id}', 'ReviewsController@show');
-    Route::post('reviews/{id}/comment', 'ReviewsController@createReviewComment');
-    Route::post('reviews/{id}/like', 'ReviewsController@like');
-
+    Route::get('reviews/{id}','ReviewsController@show');
+    Route::post('reviews/{id}/comment','ReviewsController@createReviewComment');
+    Route::post('reviews/{id}/like','ReviewsController@like');
     Route::get('/restaurants', 'RestaurantsController@index');
     Route::post('/restaurants/create', 'RestaurantsController@store');
     Route::get('/restaurants/{id}', 'RestaurantsController@show');
@@ -32,7 +34,5 @@ Route::group([], function () {
 
 
 });
-
-
 
 
