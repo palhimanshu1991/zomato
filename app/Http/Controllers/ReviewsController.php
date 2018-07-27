@@ -21,7 +21,7 @@ class ReviewsController extends Controller
     public function postRating(CreateRatingRequest $request)
     {
         Review::updateOrCreate([
-            'user_id' => $request->user_id,
+            'user_id' => auth()->user()->id,
             'restaurant_id' => $request->restaurant_id
         ], [
             'rating' => $request->rating,
@@ -35,7 +35,7 @@ class ReviewsController extends Controller
     public function postReview(CreateReviewRequest $request)
     {
         Review::updateOrCreate([
-            'user_id' => $request->user_id,
+            'user_id' => auth()->user()->id,
             'restaurant_id' => $request->restaurant_id
         ], [
             'text' => $request->text,

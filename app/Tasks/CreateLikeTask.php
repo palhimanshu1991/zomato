@@ -33,7 +33,7 @@ class CreateLikeTask
     public function handle()
     {
         $this->model->likes()->firstOrCreate([
-            'user_id' => 1,
+            'user_id' => auth()->user()->id,
         ]);
     }
 
