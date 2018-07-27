@@ -2,9 +2,9 @@
 
 namespace App\Http\Requests\Restaurants;
 
-use Illuminate\Foundation\Http\FormRequest;
+use App\Http\Requests\AbstractApiRequest;
 
-class CreateRestaurantRequest extends FormRequest
+class CreateRestaurantRequest extends AbstractApiRequest
 {
     /**
      * Determine if the user is authorized to make this request.
@@ -30,10 +30,10 @@ class CreateRestaurantRequest extends FormRequest
             'locality' => 'required',
             'landmark' => 'required',
             'pincode' => 'required',
-            'state_id' => 'required',
-            'district_id' => 'required',
-
-            'category_id' => 'required'
+            'state_id' => 'required | exists:states,id',
+            'district_id' => 'required | exists:districts,id',
+            'category_id' => 'required | exists:categories,id',
+            'cuisine_id' => 'required | exists:cuisines,id',
         ];
     }
 }

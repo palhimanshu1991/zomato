@@ -8,8 +8,14 @@ $factory->define(App\Restaurant::class, function (Faker $faker) {
         'address_id' => function () {
             return factory(App\Address::class)->create()->id;
         },
-        'category_id' => function () {
-            return factory(App\Category::class)->create()->id;
-        },
     ];
+});
+
+
+$factory->afterCreating(App\Restaurant::class, function (App\Restaurant $restaurant, $faker) {
+
+    $restaurant->categories()->save(factory(App\Category::class)->make());
+
+    $restaurant->cuisines()->save(factory(App\Cuisine::class)->make());
+
 });

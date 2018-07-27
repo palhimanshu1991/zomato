@@ -40,10 +40,11 @@ class RestaurantsController extends Controller
         $restaurant = Restaurant::create([
             'name' => $request->name,
             'address_id' => $address->id,
-            'category_id' => $request->category_id
         ]);
 
         $restaurant->categories()->attach($request->category_id);
+
+        $restaurant->cuisines()->attach($request->cuisine_id);
 
         return $restaurant;
     }

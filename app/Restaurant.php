@@ -5,33 +5,35 @@ namespace App;
 use Illuminate\Database\Eloquent\Model;
 
 
-class Restaurant extends Model {
+class Restaurant extends Model
+{
 
-    protected $fillable = [
-        'name', 'address_id', 'category_id',
+    protected $guarded = [
+        'id'
     ];
 
-    protected $hidden = [
-
-    ];
-
-    public function categories(){
-       return $this->belongsToMany('App\Category');
+    public function categories()
+    {
+        return $this->belongsToMany(Category::class);
     }
 
-    public function address(){
-        return  $this->belongsTo('App\Address');
+    public function address()
+    {
+        return $this->belongsTo('App\Address');
     }
 
-    public function cuisines(){
+    public function cuisines()
+    {
         return $this->belongsToMany('App\Cuisine');
     }
 
-    public function photos(){
-        return $this->morphMany('App\Photo','imageable');
+    public function photos()
+    {
+        return $this->morphMany('App\Photo', 'imageable');
     }
 
-    public function reviews(){
+    public function reviews()
+    {
         return $this->hasMany('App\Review');
     }
 }
