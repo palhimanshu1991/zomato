@@ -19,7 +19,7 @@ class UserAddressController extends Controller
      */
     public function store(CreateUserAddressRequest $request)
     {
-        $address = Address::updateOrCreate([
+        $address = Address::create([
             'street' => $request->street,
             'locality' => $request->locality,
             'landmark' => $request->landmark,
@@ -28,7 +28,7 @@ class UserAddressController extends Controller
             'district_id' => $request->district_id
         ]);
 
-        $userAddress = UserAddress::updateOrCreate([
+        $userAddress = UserAddress::create([
             'title' => $request->title,
             'user_id' => auth()->user()->id,
             'address_id' => $address->id
