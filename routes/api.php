@@ -16,7 +16,10 @@ use Illuminate\Http\Request;
 Route::post('login', 'PassportController@login');
 Route::post('register', 'PassportController@register');
 
-Route::group(['middleware' => 'auth:api'], function () {
+Route::group(/**
+ *
+ */
+    ['middleware' => 'auth:api'], function () {
 
     //Reviews
 
@@ -35,6 +38,9 @@ Route::group(['middleware' => 'auth:api'], function () {
     Route::get('/restaurants/{id}', 'RestaurantsController@show');
     Route::get('/categories', 'CategoriesController@index');
     Route::post('/categories/create', 'CategoriesController@store');
+
+    //UserAddress
+    Route::post('/useraddress','UserAddressControlle@store');
 
 
 
