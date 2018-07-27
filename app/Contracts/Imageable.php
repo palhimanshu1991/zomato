@@ -4,5 +4,5 @@ namespace App\Contracts;
 
 interface Imageable
 {
-    public function photos();
+    public function images();
 }

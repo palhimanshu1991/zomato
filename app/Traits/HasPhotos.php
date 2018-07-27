@@ -2,12 +2,12 @@
 
 namespace App\Traits;
 
-use App\Photo;
+use App\Image;
 
 trait HasPhotos
 {
-    public function photos()
+    public function images()
     {
-        return $this->morphMany(Photo::class, 'imageable');
+        return $this->morphMany(Image::class, 'imageable');
     }
 }

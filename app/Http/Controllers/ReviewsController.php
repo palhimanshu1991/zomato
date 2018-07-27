@@ -7,7 +7,7 @@ use App\Http\Requests\Reviews\CreateCommentRequest;
 use App\Http\Requests\Reviews\CreateRatingRequest;
 use App\Http\Requests\Reviews\CreateReviewRequest;
 use App\Like;
-use App\Photo;
+use App\Image;
 use App\Review;
 use App\Tasks\CreateCommentTask;
 use App\Tasks\CreateLikeTask;
@@ -74,7 +74,7 @@ class ReviewsController extends Controller
 
     public function createPhotoComment(CreateCommentRequest $request, $id)
     {
-        $photo = Photo::find($request->photo_id);
+        $photo = Image::find($request->photo_id);
 
         (new CreateCommentTask($request->text, $photo))->handle();
     }

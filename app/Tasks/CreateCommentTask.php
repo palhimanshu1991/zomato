@@ -32,7 +32,6 @@ class CreateCommentTask extends AbstractTask
         $comment->text = $this->text;
 
         $this->model->comments()->save($comment);
-
     }
 
 }
