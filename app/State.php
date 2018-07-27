@@ -3,7 +3,7 @@
 namespace App;
 
 use Illuminate\Database\Eloquent\Model;
-use Address;
+
 
 class State extends Model
 {
@@ -11,4 +11,5 @@ class State extends Model
     {
         return $this->hasMAny(Address::class);
     }
+
 }

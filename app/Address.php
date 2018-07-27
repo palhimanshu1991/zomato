@@ -4,18 +4,19 @@ namespace App;
 
 use Illuminate\Database\Eloquent\Model;
 
-use State;
-use District;
-
 class Address extends Model
 {
+    protected $guarded = ['id'];
+
     public function state()
     {
-        return $this->belongsTo(State::class);
+        return $this->belongsTo('App\Comment');
     }
 
     public function district()
     {
-        return $this->belongsTo(District::class);
+        return $this->belongsTo('App\District');
     }
+
+
 }

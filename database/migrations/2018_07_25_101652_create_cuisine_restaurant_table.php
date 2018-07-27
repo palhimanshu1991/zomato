@@ -14,12 +14,12 @@ class CreateCuisineRestaurantTable extends Migration
     public function up()
     {
         Schema::create('cuisine_restaurant', function (Blueprint $table) {
-            $table->increments('id');
+            //$table->increments('id');
             $table->integer('cuisine_id')->unsigned();
             $table->foreign('cuisine_id')->references('id')->on('cuisines');
             $table->integer('restaurant_id')->unsigned();
             $table->foreign('restaurant_id')->references('id')->on('restaurants');
-            $table->timestamps();
+           // $table->timestamps();
         });
     }
 

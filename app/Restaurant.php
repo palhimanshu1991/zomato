@@ -3,14 +3,15 @@
 namespace App;
 
 use Illuminate\Database\Eloquent\Model;
-use Category;
-use Address;
-use Cuisine;
-use Photo;
-use Review;
+use App\Contracts\Imageable;
 
-class Restaurant extends Model
+class Restaurant extends Model implements Imageable
 {
+
+    protected $guarded = [
+        'id'
+    ];
+
     public function categories()
     {
         return $this->belongsToMany(Category::class);
@@ -18,21 +19,21 @@ class Restaurant extends Model
 
     public function address()
     {
-        return $this->hasOne(Address::class);
+        return $this->belongsTo('App\Address');
     }
 
     public function cuisines()
     {
-        return $this->belongsToMany(Cuisine::class);
+        return $this->belongsToMany('App\Cuisine');
     }
 
-    public function photos()
+    public function images()
     {
-        return $this->morphMany(Photo::class, 'imageable');
+        return $this->morphMany('App\Image', 'imageable');
     }
 
     public function reviews()
     {
-        return $this->hasMany(Review::class);
+        return $this->hasMany('App\Review');
     }
 }
