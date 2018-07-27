@@ -9,15 +9,7 @@ use App\Address;
 
 class UserAddressController extends Controller
 {
-    /**
-     * Display a listing of the resource.
-     *
-     * @return \Illuminate\Http\Response
-     */
-    public function index()
-    {
-        //
-    }
+
 
     /**
      * Store a newly created resource in storage.
@@ -27,7 +19,7 @@ class UserAddressController extends Controller
      */
     public function store(CreateUserAddressRequest $request)
     {
-        $address = Address::create([
+        $address = Address::updateOrCreate([
             'street' => $request->street,
             'locality' => $request->locality,
             'landmark' => $request->landmark,
@@ -36,7 +28,7 @@ class UserAddressController extends Controller
             'district_id' => $request->district_id
         ]);
 
-        $userAddress = UserAddress::create([
+        $userAddress = UserAddress::updateOrCreate([
             'title' => $request->title,
             'user_id' => auth()->user()->id,
             'address_id' => $address->id
@@ -54,20 +46,10 @@ class UserAddressController extends Controller
      */
     public function show($id)
     {
-        //
+       return  $userAddress = UserAddress::find($id);
     }
 
-    /**
-     * Update the specified resource in storage.
-     *
-     * @param  \Illuminate\Http\Request  $request
-     * @param  int  $id
-     * @return \Illuminate\Http\Response
-     */
-    public function update(Request $request, $id)
-    {
-        //
-    }
+
 
     /**
      * Remove the specified resource from storage.
@@ -77,6 +59,8 @@ class UserAddressController extends Controller
      */
     public function destroy($id)
     {
-        //
+        $userAddress = UserAddress::find($id);
+        $userAddress->delete;
+        return response()->json(["message"=>"Success","success"=>200]);
     }
 }

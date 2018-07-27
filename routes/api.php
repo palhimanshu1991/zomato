@@ -41,6 +41,8 @@ Route::group(/**
 
     //UserAddress
     Route::post('/user/address','UserAddressController@store');
+    Route::get('/useraddress/{id}','UserAddressController@show');
+    Route::delete('useraddress/{id}','UserAddressController@destroy');
 
 
 
