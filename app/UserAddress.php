@@ -8,6 +8,7 @@ use Illuminate\Database\Eloquent\Model;
 
 class UserAddress extends Model
 {
+    protected $guarded = ['id'];
 
     public function user()
     {

@@ -40,7 +40,7 @@ Route::group(/**
     Route::post('/categories/create', 'CategoriesController@store');
 
     //UserAddress
-    Route::post('/useraddress','UserAddressControlle@store');
+    Route::post('/user/address','UserAddressController@store');
 
 
 

@@ -42,7 +42,7 @@ class UserAddressController extends Controller
             'address_id' => $address->id
         ]);
 
-        return resposne()->json(["success"=>200,"message"=>"Created"]);
+        return response()->json(["success"=>200,"message"=>"Created"]);
 
     }
 
