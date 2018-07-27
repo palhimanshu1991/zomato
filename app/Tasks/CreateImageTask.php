@@ -5,42 +5,69 @@ namespace App\Tasks;
 use App\Image;
 use App\Contracts\Imageable;
 use Illuminate\Database\Eloquent\Model;
+use Illuminate\Http\Request;
 use Illuminate\Http\UploadedFile;
 use Illuminate\Support\Facades\Storage;
 
 class CreateImageTask extends AbstractTask
 {
-    private $text;
+
     /**
      * @var Model
      */
     private $model;
 
     /**
-     * CreateCommentTask constructor.
-     * @param $text
-     * @param Commentable $model
+     * @var
      */
-    public function __construct($type, $request, Imageable $model)
+    private $filenamePrefix;
+
+    /**
+     * @var Request
+     */
+    private $request;
+
+    /**
+     * @var
+     */
+    private $imagePath;
+
+    /**
+     * CreateImageTask constructor.
+     *
+     * @param $filenamePrefix | prefix
+     * @param Request $request
+     * @param Imageable $model
+     */
+    public function __construct($filenamePrefix, Request $request, Imageable $model)
     {
-        $ext = $request->image->extension();
-
-        $imageurl = Storage::putFileAs(
-            'media', $request->file('image'), $type . $model->id . "." . $ext
-        );
-
-        $this->text = $imageurl;
-
         $this->model = $model;
+        $this->filenamePrefix = $filenamePrefix;
+        $this->request = $request;
     }
 
     public function handle()
     {
+        $file = $this->request->file('image');
+
+        $extension = $file->extension();
+        $filename = $this->filenamePrefix . "-" . $this->model->id . "." . $extension;
+
+        $this->uploadImage($file, $filename);
+
+        $this->createImage();
+    }
+
+    private function createImage()
+    {
         $image = new Image;
-
-        $image->path = $this->text;
-
+        $image->path = $this->imagePath;
         $this->model->images()->save($image);
+    }
+
+    private function uploadImage(UploadedFile $file, $filename)
+    {
+        $this->imagePath = Storage::putFileAs('media', $file, $filename);
     }
 
 }
