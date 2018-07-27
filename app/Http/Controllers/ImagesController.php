@@ -7,7 +7,6 @@ use App\Http\Requests\CreateImageRequest;
 use App\Tasks\CreateImageTask;
 use App\Restaurant;
 use App\Review;
-use Illuminate\Support\Facades\Storage;
 
 class ImagesController extends Controller
 {
@@ -16,13 +15,8 @@ class ImagesController extends Controller
     public function createReviewImage(CreateImageRequest $request, $id)
     {
         $review = Review::find($id);
-
-        $ext = $request->image->extension();
-
-        $imageurl = Storage::putFileAs(
-            'media', $request->file('image'), "review_" . $id . "." . $ext
-        );
-        $task = (new CreateImageTask($imageurl, $review));
+        $model = "review_";
+        $task = (new CreateImageTask($model, $request, $review));
         $task->handle();
         return "success";
 
@@ -31,15 +25,11 @@ class ImagesController extends Controller
     public function createRestaurantImage(CreateImageRequest $request, $id)
     {
         $restaurant = Restaurant::find($id);
-
-        $ext = $request->image->extension();
-
-        $imageurl = Storage::putFileAs(
-            'media', $request->file('image'), "restaurant_" . $id . "." . $ext
-        );
-        $task = (new CreateImageTask($imageurl, $restaurant));
+        $model = "restaurant_";
+        $task = (new CreateImageTask($model, $request, $restaurant));
         $task->handle();
         return "success";
     }
+
 
 }
