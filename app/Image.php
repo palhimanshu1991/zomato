@@ -2,11 +2,11 @@
 
 namespace App;
 
-use App\Tasks\Commentable;
+use App\Contracts\Commentable;
 use App\Traits\HasComments;
 use Illuminate\Database\Eloquent\Model;
 
-class Photo extends Model implements Commentable
+class Image extends Model implements Commentable
 {
     use HasComments;
 

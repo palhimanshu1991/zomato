@@ -3,7 +3,7 @@
 namespace App;
 
 use Illuminate\Database\Eloquent\Model;
-
+use App\Contracts\Imageable;
 
 class Restaurant extends Model implements Imageable
 {
@@ -27,9 +27,9 @@ class Restaurant extends Model implements Imageable
         return $this->belongsToMany('App\Cuisine');
     }
 
-    public function photos()
+    public function images()
     {
-        return $this->morphMany('App\Photo', 'imageable');
+        return $this->morphMany('App\Image', 'imageable');
     }
 
     public function reviews()

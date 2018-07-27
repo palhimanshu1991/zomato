@@ -23,20 +23,19 @@ Route::group(['middleware' => 'auth:api'], function () {
     Route::get('reviews/post', 'ReviewsController@postRating');
     Route::post('ratings', 'ReviewsController@postRating');
     Route::post('reviews', 'ReviewsController@postReview');
-    Route::get('reviews/{id}','ReviewsController@show');
+    Route::get('reviews/{id}', 'ReviewsController@show');
 
-    Route::post('reviews/comment/{id}','ReviewsController@createReviewComment');
-    Route::post('reviews/like/{id}','ReviewsController@createReviewLike');
-
-    //Restaurants
+    Route::post('reviews/comment/{id}', 'ReviewsController@createReviewComment');
+    Route::post('reviews/like/{id}', 'ReviewsController@createReviewLike');
+    Route::post('/reviews/images/{id}', 'ImagesController@createReviewImage');
 
     Route::get('/restaurants', 'RestaurantsController@index');
     Route::post('/restaurants/create', 'RestaurantsController@store');
     Route::get('/restaurants/{id}', 'RestaurantsController@show');
+    Route::post('/restaurants/images/{id}', 'ImagesController@createRestaurantImage');
+
     Route::get('/categories', 'CategoriesController@index');
     Route::post('/categories/create', 'CategoriesController@store');
-
-
 
 
 });
