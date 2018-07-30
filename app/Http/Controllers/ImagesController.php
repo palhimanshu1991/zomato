@@ -15,7 +15,7 @@ class ImagesController extends Controller
     public function createReviewImage(CreateImageRequest $request, $id)
     {
         $review = Review::find($id);
-        $model = "review_";
+       // $model = "review_";
         $task = (new CreateImageTask($model, $request, $review));
         $task->handle();
         return "success";
@@ -25,7 +25,7 @@ class ImagesController extends Controller
     public function createRestaurantImage(CreateImageRequest $request, $id)
     {
         $restaurant = Restaurant::find($id);
-        $model = "restaurant_";
+        //$model = "restaurant_";
         $task = (new CreateImageTask($model, $request, $restaurant));
         $task->handle();
         return "success";

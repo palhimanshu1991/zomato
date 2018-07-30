@@ -42,7 +42,7 @@ class CreateImageTask extends AbstractTask
     public function __construct($filenamePrefix, Request $request, Imageable $model)
     {
         $this->model = $model;
-        $this->filenamePrefix = $filenamePrefix;
+        $this->filenamePrefix = getPrefix();
         $this->request = $request;
     }
 
