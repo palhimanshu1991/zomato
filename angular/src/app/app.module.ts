@@ -11,6 +11,7 @@ import { RegisterComponent } from './auth/register/register.component';
 import { ReactiveFormsModule, FormsModule } from '@angular/forms';
 import { UserService } from './services/user.service';
 import { HttpClientModule } from '../../node_modules/@angular/common/http';
+import { AuthGuard } from './auth/auth.guard';
 
 @NgModule({
   declarations: [
@@ -28,7 +29,11 @@ import { HttpClientModule } from '../../node_modules/@angular/common/http';
     FormsModule,
     HttpClientModule
   ],
-  providers: [UserService],
+  providers: [
+    UserService,
+    AuthGuard
+  
+  ],
   bootstrap: [AppComponent]
 })
 export class AppModule { }
