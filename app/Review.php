@@ -8,11 +8,12 @@ use App\Contracts\Likeable;
 use App\Traits\HasComments;
 use App\Traits\HasLikes;
 use App\Traits\HasPhotos;
+use App\Traits\getPrefix;
 use Illuminate\Database\Eloquent\Model;
 
 class Review extends Model implements Commentable, Likeable, Imageable
 {
-    use HasComments, HasLikes, HasPhotos;
+    use HasComments, HasLikes, HasPhotos, getPrefix;
 
     protected $guarded = ['id'];
 
