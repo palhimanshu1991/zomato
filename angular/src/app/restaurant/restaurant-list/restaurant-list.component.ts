@@ -12,7 +12,7 @@ export class RestaurantListComponent implements OnInit {
     'nisit foods',
     'haldirams',
     'btw',
-    'nathus sweet',
+    'nathus sweet'
   ];
 
   constructor() {

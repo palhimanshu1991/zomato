@@ -6,6 +6,10 @@
     display: inline-block;
 }
 
+.margin {
+    margin-bottom: -1.5rem !important;
+}
+
 .login {
     float: right;
     margin: 5px; 
