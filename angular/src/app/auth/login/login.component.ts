@@ -32,7 +32,7 @@ export class LoginComponent implements OnInit {
     this.userService.userAuthentication(this.loginForm.value.email, this.loginForm.value.password).subscribe((data: any) => {
       localStorage.setItem('userToken', data.success.token);
       localStorage.setItem('userInfo', JSON.stringify(data.success.user));
-      this.router.navigate(['/']);
+      this.router.navigate(['/home']);
     }, (err: HttpErrorResponse) => {
       this.loading = false;
       this.loginError = true;
