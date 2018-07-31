@@ -8,6 +8,7 @@ use Illuminate\Database\Eloquent\Model;
 use Illuminate\Http\Request;
 use Illuminate\Http\UploadedFile;
 use Illuminate\Support\Facades\Storage;
+use App\Traits\GetPrefix;
 
 class CreateImageTask extends AbstractTask
 {
@@ -39,10 +40,10 @@ class CreateImageTask extends AbstractTask
      * @param Request $request
      * @param Imageable $model
      */
-    public function __construct($filenamePrefix, Request $request, Imageable $model)
+    public function __construct( Request $request, Imageable $model)
     {
         $this->model = $model;
-        $this->filenamePrefix = getPrefix();
+        $this->filenamePrefix = $this->model->getPrefix();
         $this->request = $request;
     }
 

@@ -1,4 +1,5 @@
 <?php
+namespace App\Traits;
 /**
  * Created by PhpStorm.
  * User: instaveritas
@@ -6,7 +7,11 @@
  * Time: 5:20 PM
  */
 
-public function getPrefix() {
+trait GetPrefix {
+    
+    public function getPrefix() {
 
     return get_class($this);
+}
+
 }

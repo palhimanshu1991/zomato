@@ -4,11 +4,11 @@ namespace App;
 
 use Illuminate\Database\Eloquent\Model;
 use App\Contracts\Imageable;
-use App\Traits\getPrefix;
+use App\Traits\GetPrefix;
 
 class Restaurant extends Model implements Imageable
 {
-    use getPrefix;
+    use GetPrefix;
 
     protected $guarded = [
         'id'
