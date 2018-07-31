@@ -14,6 +14,7 @@ import { AuthGuard } from './auth/auth.guard';
 import { FooterComponent } from './components/footer/footer.component';
 import { RestaurantModule } from './restaurant/restaurant.module';
 import { RestaurantListComponent } from './restaurant/restaurant-list/restaurant-list.component';
+import { LayoutComponent } from './components/layout/layout.component';
 
 @NgModule({
   declarations: [
@@ -23,7 +24,8 @@ import { RestaurantListComponent } from './restaurant/restaurant-list/restaurant
     LoginComponent,
     RegisterComponent,
     FooterComponent,
-    RestaurantListComponent
+    RestaurantListComponent,
+    LayoutComponent
   ],
   imports: [
     BrowserAnimationsModule,
