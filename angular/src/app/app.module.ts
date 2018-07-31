@@ -1,3 +1,4 @@
+
 import {BrowserAnimationsModule} from '@angular/platform-browser/animations';
 import { NgModule } from '@angular/core';
 import { RestaurantModule } from './restaurant/restaurant.module';
@@ -32,6 +33,7 @@ import { PageNotFoundComponent } from './components/page-not-found/page-not-foun
     BrowserModule,
     AppRoutingModule
     BrowserAnimationsModule,
+    AppRoutingModule,
     ReactiveFormsModule,
     FormsModule,
     HttpClientModule
@@ -40,6 +42,7 @@ import { PageNotFoundComponent } from './components/page-not-found/page-not-foun
     UserService,
     AuthGuard
 
+>>>>>>> Temporary merge branch 2
   ],
   bootstrap: [AppComponent]
 })
