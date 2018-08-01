@@ -6,6 +6,8 @@ import { LoginComponent } from './auth/login/login.component';
 import { AuthGuard } from './auth/auth.guard';
 import { RestaurantListComponent } from './restaurant/restaurant-list/restaurant-list.component';
 import { LayoutComponent } from './components/layout/layout.component';
+import { UserModule } from './user/user.module';
+import { UserRoutingModule } from './user/user-routing/user-routing.module';
 
 const routes: Routes = [
   { path: '', redirectTo: '/login', pathMatch: 'full' },
@@ -16,12 +18,18 @@ const routes: Routes = [
   {
     path: 'home', canActivate: [AuthGuard], component: LayoutComponent,
     children: [{ path: '', component: HomeComponent }]
-  }
+  },
+  { 
+    path: 'profile', 
+    canActivate: [AuthGuard], 
+    component: LayoutComponent,
+    loadChildren: () => UserModule,
+  },
 ];
 @NgModule({
   exports: [RouterModule],
   imports: [
-    RouterModule.forRoot(routes)
+    RouterModule.forRoot(routes),
   ],
   declarations: []
 })
