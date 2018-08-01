@@ -11,11 +11,15 @@ export class ProfileService {
   readonly rootUrl = appConstant.apiUrl;
 
 
+
   constructor(private http: HttpClient) {
    }
 
-   userDetails()
-   {
-     return this.http.get(this.rootUrl+'/details');
+   userDetails() {
+     return this.http.get(this.rootUrl + '/details');
+   }
+
+   updateDetails(data) {
+     return this.http.post(this.rootUrl + '/details', data);
    }
 }

@@ -10,9 +10,9 @@ import { HttpErrorResponse } from '@angular/common/http';
 })
 export class LoginComponent implements OnInit {
 
-  loginForm: FormGroup
-  loading: boolean = true;
-  loginError: boolean = false;
+  loginForm: FormGroup;
+  loading = true;
+  loginError = false;
 
   constructor(private userService: UserService, private router: Router) { }
 

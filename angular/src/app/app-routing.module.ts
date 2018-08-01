@@ -7,7 +7,7 @@ import { AuthGuard } from './auth/auth.guard';
 import { RestaurantListComponent } from './restaurant/restaurant-list/restaurant-list.component';
 import { LayoutComponent } from './components/layout/layout.component';
 import { UserModule } from './user/user.module';
-import { UserRoutingModule } from './user/user-routing/user-routing.module';
+
 
 const routes: Routes = [
   { path: '', redirectTo: '/login', pathMatch: 'full' },

@@ -44,6 +44,7 @@ Route::group(['middleware' => 'auth:api'],
         Route::delete('useraddress/{id}', 'UserAddressController@destroy');
 
         Route::get('/details','PassportController@details');
+        Route::post('/details','PassportController@updateDetails');
 
 
     });
