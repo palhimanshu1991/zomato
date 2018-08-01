@@ -1,0 +1,64 @@
+
+<form [formGroup]="RestaurantCreateForm" (ngSubmit)="onSubmit()">
+  <label>
+     Name:
+    <input type="text" formControlName="name" required>
+  </label>
+
+  <div formGroupName="address">
+    <h3>Address</h3>
+
+    <label>
+      Street:
+      <input type="text" formControlName="street" required>
+    </label>
+
+    <label>
+      locality
+      <input type="text" formControlName="locality" required>
+    </label>
+
+    <label>
+      landmark:
+      <input type="text" formControlName="landmark" required>
+    </label>
+
+    <label>
+      pincode:
+      <input type="text" formControlName="pincode" required>
+    </label>
+
+    <label>
+      state_id:
+      <input type="text" formControlName="state_id" required>
+    </label>
+
+    <label>
+      district_id:
+      <input type="text" formControlName="district_id" required>
+    </label>
+
+    
+  </div>
+
+  
+
+
+
+
+  <button type="submit" [disabled]="!RestaurantCreateForm.valid">Submit</button>
+</form>
+
+<hr>
+
+
+<p>
+  Form Value: {{ RestaurantCreateForm.value | json }}
+</p>
+
+
+<p>
+  Form Status: {{ RestaurantCreateForm.status }}
+</p>
+
+
