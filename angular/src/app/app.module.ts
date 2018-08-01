@@ -1,4 +1,4 @@
-import {BrowserAnimationsModule} from '@angular/platform-browser/animations';
+import { BrowserAnimationsModule } from '@angular/platform-browser/animations';
 import { NgModule } from '@angular/core';
 
 import { AppComponent } from './app.component';
@@ -15,6 +15,8 @@ import { FooterComponent } from './components/footer/footer.component';
 import { RestaurantModule } from './restaurant/restaurant.module';
 import { RestaurantListComponent } from './restaurant/restaurant-list/restaurant-list.component';
 import { LayoutComponent } from './components/layout/layout.component';
+import { AddHeaderInterceptor } from './services/add-header.interceptor';
+import { HTTP_INTERCEPTORS } from '@angular/common/http';
 
 @NgModule({
   declarations: [
@@ -37,9 +39,9 @@ import { LayoutComponent } from './components/layout/layout.component';
   ],
   providers: [
     UserService,
-    AuthGuard
-  
-  ],
+    AuthGuard,
+],
+
   bootstrap: [AppComponent]
 })
 export class AppModule { }
