@@ -46,6 +46,10 @@ Route::group(['middleware' => 'auth:api'],
         Route::get('/details','PassportController@details');
         Route::post('/details','PassportController@updateDetails');
 
+        //State
+        Route::get('/states','StateController@index');
+        Route::get('/districts','DistrictController@index');
+
 
     });
 

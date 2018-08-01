@@ -43,10 +43,8 @@ export class ProfileComponent implements OnInit {
 
   onSubmit() {
     this.data = this.profileForm.value;
-    this.user.name = this.data.name;
-    this.user.email = this.data.email;
-    this.user.password = this.data.password;
-
-    this.userService.updateDetails(this.user).subscribe();
+    this.userService.updateDetails(this.data).subscribe(() => {
+      console.log('updated');
+    });
   }
 }
