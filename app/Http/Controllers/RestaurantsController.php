@@ -9,6 +9,17 @@ use App\Restaurant;
 
 class RestaurantsController extends Controller
 {
+
+    /**
+     * @var RestauarntTransformer
+     */
+    private $restauarntTransformer;
+
+//    public function __construct(RestauarntTransformer $restauarntTransformer)
+//    {
+//        $this->restauarntTransformer = $restauarntTransformer;
+//    }
+
     /**
      * Display a listing of the resource.
      *
@@ -16,8 +27,28 @@ class RestaurantsController extends Controller
      */
     public function index()
     {
-        return Restaurant::all();
+        $restaurants = Restaurant::all()->load('address', 'address.district', 'address.district.state', 'categories', 'cuisines', 'reviews', 'images');
 
+    foreach ($restaurants as $restaurant) {
+        $restaurant->transform(function ($res) {
+            //dd($res->categories);
+            $values = [
+                'name' => $res->name,
+                'street' => $res->address->street,
+                'locality' => $res->address->locality,
+                'landmark' => $res->address->landmark,
+                'pincode' => $res->address->pincode,
+                'district' => $res->address->district->name,
+                'state' => $res->address->district->state->name
+//                'category' => $res->categories[0]->name,
+//                'cuisine' => $res->cuisines[0]->name
+            ];
+            dd($values);
+        });
+    }
+
+
+       // return $restaurants;
     }
 
     /**
@@ -60,7 +91,7 @@ class RestaurantsController extends Controller
     {
         $restaurant = Restaurant::find($id);
 
-        return $restaurant->load('address', 'categories', 'cuisines', 'reviews');
+        return $restaurant->load('address', 'categories', 'cuisines', 'reviews', 'images');
     }
 
 
