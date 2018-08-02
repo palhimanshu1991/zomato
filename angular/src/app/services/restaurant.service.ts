@@ -16,9 +16,13 @@ export class RestaurantService {
       return this.apiService.get('restaurants');
   }
   submitForm(values){
-    return this.apiService.post('restaurants/create',values)
+    return this.apiService.post('restaurants/create',values);
   }
 
+  find(value: number) {
+    // console.log('restaurants/'+value);
+    return this.apiService.get('restaurants/'+value);
+  }
 
 
 

@@ -1,5 +1,5 @@
 import { Component, OnInit } from '@angular/core';
-import { Router } from "@angular/router";
+import { Router,ActivatedRoute } from "@angular/router";
 import { UserService } from "../../services/user.service";
 import { RestaurantService } from "../../services/restaurant.service";
 
@@ -12,7 +12,7 @@ export class RestaurantListComponent implements OnInit {
 
   restaurants: any;
 
-  constructor(private restaurantService: RestaurantService, private router: Router) {
+  constructor(private restaurantService: RestaurantService, private router: Router,private activatedRoute: ActivatedRoute) {
 
   }
 
