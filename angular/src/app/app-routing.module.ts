@@ -1,23 +1,35 @@
 import { NgModule } from '@angular/core';
-import {Routes, RouterModule} from '@angular/router';
+import { Routes, RouterModule } from '@angular/router';
 import { HomeComponent } from './components/home/home.component';
 import { RegisterComponent } from './auth/register/register.component';
 import { LoginComponent } from './auth/login/login.component';
 import { AuthGuard } from './auth/auth.guard';
 import { RestaurantListComponent } from './restaurant/restaurant-list/restaurant-list.component';
+import { LayoutComponent } from './components/layout/layout.component';
+import { UserModule } from './user/user.module';
+
 
 const routes: Routes = [
-  {path:'', redirectTo:'/login' , pathMatch:'full'},
-  {path:'register', component: RegisterComponent},
-  {path:'login', component: LoginComponent},
-  {path: 'restaurants', canActivate:[AuthGuard], component: RestaurantListComponent},
+  { path: '', redirectTo: '/login', pathMatch: 'full' },
+  { path: 'register', component: RegisterComponent },
+  { path: 'login', component: LoginComponent },
+  { path: 'restaurants', canActivate: [AuthGuard], component: RestaurantListComponent },
 
-  {path:'home',canActivate:[AuthGuard], component: HomeComponent}
+  {
+    path: 'home', canActivate: [AuthGuard], component: LayoutComponent,
+    children: [{ path: '', component: HomeComponent }]
+  },
+  { 
+    path: 'profile', 
+    canActivate: [AuthGuard], 
+    component: LayoutComponent,
+    loadChildren: () => UserModule,
+  },
 ];
 @NgModule({
-  exports: [ RouterModule ],
+  exports: [RouterModule],
   imports: [
-    RouterModule.forRoot(routes)
+    RouterModule.forRoot(routes),
   ],
   declarations: []
 })
