@@ -29,26 +29,27 @@ class RestaurantsController extends Controller
     {
         $restaurants = Restaurant::all()->load('address', 'address.district', 'address.district.state', 'categories', 'cuisines', 'reviews', 'images');
 
-    foreach ($restaurants as $restaurant) {
-        $restaurant->transform(function ($res) {
-            //dd($res->categories);
-            $values = [
-                'name' => $res->name,
-                'street' => $res->address->street,
-                'locality' => $res->address->locality,
-                'landmark' => $res->address->landmark,
-                'pincode' => $res->address->pincode,
-                'district' => $res->address->district->name,
-                'state' => $res->address->district->state->name
-//                'category' => $res->categories[0]->name,
-//                'cuisine' => $res->cuisines[0]->name
+
+        return $restaurants->transform(function ($item) {
+
+            //dd($item->categories);
+            return [
+                'name' => $item->name,
+                'street' => $item->address->street,
+                'locality' => $item->address->locality,
+                'landmark' => $item->address->landmark,
+                'pincode' => $item->address->pincode,
+                'district' => $item->address->district->name,
+                'state' => $item->address->state->name,
+                'category' => $item->categories[0]->name,
+                'cuisine' => $item->cuisines[0]->name,
+                'image' => $this->getImages($item)
+
             ];
-            dd($values);
         });
-    }
 
 
-       // return $restaurants;
+        // return $restaurants;
     }
 
     /**
@@ -92,6 +93,13 @@ class RestaurantsController extends Controller
         $restaurant = Restaurant::find($id);
 
         return $restaurant->load('address', 'categories', 'cuisines', 'reviews', 'images');
+    }
+
+    private function getImages($item)
+    {
+        $image = $item->images->first();
+
+        return isset($image) ? "/Users/instaveritas/Code/zomato/storage/app/".$image->path : 'https://media.istockphoto.com/photos/tapas-food-picture-id603267744?k=6&m=603267744&s=612x612&w=0&h=-gkuUeHYUaBvFN1RLCI4gMWih1qJgsKi2jhUHoQKmWs=';
     }
 
 
