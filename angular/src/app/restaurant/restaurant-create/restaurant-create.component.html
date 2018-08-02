@@ -7,47 +7,49 @@
 
   <div formGroupName="address">
     <h3>Address</h3>
-
+    <br>
     <label>
       Street:
       <input type="text" formControlName="street" required>
     </label>
-
+    <br>
     <label>
       locality
       <input type="text" formControlName="locality" required>
     </label>
-
+    <br>
     <label>
       landmark:
       <input type="text" formControlName="landmark" required>
     </label>
-
+    <br>
     <label>
       pincode:
       <input type="text" formControlName="pincode" required>
     </label>
-
+    <br>
     <label>
       state_id:
       <input type="text" formControlName="state_id" required>
     </label>
-
+    <br>
     <label>
       district_id:
       <input type="text" formControlName="district_id" required>
     </label>
 
-    
+
   </div>
 
-  
+
 
 
 
 
   <button type="submit" [disabled]="!RestaurantCreateForm.valid">Submit</button>
 </form>
+
+
 
 <hr>
 
