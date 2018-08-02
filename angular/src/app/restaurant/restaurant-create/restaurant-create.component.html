@@ -1,8 +1,17 @@
-
 <form [formGroup]="RestaurantCreateForm" (ngSubmit)="onSubmit()">
   <label>
-     Name:
+    Name:
     <input type="text" formControlName="name" required>
+  </label>
+
+  <label>
+    category_id:
+    <input type="text" formControlName="category_id" required>
+  </label>
+
+  <label>
+    cuisine_id:
+    <input type="text" formControlName="cuisine_id" required>
   </label>
 
   <div formGroupName="address">
@@ -42,25 +51,20 @@
   </div>
 
 
-
-
-
-
   <button type="submit" [disabled]="!RestaurantCreateForm.valid">Submit</button>
 </form>
-
 
 
 <hr>
 
 
-<p>
-  Form Value: {{ RestaurantCreateForm.value | json }}
-</p>
+<!--<p>-->
+<!--Form Value: {{ RestaurantCreateForm.value | json }}-->
+<!--</p>-->
 
 
-<p>
-  Form Status: {{ RestaurantCreateForm.status }}
-</p>
+<!--<p>-->
+<!--Form Status: {{ RestaurantCreateForm.status }}-->
+<!--</p>-->
 
 

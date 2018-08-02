@@ -2,6 +2,7 @@ import {Component, OnInit} from '@angular/core';
 import {FormBuilder} from '@angular/forms';
 import {Validators} from '@angular/forms';
 import {RestaurantService} from "../../services/restaurant.service";
+import {Router} from "@angular/router";
 
 @Component({
   selector: 'app-restaurant-create',
@@ -10,8 +11,12 @@ import {RestaurantService} from "../../services/restaurant.service";
 })
 export class RestaurantCreateComponent implements OnInit {
 
+  restaurant: any;
+
   RestaurantCreateForm = this.fb.group({
     name: ['', Validators.required],
+    category_id: ['' , Validators.required],
+    cuisine_id: ['' , Validators.required],
     address: this.fb.group({
       street: ['', Validators.required],
       locality: ['', Validators.required],
@@ -22,7 +27,7 @@ export class RestaurantCreateComponent implements OnInit {
     }),
   });
 
-  constructor(private fb: FormBuilder,private service:RestaurantService) {
+  constructor(private fb: FormBuilder,private service:RestaurantService,private route: Router) {
   }
 
   ngOnInit() {
@@ -30,8 +35,10 @@ export class RestaurantCreateComponent implements OnInit {
 
   onSubmit() {
     this.service.submitForm(this.RestaurantCreateForm.value).subscribe(response=>{
-      console.log(response);
+      this.restaurant = response;
     });
-       console.warn(this.RestaurantCreateForm.value);
+
+     this.route.navigate(['/restaurants']);
+
   }
 }
