@@ -5,9 +5,10 @@ import { ApiService } from './api.service';
   providedIn: 'root'
 })
 export class AddressService {
-  userAddressRoutes = '/user/address';
+  userAddressRoutes = '/useraddress';
   stateRoutes = '/states';
-  districtRoutes = '/district';
+  districtRoutes = '/districts';
+  userAddressShow: string;
   constructor(private apiService: ApiService) { }
 
   getStates() {
@@ -15,10 +16,24 @@ export class AddressService {
   }
 
   getDistricts() {
-    return this.apiService.get(this.stateRoutes);
+    return this.apiService.get(this.districtRoutes);
   }
 
   addUserAddress(data: any) {
     return this.apiService.post(this.userAddressRoutes, data);
+  }
+
+  getUserAddress() {
+    return this.apiService.get(this.userAddressRoutes);
+  }
+
+  showUserAddress(id) {
+    this.userAddressShow =  this.userAddressRoutes + '/' + id;
+    return this.apiService.get(this.userAddressShow);
+  }
+
+  editUserAddress(data: any, id: any) {
+    this.userAddressShow =  this.userAddressRoutes + '/' + id;
+    return this.apiService.put(this.userAddressShow, data);
   }
 }

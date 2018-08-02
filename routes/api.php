@@ -39,7 +39,9 @@ Route::group(['middleware' => 'auth:api'],
         Route::post('/categories/create', 'CategoriesController@store');
 
         //UserAddress
-        Route::post('/user/address', 'UserAddressController@store');
+        Route::get('/useraddress', 'UserAddressController@index');
+        Route::post('/useraddress', 'UserAddressController@store');
+        Route::put('/useraddress/{id}','UserAddressController@update');
         Route::get('/useraddress/{id}', 'UserAddressController@show');
         Route::delete('useraddress/{id}', 'UserAddressController@destroy');
 

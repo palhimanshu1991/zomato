@@ -33,14 +33,7 @@ export class LoginComponent implements OnInit {
       localStorage.setItem('userToken', data.success.token);
       localStorage.setItem('userInfo', JSON.stringify(data.success.user));
       this.router.navigate(['/home']);
-    }, (err: HttpErrorResponse) => {
-      this.loading = false;
-      this.loginError = true;
-      const data = err.error.error;
-      Object.keys(data).forEach((fieldName) => {
-        this.loginForm.controls[fieldName].setErrors({ backend: data[fieldName] });
-      });
-    });
+     });
   }
 
 }

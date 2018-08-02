@@ -7,6 +7,8 @@ import { ProfileComponent } from './profile/profile.component';
 import { UserRoutingModule } from './user-routing/user-routing.module';
 import { ReactiveFormsModule } from '../../../node_modules/@angular/forms';
 import { AddAddressComponent } from './add-address/add-address.component';
+import { UserAddressComponent } from './user-address/user-address.component';
+import { UserAddressEditComponent } from './user-address-edit/user-address-edit.component';
 
 @NgModule({
   imports: [
@@ -14,7 +16,7 @@ import { AddAddressComponent } from './add-address/add-address.component';
     UserRoutingModule,
     ReactiveFormsModule
   ],
-  declarations: [ProfileComponent, AddAddressComponent],
+  declarations: [ProfileComponent, AddAddressComponent, UserAddressComponent, UserAddressEditComponent],
 
   providers: [
     { provide: HTTP_INTERCEPTORS, useClass: AddHeaderInterceptor, multi: true },
