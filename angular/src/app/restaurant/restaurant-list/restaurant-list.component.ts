@@ -10,25 +10,19 @@ import { RestaurantService } from "../../services/restaurant.service";
 })
 export class RestaurantListComponent implements OnInit {
 
-  restaurants = [
-    'ekta kitchen',
-    'nisit foods',
-    'haldirams',
-    'btw',
-    'nathus sweet'
-  ];
+  restaurants: any;
 
   constructor(private restaurantService: RestaurantService, private router: Router) {
 
   }
 
   ngOnInit() {
+    this.getRestaurants();
   }
 
-  onClick() {
+  getRestaurants() {
     this.restaurantService.restaurantList().subscribe((response: any) => {
-      console.log(response);
-      //this.router.navigate(['/restaurant-check']);
+      this.restaurants = response;
     }
 
 
