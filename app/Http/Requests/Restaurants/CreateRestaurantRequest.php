@@ -35,7 +35,6 @@ class CreateRestaurantRequest extends AbstractApiRequest
             'category_id' => 'required | exists:categories,id',
             'cuisine_id' => 'required | exists:cuisines,id',
 
-
         ];
     }
 }
