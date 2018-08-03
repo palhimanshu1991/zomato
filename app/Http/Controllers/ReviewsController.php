@@ -21,11 +21,11 @@ class ReviewsController extends Controller
         return $review;
     }
 
-    public function postRating(CreateRatingRequest $request)
+    public function postRating(CreateRatingRequest $request, $id)
     {
         Review::updateOrCreate([
             'user_id' => auth()->user()->id,
-            'restaurant_id' => $request->restaurant_id
+            'restaurant_id' => $id
         ], [
             'rating' => $request->rating,
         ]);
@@ -35,11 +35,11 @@ class ReviewsController extends Controller
         ];
     }
 
-    public function postReview(CreateReviewRequest $request)
+    public function postReview(CreateReviewRequest $request,$id)
     {
         Review::updateOrCreate([
             'user_id' => auth()->user()->id,
-            'restaurant_id' => $request->restaurant_id
+            'restaurant_id' => $id
         ], [
             'text' => $request->text,
         ]);

@@ -12,6 +12,13 @@ export class ReviewService {
 
   getReviews(id) {
     return this.apiService.get('restaurants/' + id + this.reviewRoutes);
+  }
 
+  postReview(data, id) {
+    return this.apiService.post('reviews/' + id, data);
+  }
+
+  postRating(data, id) {
+    return this.apiService.post('ratings/' + id, data);
   }
 }

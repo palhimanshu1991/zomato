@@ -2,7 +2,8 @@ import { NgModule } from '@angular/core';
 import { CommonModule } from '@angular/common';
 import { ReviewsComponent } from './reviews/reviews.component';
 import { ReactiveFormsModule } from '@angular/forms';
-import { ReviewRoutingModule } from './/review-routing.module';
+import { ReviewRoutingModule } from './review-routing.module';
+import { ReviewAddComponent } from './review-add/review-add.component';
 
 @NgModule({
   imports: [
@@ -10,6 +11,9 @@ import { ReviewRoutingModule } from './/review-routing.module';
     ReactiveFormsModule,
     ReviewRoutingModule
   ],
-  declarations: [ReviewsComponent]
+  declarations: [
+    ReviewsComponent,
+    ReviewAddComponent,
+  ]
 })
 export class ReviewsModule { }

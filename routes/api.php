@@ -22,8 +22,8 @@ Route::group(['middleware' => 'auth:api'],
         //Reviews
 
         Route::get('reviews/post', 'ReviewsController@postRating');
-        Route::post('ratings', 'ReviewsController@postRating');
-        Route::post('reviews', 'ReviewsController@postReview');
+        Route::post('ratings/{id}', 'ReviewsController@postRating');
+        Route::post('reviews/{id}', 'ReviewsController@postReview');
         Route::get('reviews/{id}', 'ReviewsController@show');
         
 
