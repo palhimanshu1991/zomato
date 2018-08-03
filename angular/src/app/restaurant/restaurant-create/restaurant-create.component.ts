@@ -15,32 +15,34 @@ export class RestaurantCreateComponent implements OnInit {
 
   RestaurantCreateForm = this.fb.group({
     name: ['', Validators.required],
-    category_id: ['' , Validators.required],
-    cuisine_id: ['' , Validators.required],
+    category_id: ['', Validators.required],
+    cuisine_id: ['', Validators.required],
     address: this.fb.group({
       street: ['', Validators.required],
       locality: ['', Validators.required],
       landmark: ['', Validators.required],
       pincode: ['', Validators.required],
       state_id: ['', Validators.required],
-      district_id: ['' , Validators.required]
+      district_id: ['', Validators.required]
     }),
   });
 
-  constructor(private fb: FormBuilder,private service:RestaurantService,private route: Router) {
+  constructor(private fb: FormBuilder, private service: RestaurantService, private route: Router) {
   }
 
   ngOnInit() {
   }
 
   onSubmit() {
-    this.service.submitForm(this.RestaurantCreateForm.value).subscribe(response=>{
+
+    this.service.submitForm(this.RestaurantCreateForm.value).subscribe(response => {
       this.restaurant = response;
+      console.log(response.id);
+      this.route.navigate(['/restaurant/' + this.restaurant.id]);
     });
 
-    console.log(this.restaurant.id);
+    //console.log(this.restaurant);
 
-     this.route.navigate(['/restaurants']);
 
   }
 }

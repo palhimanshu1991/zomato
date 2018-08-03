@@ -1,4 +1,6 @@
 <form [formGroup]="RestaurantCreateForm" (ngSubmit)="onSubmit()">
+  <h2> Add a restaurant</h2>
+  <br>
   <label>
     Name:
     <input type="text" formControlName="name" required>
@@ -51,7 +53,7 @@
   </div>
 
 
-  <button type="submit" [disabled]="!RestaurantCreateForm.valid">Submit</button>
+  <button type="submit" [disabled]="!RestaurantCreateForm.valid">create this restaurant</button>
 </form>
 
 
