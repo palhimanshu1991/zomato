@@ -5,8 +5,9 @@
     <div class="card">
       <h5>Rating {{review .rating}}</h5>
       <p>{{review.text}}</p>
-      <p><button ><i class="fa fa-comment" aria-hidden="true"></i></button>
-        <button > <i class="fa fa-thumbs-o-up" aria-hidden="true"></i></button></p>
+      <p> <a routerLink="{{review.id}}/comment"> <button ><i class="fa fa-comment" aria-hidden="true"></i></button> </a>
+        <button (click)="postLike()" > <i class="fa fa-thumbs-o-up" aria-hidden="true"></i></button></p>
+        <a routerLink="edit/{{review.id}}"><button class="btn btn-primary">Edit</button></a>
 
     </div>
   </div>

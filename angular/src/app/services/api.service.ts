@@ -47,6 +47,12 @@ export class ApiService {
       .pipe(catchError(this._handleError));
   }
 
+  postLike(route: string) {
+    return this.http
+      .post(this.rootUrl + route, { headers: this.requestHeader })
+      .pipe(catchError(this._handleError));
+  }
+
   put(route: string, data: any) {
     return this.http
       .put(this.rootUrl + route, data, { headers: this.requestHeader })

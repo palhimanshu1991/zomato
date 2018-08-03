@@ -22,7 +22,7 @@ class CreateLikeTask
     /**
      * CreateCommentTask constructor.
      * @param $text
-     * @param Commentable $model
+     * @param LikeableInterface $model
      */
     public function __construct(Likeable $model)
     {

@@ -19,14 +19,16 @@ export class AddressService {
     return this.apiService.get(this.districtRoutes);
   }
 
+  // rename this to create
   addUserAddress(data: any) {
     return this.apiService.post(this.userAddressRoutes, data);
   }
 
+  // getAddress
   getUserAddress() {
     return this.apiService.get(this.userAddressRoutes);
   }
-
+// show
   showUserAddress(id) {
     this.userAddressShow =  this.userAddressRoutes + '/' + id;
     return this.apiService.get(this.userAddressShow);

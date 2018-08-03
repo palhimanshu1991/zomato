@@ -12,7 +12,6 @@ import {Router} from "@angular/router";
 export class RestaurantCreateComponent implements OnInit {
 
   restaurant: any;
-
   RestaurantCreateForm = this.fb.group({
     name: ['', Validators.required],
     category_id: ['' , Validators.required],

@@ -21,4 +21,16 @@ export class ReviewService {
   postRating(data, id) {
     return this.apiService.post('ratings/' + id, data);
   }
+
+  getReview(id) {
+    return this.apiService.get('reviews/' + id);
+  }
+
+  postComment(data, id) {
+    return this.apiService.post('reviews/comment/' + id, data);
+  }
+
+  postLike(id) {
+    return this.apiService.postLike('reviews/like/' + id);
+  }
 }

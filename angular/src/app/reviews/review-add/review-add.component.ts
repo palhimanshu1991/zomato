@@ -30,6 +30,7 @@ export class ReviewAddComponent implements OnInit {
       rating: new FormControl(''),
       text: new FormControl(''),
     });
+     // difference between formbuilder and formgroup
   }
 
   onSubmit() {

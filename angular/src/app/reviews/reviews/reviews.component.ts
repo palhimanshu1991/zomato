@@ -26,4 +26,10 @@ export class ReviewsComponent implements OnInit {
     });
   }
 
+  postLike() {
+    this.reviewService.postLike(this.id).subscribe(() => {
+      console.log('liked');
+    });
+  }
+
 }

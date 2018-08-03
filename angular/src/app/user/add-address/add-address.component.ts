@@ -1,13 +1,15 @@
-import { Component, OnInit } from '@angular/core';
-import { FormGroup, FormBuilder, Validators } from '@angular/forms';
-import { AddressService } from '../../services/address.service';
-import { Router } from '@angular/router';
+import { Component, OnInit } from "@angular/core";
+import { FormGroup, FormBuilder, Validators } from "@angular/forms";
+import { AddressService } from "../../services/address.service";
+import { Router } from "@angular/router";
 
 @Component({
-  selector: 'app-add-address',
-  templateUrl: './add-address.component.html',
-  styleUrls: ['./add-address.component.css']
+  selector: "app-add-address",
+  templateUrl: "./add-address.component.html",
+  styleUrls: ["./add-address.component.css"]
 })
+
+// rename this to UserAddressCreateComponent.
 export class AddAddressComponent implements OnInit {
   addressForm: FormGroup;
   states: any[];
@@ -28,11 +30,11 @@ export class AddAddressComponent implements OnInit {
 
   buildForm() {
     this.addressForm = this.fb.group({
-      title: ['', Validators.required],
-      street: ['', Validators.required],
-      locality: ['', Validators.required],
-      landmark: ['', Validators.required],
-      pincode: ['', Validators.required],
+      title: ["", Validators.required],
+      street: ["", Validators.required],
+      locality: ["", Validators.required],
+      landmark: ["", Validators.required],
+      pincode: ["", Validators.required],
       state_id: [1, Validators.required],
       district_id: [1, Validators.required]
     });
