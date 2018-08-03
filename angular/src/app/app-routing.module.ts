@@ -8,13 +8,14 @@ import { RestaurantListComponent } from './restaurant/restaurant-list/restaurant
 import { LayoutComponent } from './components/layout/layout.component';
 import { UserModule } from './user/user.module';
 import { ReviewsModule } from './reviews/reviews.module';
+import { RestaurantModule } from './restaurant/restaurant.module';
 
 
 const routes: Routes = [
   { path: '', redirectTo: '/login', pathMatch: 'full' },
   { path: 'register', component: RegisterComponent },
   { path: 'login', component: LoginComponent },
-  { path: 'restaurants', canActivate: [AuthGuard], component: RestaurantListComponent },
+  { path: 'restaurants', canActivate: [AuthGuard], component: LayoutComponent, loadChildren: () => RestaurantModule },
 
   {
     path: 'home', canActivate: [AuthGuard], component: LayoutComponent,

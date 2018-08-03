@@ -4,11 +4,13 @@ import { RestaurantListComponent } from './restaurant-list/restaurant-list.compo
 import { RestaurantService } from '../services/restaurant.service';
 import { RestaurantCreateComponent } from './restaurant-create/restaurant-create.component';
 import { ReactiveFormsModule, FormsModule } from '@angular/forms';
+import { RestaurantRoutingModule } from './restaurant-routing/restaurant-routing.module';
 
 @NgModule({
   imports: [
     CommonModule,
-    ReactiveFormsModule
+    ReactiveFormsModule,
+    RestaurantRoutingModule
   ],
   declarations: [
     RestaurantListComponent,
