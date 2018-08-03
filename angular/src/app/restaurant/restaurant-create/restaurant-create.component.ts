@@ -38,6 +38,8 @@ export class RestaurantCreateComponent implements OnInit {
       this.restaurant = response;
     });
 
+    console.log(this.restaurant.id);
+
      this.route.navigate(['/restaurants']);
 
   }
