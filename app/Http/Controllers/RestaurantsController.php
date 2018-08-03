@@ -28,13 +28,14 @@ class RestaurantsController extends Controller
      */
     public function store(CreateRestaurantRequest $request)
     {
+        \Log::info($request->all());
         $address = Address::create([
-            'street' => $request->street,
-            'locality' => $request->locality,
-            'landmark' => $request->landmark,
-            'pincode' => $request->pincode,
-            'state_id' => $request->state_id,
-            'district_id' => $request->district_id
+            'street' => $request->address['street'],
+            'locality' => $request->address['locality'],
+            'landmark' => $request->address['landmark'],
+            'pincode' => $request->address['pincode'],
+            'state_id' => $request->address['state_id'],
+            'district_id' => $request->address['district_id']
         ]);
 
         $restaurant = Restaurant::create([
