@@ -45,10 +45,12 @@ class CreateImageTask extends AbstractTask
         $this->model = $model;
         $this->filenamePrefix = $this->model->getPrefix();
         $this->request = $request;
+       // dd($this->request);
     }
 
     public function handle()
     {
+        //dd($this->request->name);
         $file = $this->request->file('image');
 
         $extension = $file->extension();

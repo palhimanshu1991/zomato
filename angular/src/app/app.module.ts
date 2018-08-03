@@ -14,8 +14,11 @@ import {AuthGuard} from './auth/auth.guard';
 import {FooterComponent} from './components/footer/footer.component';
 import {PageNotFoundComponent} from './components/page-not-found/page-not-found.component';
 import {RestaurantService} from './services/restaurant.service';
+import {ImageUploadService} from './services/image-upload.service';
 import {ApiService} from './services/api.service';
 import {FormComponent} from './form/form.component';
+import { FileUploadModule } from 'ng2-file-upload';
+
 
 @NgModule({
   declarations: [
@@ -35,6 +38,7 @@ import {FormComponent} from './form/form.component';
     FormsModule,
     HttpClientModule,
     RestaurantModule,
+    FileUploadModule
   ],
   providers: [
     UserService,

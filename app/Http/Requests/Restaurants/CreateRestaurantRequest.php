@@ -34,7 +34,6 @@ class CreateRestaurantRequest extends AbstractApiRequest
             'address.district_id' => 'required | exists:districts,id',
             'category_id' => 'required | exists:categories,id',
             'cuisine_id' => 'required | exists:cuisines,id',
-
         ];
     }
 }
