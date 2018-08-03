@@ -105,10 +105,15 @@ class RestaurantsController extends Controller
             'state' => $item->address->state->name,
             'category' => $item->categories[0]->name,
             'cuisine' => $item->cuisines[0]->name,
-            'image' => $this->getImages($item)
+            'image' => $this->getImages($item),
         ];
 
         return $values;
+    }
+
+    public function showReview($id) {
+        $restaurant = Restaurant::find($id);
+        return response()->json(['review' => $restaurant->reviews]) ;
     }
 
 

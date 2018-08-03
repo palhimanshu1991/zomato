@@ -10,8 +10,8 @@ export class ReviewService {
   constructor(private apiService: ApiService) { }
 
 
-  getReviews() {
-    return this.apiService.get(this.reviewRoutes);
+  getReviews(id) {
+    return this.apiService.get('restaurants/' + id + this.reviewRoutes);
 
   }
 }

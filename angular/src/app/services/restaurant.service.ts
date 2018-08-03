@@ -19,4 +19,9 @@ export class RestaurantService {
   submitForm(values) {
     return this.apiService.post('restaurants/create', values);
   }
+
+  find(value: number) {
+    // console.log('restaurants/'+value);
+    return this.apiService.get('restaurants/' + value);
+  }
 }

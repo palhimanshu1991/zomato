@@ -1,6 +1,6 @@
 import {Component, OnInit} from '@angular/core';
-import {RestaurantService} from "../../services/restaurant.service";
-import {Router, ActivatedRoute} from "@angular/router";
+import {RestaurantService} from '../../services/restaurant.service';
+import {Router, ActivatedRoute} from '@angular/router';
 
 @Component({
   selector: 'app-restaurant-show',
@@ -10,7 +10,7 @@ import {Router, ActivatedRoute} from "@angular/router";
 export class RestaurantShowComponent implements OnInit {
 
   restaurant: any;
-  id : number;
+  id: number;
 
   constructor(private restaurantService: RestaurantService, private router: Router, private activatedRoute: ActivatedRoute) {
     this.activatedRoute.params.subscribe(params => this.id = params.id);
@@ -23,7 +23,7 @@ export class RestaurantShowComponent implements OnInit {
   showRestaurant() {
     this.restaurantService.find(this.id).subscribe((response: any) => {
      this.restaurant = response;
-  
+
     });
   }
 

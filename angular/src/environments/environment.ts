@@ -6,7 +6,7 @@ export const environment = {
   production: false
 };
 
-export const apiUrl = 'http://instafoods.test/api';
+export const apiUrl = 'http://instafoods.test/api/';
 
 /*
  * In development mode, to ignore zone related error stack frames such as

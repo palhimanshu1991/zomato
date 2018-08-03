@@ -27,12 +27,7 @@ const routes: Routes = [
     component: LayoutComponent,
     loadChildren: () => UserModule,
   },
-  {
-    path: 'reviews',
-    canActivate: [AuthGuard],
-    component: LayoutComponent,
-    loadChildren: () => ReviewsModule
-  },
+
 ];
 @NgModule({
   exports: [RouterModule],
