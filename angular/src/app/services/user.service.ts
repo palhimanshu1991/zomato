@@ -3,12 +3,12 @@ import { HttpClient, HttpHeaders, HttpErrorResponse } from '@angular/common/http
 import { Response } from '@angular/http';
 import { Observable } from 'rxjs';
 import { catchError } from 'rxjs/operators';
-import { environment } from '../../environments/environment';
+import { apiUrl} from '../../environments/environment';
 
 @Injectable()
 export class UserService {
 
-  readonly rootUrl = environment.api_url;
+  readonly rootUrl = apiUrl;
   userToken: string;
 
   constructor(private http: HttpClient) {
@@ -34,7 +34,8 @@ export class UserService {
     const data = { 'email': email, 'password': password };
     // tslint:disable-next-line:max-line-length
     const reqHeader = new HttpHeaders(
-      { 'Content-Type': 'application/json', 'Accept': 'application/json', 'Access-Control-Allow-Origin': '*', 'Access-Control-Allow-Headers': 'Authorization, Content-Type' });
+      { 'Content-Type': 'application/json', 'Accept': 'application/json', 'Access-Control-Allow-Origin': '*',
+      'Access-Control-Allow-Headers': 'Authorization, Content-Type' });
 
     return this.http.post(this.rootUrl + 'login', data, { headers: reqHeader });
   }

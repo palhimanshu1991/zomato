@@ -12,10 +12,7 @@ import { HttpClientModule } from '@angular/common/http';
 import { AuthGuard } from './auth/auth.guard';
 import { FooterComponent } from './components/footer/footer.component';
 import { RestaurantModule } from './restaurant/restaurant.module';
-import { RestaurantListComponent } from './restaurant/restaurant-list/restaurant-list.component';
 import { LayoutComponent } from './components/layout/layout.component';
-import { AddHeaderInterceptor } from './services/add-header.interceptor';
-import { HTTP_INTERCEPTORS } from '@angular/common/http';
 import { UserModule } from './user/user.module';
 import { ReviewsModule } from './reviews/reviews.module';
 
@@ -27,7 +24,6 @@ import { ReviewsModule } from './reviews/reviews.module';
     LoginComponent,
     RegisterComponent,
     FooterComponent,
-    RestaurantListComponent,
     LayoutComponent,
   ],
   imports: [

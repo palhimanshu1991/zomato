@@ -31,7 +31,7 @@ const routes: Routes = [
     canActivate: [AuthGuard],
     component: LayoutComponent,
     loadChildren: () => ReviewsModule
-  }
+  },
 ];
 @NgModule({
   exports: [RouterModule],
