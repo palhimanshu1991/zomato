@@ -17,6 +17,7 @@ import { LayoutComponent } from './components/layout/layout.component';
 import { AddHeaderInterceptor } from './services/add-header.interceptor';
 import { HTTP_INTERCEPTORS } from '@angular/common/http';
 import { UserModule } from './user/user.module';
+import { ReviewsModule } from './reviews/reviews.module';
 
 @NgModule({
   declarations: [
@@ -36,7 +37,8 @@ import { UserModule } from './user/user.module';
     FormsModule,
     HttpClientModule,
     RestaurantModule,
-    UserModule
+    UserModule,
+    ReviewsModule
   ],
   providers: [
     UserService,

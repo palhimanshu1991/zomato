@@ -7,6 +7,7 @@ import { AuthGuard } from './auth/auth.guard';
 import { RestaurantListComponent } from './restaurant/restaurant-list/restaurant-list.component';
 import { LayoutComponent } from './components/layout/layout.component';
 import { UserModule } from './user/user.module';
+import { ReviewsModule } from './reviews/reviews.module';
 
 
 const routes: Routes = [
@@ -19,12 +20,18 @@ const routes: Routes = [
     path: 'home', canActivate: [AuthGuard], component: LayoutComponent,
     children: [{ path: '', component: HomeComponent }]
   },
-  { 
-    path: 'profile', 
-    canActivate: [AuthGuard], 
+  {
+    path: 'profile',
+    canActivate: [AuthGuard],
     component: LayoutComponent,
     loadChildren: () => UserModule,
   },
+  {
+    path: 'reviews',
+    canActivate: [AuthGuard],
+    component: LayoutComponent,
+    loadChildren: () => ReviewsModule
+  }
 ];
 @NgModule({
   exports: [RouterModule],

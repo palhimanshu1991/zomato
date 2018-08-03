@@ -16,7 +16,10 @@ use Auth;
 
 class ReviewsController extends Controller
 {
-
+    public function index() {
+        $review = Review::all();
+        return $review;
+    }
 
     public function postRating(CreateRatingRequest $request)
     {
