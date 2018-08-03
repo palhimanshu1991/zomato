@@ -10,7 +10,7 @@ class Address extends Model
 
     public function state()
     {
-        return $this->belongsTo('App\Comment');
+        return $this->belongsTo('App\State');
     }
 
     public function district()

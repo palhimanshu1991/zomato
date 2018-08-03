@@ -1,5 +1,5 @@
 import { Component, OnInit } from '@angular/core';
-import { Router } from "@angular/router";
+import { Router,ActivatedRoute } from "@angular/router";
 import { UserService } from "../../services/user.service";
 import { RestaurantService } from "../../services/restaurant.service";
 
@@ -10,25 +10,19 @@ import { RestaurantService } from "../../services/restaurant.service";
 })
 export class RestaurantListComponent implements OnInit {
 
-  restaurants = [
-    'ekta kitchen',
-    'nisit foods',
-    'haldirams',
-    'btw',
-    'nathus sweet'
-  ];
+  restaurants: any;
 
-  constructor(private restaurantService: RestaurantService, private router: Router) {
+  constructor(private restaurantService: RestaurantService, private router: Router,private activatedRoute: ActivatedRoute) {
 
   }
 
   ngOnInit() {
+    this.getRestaurants();
   }
 
-  onClick() {
+  getRestaurants() {
     this.restaurantService.restaurantList().subscribe((response: any) => {
-      console.log(response);
-      //this.router.navigate(['/restaurant-check']);
+      this.restaurants = response;
     }
 
 
