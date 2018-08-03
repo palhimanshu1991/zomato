@@ -1,30 +1,7 @@
 <?xml version="1.0" encoding="UTF-8"?>
 <project version="4">
   <component name="ChangeListManager">
-    <list default="true" id="0dd48e6a-306d-4a67-9081-21244a9f3ff1" name="Default Changelist" comment="">
-      <change afterPath="$PROJECT_DIR$/src/app/form/form.component.css" afterDir="false" />
-      <change afterPath="$PROJECT_DIR$/src/app/form/form.component.html" afterDir="false" />
-      <change afterPath="$PROJECT_DIR$/src/app/form/form.component.spec.ts" afterDir="false" />
-      <change afterPath="$PROJECT_DIR$/src/app/form/form.component.ts" afterDir="false" />
-      <change afterPath="$PROJECT_DIR$/src/app/models/user.model.ts" afterDir="false" />
-      <change afterPath="$PROJECT_DIR$/src/app/restaurant/restaurant-create/restaurant-create.component.css" afterDir="false" />
-      <change afterPath="$PROJECT_DIR$/src/app/restaurant/restaurant-create/restaurant-create.component.html" afterDir="false" />
-      <change afterPath="$PROJECT_DIR$/src/app/restaurant/restaurant-create/restaurant-create.component.spec.ts" afterDir="false" />
-      <change afterPath="$PROJECT_DIR$/src/app/restaurant/restaurant-create/restaurant-create.component.ts" afterDir="false" />
-      <change afterPath="$PROJECT_DIR$/src/app/services/restaurant.service.ts" afterDir="false" />
-      <change beforePath="$PROJECT_DIR$/package-lock.json" beforeDir="false" afterPath="$PROJECT_DIR$/package-lock.json" afterDir="false" />
-      <change beforePath="$PROJECT_DIR$/src/app/app.component.ts" beforeDir="false" afterPath="$PROJECT_DIR$/src/app/app.component.ts" afterDir="false" />
-      <change beforePath="$PROJECT_DIR$/src/app/components/navbar/navbar.component.css" beforeDir="false" afterPath="$PROJECT_DIR$/src/app/components/navbar/navbar.component.css" afterDir="false" />
-      <change beforePath="$PROJECT_DIR$/src/app/restaurant/restaurant-list/restaurant-list.component.html" beforeDir="false" afterPath="$PROJECT_DIR$/src/app/restaurant/restaurant-list/restaurant-list.component.html" afterDir="false" />
-      <change beforePath="$PROJECT_DIR$/src/app/restaurant/restaurant-list/restaurant-list.component.ts" beforeDir="false" afterPath="$PROJECT_DIR$/src/app/restaurant/restaurant-list/restaurant-list.component.ts" afterDir="false" />
-      <change beforePath="$PROJECT_DIR$/src/app/restaurant/restaurant.module.ts" beforeDir="false" afterPath="$PROJECT_DIR$/src/app/restaurant/restaurant.module.ts" afterDir="false" />
-      <change beforePath="$PROJECT_DIR$/src/app/services/user.service.ts" beforeDir="false" afterPath="$PROJECT_DIR$/src/app/services/user.service.ts" afterDir="false" />
-      <change beforePath="$PROJECT_DIR$/../app/Http/Controllers/RestaurantsController.php" beforeDir="false" afterPath="$PROJECT_DIR$/../app/Http/Controllers/RestaurantsController.php" afterDir="false" />
-      <change beforePath="$PROJECT_DIR$/../app/Http/Requests/Restaurants/CreateRestaurantRequest.php" beforeDir="false" afterPath="$PROJECT_DIR$/../app/Http/Requests/Restaurants/CreateRestaurantRequest.php" afterDir="false" />
-      <change beforePath="$PROJECT_DIR$/../app/Review.php" beforeDir="false" afterPath="$PROJECT_DIR$/../app/Review.php" afterDir="false" />
-      <change beforePath="$PROJECT_DIR$/../app/Traits/getPrefix.php" beforeDir="false" afterPath="$PROJECT_DIR$/../app/Traits/GetPrefix.php" afterDir="false" />
-      <change beforePath="$PROJECT_DIR$/../routes/api.php" beforeDir="false" afterPath="$PROJECT_DIR$/../routes/api.php" afterDir="false" />
-    </list>
+    <list default="true" id="0dd48e6a-306d-4a67-9081-21244a9f3ff1" name="Default Changelist" comment="" />
     <ignored path="$PROJECT_DIR$/.tmp/" />
     <ignored path="$PROJECT_DIR$/dist/" />
     <ignored path="$PROJECT_DIR$/temp/" />
@@ -39,7 +16,7 @@
     <session id="-1875833453">
       <usages-collector id="statistics.lifecycle.project">
         <counts>
-          <entry key="project.closed" value="2" />
+          <entry key="project.closed" value="3" />
           <entry key="project.open.time.25" value="1" />
           <entry key="project.open.time.5" value="1" />
           <entry key="project.open.time.7" value="1" />
@@ -94,8 +71,8 @@
       <file pinned="false" current-in-tab="true">
         <entry file="file://$PROJECT_DIR$/src/app/restaurant/restaurant.module.ts">
           <provider selected="true" editor-type-id="text-editor">
-            <state relative-caret-position="575">
-              <caret line="25" selection-start-line="25" selection-end-line="25" />
+            <state relative-caret-position="308">
+              <caret line="27" lean-forward="true" selection-start-line="27" selection-end-line="27" />
               <folding>
                 <element signature="e#0#41#0" expanded="true" />
               </folding>
@@ -254,7 +231,7 @@
       <updated>1533112171228</updated>
       <workItem from="1533112173785" duration="797000" />
       <workItem from="1533129785267" duration="312000" />
-      <workItem from="1533272069906" duration="556000" />
+      <workItem from="1533272069906" duration="792000" />
     </task>
     <task id="LOCAL-00001" summary="Created Add Address Service&#10;Added StateController &#10;Added District COntroller">
       <created>1533129903313</created>
@@ -263,16 +240,24 @@
       <option name="project" value="LOCAL" />
       <updated>1533129903313</updated>
     </task>
-    <option name="localTasksCounter" value="2" />
+    <task id="LOCAL-00002" summary="Merge branches 'reviewFeature' and 'zaki-restaurant-create' of github.com:palhimanshu1991/zomato into reviewFeature&#10;&#10;# Conflicts:&#10;#&#9;angular/src/app/app-routing.module.ts&#10;#&#9;angular/src/app/app.module.ts&#10;#&#9;angular/src/app/components/home/home.component.html&#10;#&#9;angular/src/app/components/navbar/navbar.component.html&#10;#&#9;angular/src/app/services/api.service.ts&#10;#&#9;angular/src/app/services/app.constant.ts&#10;#&#9;config/cors.php">
+      <created>1533272892274</created>
+      <option name="number" value="00002" />
+      <option name="presentableId" value="LOCAL-00002" />
+      <option name="project" value="LOCAL" />
+      <updated>1533272892274</updated>
+    </task>
+    <option name="localTasksCounter" value="3" />
     <servers />
   </component>
   <component name="TimeTrackingManager">
-    <option name="totallyTimeSpent" value="1665000" />
+    <option name="totallyTimeSpent" value="1901000" />
   </component>
   <component name="ToolWindowManager">
     <frame x="0" y="0" width="1280" height="800" extended-state="0" />
+    <editor active="true" />
     <layout>
-      <window_info content_ui="combo" id="Project" order="0" visible="true" weight="0.24543288" />
+      <window_info active="true" content_ui="combo" id="Project" order="0" visible="true" weight="0.24543288" />
       <window_info id="Structure" order="1" side_tool="true" weight="0.25" />
       <window_info id="npm" order="2" side_tool="true" />
       <window_info id="Favorites" order="3" side_tool="true" />
@@ -284,7 +269,7 @@
       <window_info anchor="bottom" id="Inspection" order="5" weight="0.4" />
       <window_info anchor="bottom" id="TODO" order="6" />
       <window_info anchor="bottom" id="Docker" order="7" show_stripe_button="false" />
-      <window_info active="true" anchor="bottom" id="Version Control" order="8" visible="true" weight="0.32913166" />
+      <window_info anchor="bottom" id="Version Control" order="8" visible="true" weight="0.32913166" />
       <window_info anchor="bottom" id="TypeScript" order="9" weight="0.32913166" />
       <window_info anchor="bottom" id="Event Log" order="10" side_tool="true" />
       <window_info anchor="bottom" id="Terminal" order="11" weight="0.32913166" />
@@ -301,7 +286,8 @@
   </component>
   <component name="VcsManagerConfiguration">
     <MESSAGE value="Created Add Address Service&#10;Added StateController &#10;Added District COntroller" />
-    <option name="LAST_COMMIT_MESSAGE" value="Created Add Address Service&#10;Added StateController &#10;Added District COntroller" />
+    <MESSAGE value="Merge branches 'reviewFeature' and 'zaki-restaurant-create' of github.com:palhimanshu1991/zomato into reviewFeature&#10;&#10;# Conflicts:&#10;#&#9;angular/src/app/app-routing.module.ts&#10;#&#9;angular/src/app/app.module.ts&#10;#&#9;angular/src/app/components/home/home.component.html&#10;#&#9;angular/src/app/components/navbar/navbar.component.html&#10;#&#9;angular/src/app/services/api.service.ts&#10;#&#9;angular/src/app/services/app.constant.ts&#10;#&#9;config/cors.php" />
+    <option name="LAST_COMMIT_MESSAGE" value="Merge branches 'reviewFeature' and 'zaki-restaurant-create' of github.com:palhimanshu1991/zomato into reviewFeature&#10;&#10;# Conflicts:&#10;#&#9;angular/src/app/app-routing.module.ts&#10;#&#9;angular/src/app/app.module.ts&#10;#&#9;angular/src/app/components/home/home.component.html&#10;#&#9;angular/src/app/components/navbar/navbar.component.html&#10;#&#9;angular/src/app/services/api.service.ts&#10;#&#9;angular/src/app/services/app.constant.ts&#10;#&#9;config/cors.php" />
   </component>
   <component name="editorHistoryManager">
     <entry file="file://$PROJECT_DIR$/src/tslint.json">
@@ -333,21 +319,15 @@
       </provider>
     </entry>
     <entry file="file://$PROJECT_DIR$/src/app/app.module.ts">
-      <provider selected="true" editor-type-id="text-editor">
-        <state>
-          <folding>
-            <element signature="e#0#79#0" expanded="true" />
-          </folding>
-        </state>
-      </provider>
+      <provider selected="true" editor-type-id="text-editor" />
     </entry>
     <entry file="file://$PROJECT_DIR$/src/app/app.component.html">
       <provider selected="true" editor-type-id="text-editor" />
     </entry>
     <entry file="file://$PROJECT_DIR$/src/app/restaurant/restaurant.module.ts">
       <provider selected="true" editor-type-id="text-editor">
-        <state relative-caret-position="575">
-          <caret line="25" selection-start-line="25" selection-end-line="25" />
+        <state relative-caret-position="308">
+          <caret line="27" lean-forward="true" selection-start-line="27" selection-end-line="27" />
           <folding>
             <element signature="e#0#41#0" expanded="true" />
           </folding>
