@@ -4,9 +4,11 @@ namespace App;
 
 use Illuminate\Database\Eloquent\Model;
 use App\Contracts\Imageable;
+use App\Traits\GetPrefix;
 
 class Restaurant extends Model implements Imageable
 {
+    use GetPrefix;
 
     protected $guarded = [
         'id'
@@ -36,4 +38,6 @@ class Restaurant extends Model implements Imageable
     {
         return $this->hasMany('App\Review');
     }
+
+
 }

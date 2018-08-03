@@ -41,6 +41,7 @@ class PassportController extends Controller
         $input = $request->all();
         $input['password'] = bcrypt($input['password']);
         $user = User::create($input);
+        $success['user'] = $user;
         $success['token'] =  $user->createToken('MyApp')-> accessToken;
         return response()->json(['success'=>$success], $this-> successStatus);
     }
@@ -52,6 +53,17 @@ class PassportController extends Controller
     public function details()
     {
         $user = Auth::user();
-        return response()->json(['success' => $user], $this-> successStatus);
+        $success['user'] = $user;
+        return response()->json(['success' => $success], $this-> successStatus);
+    }
+
+    public function updateDetails(Request $request)
+    {
+        $user = Auth::user();
+        $input = $request->all();
+        $user->Update($input);
+
+        return response()->json(['success' => 200, 'message' => 'updated','user'=>$user]);
+
     }
 }
