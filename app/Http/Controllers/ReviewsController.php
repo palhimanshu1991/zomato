@@ -20,7 +20,7 @@ class ReviewsController extends Controller
 {
     public function index($id)
     {
-        $reviews = Review::where('restaurant_id', $id)->with(['comments'])->withCount('likes');
+        $reviews = Review::where('restaurant_id', $id)->with(['comments','user'])->withCount('likes');
        
      
        

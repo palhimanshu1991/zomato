@@ -3,7 +3,9 @@
   <div class="row" *ngFor="let review of reviews">
     <div class="col-md-10">
     <div class="card">
+      <p>Rating: {{review.rating}}</p>
       <a routerLink="{{review.id}}">{{review.text}}</a>
+      <p>Posted By:{{review.user.name}}</p>
     </div>
   </div>
     <br>
