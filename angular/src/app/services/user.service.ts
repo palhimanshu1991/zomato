@@ -3,13 +3,13 @@ import { HttpClient, HttpHeaders, HttpErrorResponse } from '@angular/common/http
 import { Response } from '@angular/http';
 import { Observable } from 'rxjs';
 import { catchError } from 'rxjs/operators';
-import { apiUrl} from '../../environments/environment';
+import { environment} from '../../environments/environment';
 import { ApiService } from './api.service';
 
 @Injectable()
 export class UserService {
 
-  readonly rootUrl = apiUrl;
+  readonly rootUrl = environment.apiUrl;
   userToken: string;
 
   constructor(private http: HttpClient, private apiService: ApiService) {

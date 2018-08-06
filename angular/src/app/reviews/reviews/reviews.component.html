@@ -1,12 +1,13 @@
 <div class="container">
     <a routerLink="add"><button class="btn btn-success">Add Review </button></a>
+    <button class="btn btn-danger mr-auto" (click)="back()">Back</button>
   <div class="row" *ngFor="let review of reviews">
     <div class="col-md-10">
     <div class="card">
       <p>Rating: {{review.rating}}</p>
       <a routerLink="{{review.id}}">{{review.text}}</a>
       <p>Posted By:{{review.user.name}}</p>
-      <a *ngIf="user_id == review.user_id" routerLink="edit/{{review.id}}"><button><i class="fa fa-edit"></i> </button> </a>
+      <a *ngIf="user_id == review.user_id" routerLink="{{review.id}}/edit"><button><i class="fa fa-edit"></i> </button> </a>
     </div>
   </div>
     <br>

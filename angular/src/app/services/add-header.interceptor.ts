@@ -10,7 +10,7 @@ export class AddHeaderInterceptor implements HttpInterceptor {
 
     intercept(req: HttpRequest<any>, next: HttpHandler): Observable<HttpEvent<any>> {
 
-        let authReq: HttpRequest<any> = req.clone({
+        const authReq: HttpRequest<any> = req.clone({
             setHeaders: {
                 'Authorization': 'Bearer ' + this.userToken,
                 'Content-Type': 'application/json',

@@ -1,5 +1,5 @@
 import { Injectable } from '@angular/core';
-import { apiUrl } from '../../environments/environment';
+import { environment } from '../../environments/environment';
 import {
   HttpClient,
   HttpHeaders,
@@ -12,7 +12,7 @@ import { catchError } from 'rxjs/operators';
   providedIn: 'root'
 })
 export class ApiService {
-  readonly rootUrl = apiUrl;
+  readonly rootUrl = environment.apiUrl;
   userToken: string;
   requestHeader: any;
 

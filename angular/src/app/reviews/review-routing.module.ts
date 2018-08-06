@@ -11,7 +11,7 @@ import { ReviewShowComponent } from './review-show/review-show.component';
 const routes: Routes = [
   {path: '', component: ReviewsComponent},
   {path: 'add', component: ReviewAddComponent},
-  {path: 'edit/:review_id', component: ReviewEditComponent},
+  {path: ':review_id/edit', component: ReviewEditComponent},
   {path: ':review_id/comment', component: AddCommentComponent},
   {path: ':review_id', component: ReviewShowComponent}
 ];

@@ -72,6 +72,8 @@ export class ReviewEditComponent implements OnInit {
         console.log('rating updated');
       });
 
+      this._location.back();
+
   }
 
 }

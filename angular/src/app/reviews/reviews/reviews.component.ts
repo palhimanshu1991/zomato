@@ -54,4 +54,8 @@ export class ReviewsComponent implements OnInit {
     this.showComment = false;
   }
 
+  back() {
+    this._location.back();
+  }
+
 }
