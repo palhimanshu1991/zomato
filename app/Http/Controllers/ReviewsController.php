@@ -76,17 +76,6 @@ class ReviewsController extends Controller
     }
 
 
-    public function createReviewComment(CreateCommentRequest $request, $id)
-    {
-        $review = Review::find($id);
-
-        $task = (new CreateCommentTask($request->text, $review));
-        $task->handle();
-
-        return [
-            "message" => '200'
-        ];
-    }
 
     // public function createPhotoComment(CreateCommentRequest $request, $id)
     // {
@@ -96,21 +85,6 @@ class ReviewsController extends Controller
     // }
 
 // move this to its specific controller
-    public function createReviewLike($id)
-    {
-
-        $review = Review::find($id);
-
-        $task = new CreateLikeTask($review);
-        $task->handle();
-
-        return [
-            "message" => '200',
-            "success" => 'liked'
-        ];
-
-
-    }
 
 
    

@@ -28,8 +28,8 @@ Route::group(['middleware' => 'auth:api'],
         Route::get('restaurants/{id}/reviews','ReviewsController@index');
         
 
-        Route::post('reviews/comment/{id}', 'ReviewsController@createReviewComment');
-        Route::post('reviews/like/{id}', 'ReviewsController@createReviewLike');
+        Route::post('reviews/comment/{id}', 'CommentsController@createReviewComment');
+        Route::post('reviews/like/{id}', 'LikesController@createReviewLike');
         Route::post('/reviews/images/{id}', 'ImagesController@createReviewImage');
 
         Route::get('restaurants', 'RestaurantsController@index');
