@@ -66,14 +66,11 @@ export class RestaurantCreateComponent implements OnInit {
       console.log(response);
       this.restaurant = response;
       console.log(this.restaurant.id);
-      const url = environment.api_url + 'restaurant/' + this.restaurant.id + '/images';
+      const url = environment.api_url + 'image-upload/' + this.restaurant.id + '?type=restaurant';
 
       this.http.post(url, this.formData).subscribe(response => {
         console.log(13);
       });
-      // this.imageService.imageUpload('restaurant/' + this.restaurant.id + '/images', this.formData).subscribe(response => {
-      //   this.route.navigate(['/restaurant/' + this.restaurant.id]);
-      // });
 
     });
 
