@@ -6,6 +6,7 @@
       <p>Rating: {{review.rating}}</p>
       <a routerLink="{{review.id}}">{{review.text}}</a>
       <p>Posted By:{{review.user.name}}</p>
+      <a *ngIf="user_id == review.user_id" routerLink="edit/{{review.id}}"><button><i class="fa fa-edit"></i> </button> </a>
     </div>
   </div>
     <br>

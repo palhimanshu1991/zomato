@@ -17,7 +17,8 @@ export class ReviewsComponent implements OnInit {
   showComment = false;
 
   constructor(private reviewService: ReviewService, private activatedRoute: ActivatedRoute,
-   private _location: Location) {
+   private _location: Location,
+   private userService: UserService) {
     this.activatedRoute.params.subscribe(params => this.id = params.id );
    }
 
@@ -28,7 +29,13 @@ export class ReviewsComponent implements OnInit {
   getReviews() {
     this.reviewService.getReviews(this.id).subscribe((data: any) => {
       this.reviews = data.review;
+
     });
+
+    this.userService.userDetails().subscribe((data: any) => {
+      this.user_id = data.success.user.id;
+
+    } );
   }
 
   postLike() {
