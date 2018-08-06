@@ -6,6 +6,7 @@ use App\Address;
 use App\Http\Requests\Restaurants\CreateRestaurantRequest;
 use Illuminate\Http\Request;
 use App\Restaurant;
+ use App\Tasks\CreateImageTask;
 
 class RestaurantsController extends Controller
 {
@@ -15,10 +16,6 @@ class RestaurantsController extends Controller
      */
     private $restauarntTransformer;
 
-//    public function __construct(RestauarntTransformer $restauarntTransformer)
-//    {
-//        $this->restauarntTransformer = $restauarntTransformer;
-//    }
 
     /**
      * Display a listing of the resource.
@@ -37,15 +34,9 @@ class RestaurantsController extends Controller
         });
 
 
-        // return $restaurants;
     }
 
-    /**
-     * Store a newly created resource in storage.
-     *
-     * @param  \Illuminate\Http\Request $request
-     * @return \Illuminate\Http\Response
-     */
+
     public function store(CreateRestaurantRequest $request)
     {
         \Log::info($request->all());
@@ -67,7 +58,13 @@ class RestaurantsController extends Controller
 
         $restaurant->cuisines()->attach($request->cuisine_id);
 
-        return $restaurant;
+
+        if (isset($request->image)) {
+            $task = (new CreateImageTask($request, $restaurant));
+            $task->handle();
+        }
+
+        return $this->transformToArray($restaurant);
     }
 
     /**

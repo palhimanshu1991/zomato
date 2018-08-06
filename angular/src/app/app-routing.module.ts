@@ -16,7 +16,7 @@ const routes: Routes = [
   {path: 'login', component: LoginComponent},
   {path: 'home', canActivate: [AuthGuard], component: HomeComponent},
   {path: 'restaurants', canActivate: [AuthGuard], component: RestaurantListComponent},
-  {path: 'form', component: RestaurantCreateComponent},
+  {path: 'restaurants/create', component: RestaurantCreateComponent},
   {path: 'restaurant/:id', component: RestaurantShowComponent},
   {path: '**', component: PageNotFoundComponent}
 
