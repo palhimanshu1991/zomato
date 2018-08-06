@@ -7,6 +7,7 @@ import {ActivatedRoute, Router} from "@angular/router";
 import {FileUploader} from 'ng2-file-upload';
 import {Http} from "@angular/http";
 import {HttpClient} from "@angular/common/http";
+import {environment} from "../../../environments/environment";
 
 
 @Component({
@@ -33,7 +34,6 @@ export class RestaurantCreateComponent implements OnInit {
       state_id: ['1', Validators.required],
       district_id: ['1', Validators.required],
     }),
-    image: [''],
   });
 
   constructor(private fb: FormBuilder,
@@ -52,9 +52,9 @@ export class RestaurantCreateComponent implements OnInit {
   onFileChange(name) {
     var element: HTMLInputElement = this.el.nativeElement.querySelector('#fileupload');
 
-    var file=element.files.item(0);console.log(file);
-    this.formData.append(name, element.files.item(0));
-    console.log(this.formData);
+    var file = element.files.item(0);
+    console.log(file);
+    this.formData.append(name, file);
 
   }
 
@@ -62,36 +62,22 @@ export class RestaurantCreateComponent implements OnInit {
 
     this.service.submitForm(this.restaurantCreateForm.value).subscribe(response => {
 
+
       console.log(response);
       this.restaurant = response;
       console.log(this.restaurant.id);
+      const url = environment.api_url + 'restaurant/' + this.restaurant.id + '/images';
 
-      this.http.post('restaurants/images/' + this.restaurant.id, this.formData, this.restaurant.id).subscribe(response => {
+      this.http.post(url, this.formData).subscribe(response => {
+        console.log(13);
       });
+      // this.imageService.imageUpload('restaurant/' + this.restaurant.id + '/images', this.formData).subscribe(response => {
+      //   this.route.navigate(['/restaurant/' + this.restaurant.id]);
+      // });
 
-      this.route.navigate(['/restaurant/' + this.restaurant.id]);
     });
 
   }
 
 
 }
-
-//   onFileChange(event) {
-//     const reader = new FileReader();
-//
-//     if (event.target.files && event.target.files.length) {
-//       const [file] = event.target.files;
-//       console.log(file);
-//       reader.readAsDataURL(file);
-//
-//       reader.onload = () => {
-//         this.restaurantCreateForm.patchValue({
-//           image: reader.result
-//         });
-//
-//         //this.cd.markForCheck();
-//       };
-//     }
-//   }
-// }

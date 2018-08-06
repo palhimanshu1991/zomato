@@ -50,7 +50,6 @@ class CreateImageTask extends AbstractTask
 
     public function handle()
     {
-        //dd($this->request->name);
         $file = $this->request->file('image');
 
         $extension = $file->extension();

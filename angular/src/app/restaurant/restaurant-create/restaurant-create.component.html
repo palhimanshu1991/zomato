@@ -54,8 +54,8 @@
 
   <label>
     Image
-    <input type="file" accept="*/*" id="fileupload" formControlName="image"
-           (change)="onFileChange('file')" />
+    <input type="file" accept="*/*" id="fileupload"
+           (change)="onFileChange('image')" />
   </label>
 
   <button type=" submit" [disabled]="!restaurantCreateForm.valid">create this restaurant</button>
