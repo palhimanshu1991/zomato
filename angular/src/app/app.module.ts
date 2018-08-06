@@ -13,11 +13,11 @@ import {HttpClientModule} from '../../node_modules/@angular/common/http';
 import {AuthGuard} from './auth/auth.guard';
 import {FooterComponent} from './components/footer/footer.component';
 import {PageNotFoundComponent} from './components/page-not-found/page-not-found.component';
-import {RestaurantService} from './services/restaurant.service';
-import {ImageUploadService} from './services/image-upload.service';
 import {ApiService} from './services/api.service';
-import {FormComponent} from './form/form.component';
-import { FileUploadModule } from 'ng2-file-upload';
+import {FileUploadModule} from 'ng2-file-upload';
+import {CuisineModule} from "./cuisine/cuisine.module";
+import {CategoryModule} from "./category/category.module";
+
 
 
 @NgModule({
@@ -28,8 +28,7 @@ import { FileUploadModule } from 'ng2-file-upload';
     FooterComponent,
     PageNotFoundComponent,
     LoginComponent,
-    RegisterComponent,
-    FormComponent
+    RegisterComponent
   ],
   imports: [
     BrowserAnimationsModule,
@@ -38,7 +37,9 @@ import { FileUploadModule } from 'ng2-file-upload';
     FormsModule,
     HttpClientModule,
     RestaurantModule,
-    FileUploadModule
+    FileUploadModule,
+    CuisineModule,
+    CategoryModule
   ],
   providers: [
     UserService,
