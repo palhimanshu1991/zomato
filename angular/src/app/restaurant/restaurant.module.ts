@@ -4,19 +4,24 @@ import { RestaurantListComponent } from './restaurant-list/restaurant-list.compo
 import { RestaurantService } from '../services/restaurant.service';
 import { RestaurantCreateComponent } from './restaurant-create/restaurant-create.component';
 import { ReactiveFormsModule, FormsModule } from '@angular/forms';
+import { RestaurantShowComponent } from './restaurant-show/restaurant-show.component';
+import {RouterModule} from "@angular/router";
 
 @NgModule({
   imports: [
     CommonModule,
-    ReactiveFormsModule
+    ReactiveFormsModule,
+    RouterModule
   ],
   declarations: [
     RestaurantListComponent,
-    RestaurantCreateComponent
+    RestaurantCreateComponent,
+    RestaurantShowComponent
   ],
   exports : [
     RestaurantListComponent,
-    RestaurantCreateComponent
+    RestaurantCreateComponent,
+    RestaurantShowComponent
   ],
   providers : [
     RestaurantService
