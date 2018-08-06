@@ -111,10 +111,7 @@ class RestaurantsController extends Controller
         return $values;
     }
 
-    public function showReview($id) {
-        $restaurant = Restaurant::find($id);
-        return response()->json(['review' => $restaurant->reviews]) ;
-    }
+    
 
 
 }

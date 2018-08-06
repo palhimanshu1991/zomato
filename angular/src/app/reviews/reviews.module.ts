@@ -7,6 +7,7 @@ import { ReviewAddComponent } from './review-add/review-add.component';
 import { ReviewEditComponent } from './review-edit/review-edit.component';
 import { AppModule } from '../app.module';
 import { AddCommentComponent } from '../shared/add-comment/add-comment.component';
+import { ReviewShowComponent } from './review-show/review-show.component';
 
 
 @NgModule({
@@ -19,7 +20,8 @@ import { AddCommentComponent } from '../shared/add-comment/add-comment.component
     ReviewsComponent,
     ReviewAddComponent,
     ReviewEditComponent,
-    AddCommentComponent
+    AddCommentComponent,
+    ReviewShowComponent
   ]
 })
 

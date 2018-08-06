@@ -4,6 +4,7 @@ import { Response } from '@angular/http';
 import { Observable } from 'rxjs';
 import { catchError } from 'rxjs/operators';
 import { apiUrl} from '../../environments/environment';
+import { ApiService } from './api.service';
 
 @Injectable()
 export class UserService {
@@ -11,7 +12,7 @@ export class UserService {
   readonly rootUrl = apiUrl;
   userToken: string;
 
-  constructor(private http: HttpClient) {
+  constructor(private http: HttpClient, private apiService: ApiService) {
     const loggedInToken = localStorage.getItem('userToken');
     if (loggedInToken) {
       this.userToken = loggedInToken;
@@ -55,6 +56,10 @@ export class UserService {
     } else {
       return false;
     }
+  }
+
+  userDetails() {
+    return this.apiService.get('details');
   }
 
   logout() {
