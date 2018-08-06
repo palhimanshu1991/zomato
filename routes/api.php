@@ -43,6 +43,9 @@ Route::group(['middleware' => 'auth:api'],
         Route::get('/useraddress/{id}', 'UserAddressController@show');
         Route::delete('useraddress/{id}', 'UserAddressController@destroy');
 
+        Route::post('cuisines/create/', 'CuisinesController@store');
+        Route::get('cuisines', 'CuisinesController@index');
+
 
     });
 
