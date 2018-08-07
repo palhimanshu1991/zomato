@@ -15,6 +15,8 @@ use Illuminate\Http\Request;
 
 Route::post('login', 'PassportController@login');
 Route::post('register', 'PassportController@register');
+Route::post('image-upload/{id}', 'ImagesController@createImage');
+
 
 Route::group(['middleware' => 'auth:api'],
     function () {
@@ -26,17 +28,16 @@ Route::group(['middleware' => 'auth:api'],
         Route::post('reviews/{id}', 'ReviewsController@postReview');
         Route::get('reviews/{id}', 'ReviewsController@show');
         Route::get('restaurants/{id}/reviews','ReviewsController@index');
-        
 
-        Route::post('reviews/comment/{id}', 'CommentsController@createReviewComment');
-        Route::post('reviews/like/{id}', 'LikesController@createReviewLike');
-        Route::post('/reviews/images/{id}', 'ImagesController@createReviewImage');
+
+        Route::post('reviews/comment/{id}', 'ReviewsController@createReviewComment');
+        Route::post('reviews/like/{id}', 'ReviewsController@createReviewLike');
+        //Route::post('/reviews/images/{id}', 'ImagesController@createReviewImage');
 
         Route::get('restaurants', 'RestaurantsController@index');
         Route::post('/restaurants/create', 'RestaurantsController@store');
         Route::get('/restaurants/{id}', 'RestaurantsController@show');
-        Route::post('/restaurants/images/{id}', 'ImagesController@createRestaurantImage');
-       
+        //Route::post('/restaurants/images/{id}', 'ImagesController@createRestaurantImage');
 
         Route::get('/categories', 'CategoriesController@index');
         Route::post('/categories/create', 'CategoriesController@store');
@@ -47,6 +48,11 @@ Route::group(['middleware' => 'auth:api'],
         Route::put('/useraddress/{id}','UserAddressController@update');
         Route::get('/useraddress/{id}', 'UserAddressController@show');
         Route::delete('useraddress/{id}', 'UserAddressController@destroy');
+
+        Route::post('cuisines/create/', 'CuisinesController@store');
+        Route::get('cuisines', 'CuisinesController@index');
+
+
 
         Route::get('/details','PassportController@details');
         Route::post('/details','PassportController@updateDetails');

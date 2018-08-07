@@ -15,6 +15,9 @@ import { RestaurantModule } from './restaurant/restaurant.module';
 import { LayoutComponent } from './shared/layout/layout.component';
 import { UserModule } from './user/user.module';
 import { ReviewsModule } from './reviews/reviews.module';
+import {PageNotFoundComponent} from './components/page-not-found/page-not-found.component';
+import {ApiService} from './services/api.service';
+
 
 
 
@@ -23,6 +26,8 @@ import { ReviewsModule } from './reviews/reviews.module';
     AppComponent,
     HomeComponent,
     NavbarComponent,
+    FooterComponent,
+    PageNotFoundComponent,
     LoginComponent,
     RegisterComponent,
     FooterComponent,
@@ -35,14 +40,13 @@ import { ReviewsModule } from './reviews/reviews.module';
     FormsModule,
     HttpClientModule,
     RestaurantModule,
-    UserModule,
-    ReviewsModule
   ],
   providers: [
     UserService,
     AuthGuard,
-],
-
+    ApiService
+  ],
   bootstrap: [AppComponent]
 })
-export class AppModule { }
+export class AppModule {
+}

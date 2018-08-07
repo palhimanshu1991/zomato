@@ -1,4 +1,6 @@
-<form [formGroup]="RestaurantCreateForm" (ngSubmit)="onSubmit()">
+<form [formGroup]="restaurantCreateForm" (ngSubmit)="onSubmit()">
+  <h2> Add a restaurant</h2>
+  <br>
   <label>
     Name:
     <input type="text" formControlName="name" required>
@@ -44,14 +46,19 @@
     <br>
     <label>
       district_id:
-      <input type="text" formControlName="district_id" required>
+      <input type="text" formControlName="district_id" required/>
     </label>
-
 
   </div>
 
 
-  <button type="submit" [disabled]="!RestaurantCreateForm.valid">Submit</button>
+  <label>
+    Image
+    <input type="file" accept="*/*" id="fileupload"
+           (change)="onFileChange('image')" />
+  </label>
+
+  <button type=" submit" [disabled]="!restaurantCreateForm.valid">create this restaurant</button>
 </form>
 
 
