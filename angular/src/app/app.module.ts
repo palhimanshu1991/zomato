@@ -13,10 +13,12 @@ import { AuthGuard } from './auth/auth.guard';
 import { FooterComponent } from './shared/footer/footer.component';
 import { RestaurantModule } from './restaurant/restaurant.module';
 import { LayoutComponent } from './shared/layout/layout.component';
-import { UserModule } from './user/user.module';
-import { ReviewsModule } from './reviews/reviews.module';
-import {PageNotFoundComponent} from './components/page-not-found/page-not-found.component';
+import {PageNotFoundComponent} from './shared/page-not-found/page-not-found.component';
 import {ApiService} from './services/api.service';
+import { CuisineCreateComponent } from './cuisine/cuisine-create/cuisine-create.component';
+import { CuisineListComponent } from './cuisine/cuisine-list/cuisine-list.component';
+import { CategoryCreateComponent } from './category/category-create/category-create.component';
+import { CategoryListComponent } from './category/category-list/category-list.component';
 
 
 
@@ -32,6 +34,10 @@ import {ApiService} from './services/api.service';
     RegisterComponent,
     FooterComponent,
     LayoutComponent,
+    CuisineCreateComponent,
+    CuisineListComponent,
+    CategoryCreateComponent,
+    CategoryListComponent
   ],
   imports: [
     BrowserAnimationsModule,

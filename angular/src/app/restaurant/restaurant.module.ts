@@ -6,9 +6,8 @@ import { RestaurantCreateComponent } from './restaurant-create/restaurant-create
 import { ReactiveFormsModule, FormsModule } from '@angular/forms';
 import { RestaurantRoutingModule } from './restaurant-routing/restaurant-routing.module';
 import { RestaurantShowComponent } from './restaurant-show/restaurant-show.component';
-import {RouterModule} from "@angular/router";
-import {FileUploadModule} from "ng2-file-upload";
-import {  RestaurantService} from '../services/restaurant.service';
+import {RouterModule} from '@angular/router';
+import {FileUploadModule} from 'ng2-file-upload';
 import {ImageUploadService} from '../services/image-upload.service';
 
 
@@ -16,8 +15,7 @@ import {ImageUploadService} from '../services/image-upload.service';
   imports: [
     CommonModule,
     ReactiveFormsModule,
-    RestaurantRoutingModule
-    RouterModule,
+    RestaurantRoutingModule,
     FileUploadModule
   ],
   declarations: [
@@ -31,7 +29,8 @@ import {ImageUploadService} from '../services/image-upload.service';
     RestaurantShowComponent
   ],
   providers : [
-    RestaurantService
+    RestaurantService,
+    ImageUploadService
   ]
 })
 export class RestaurantModule {  }

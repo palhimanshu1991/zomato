@@ -1,8 +1,8 @@
 import { Component, OnInit } from '@angular/core';
-import {FormBuilder} from "@angular/forms";
-import {ActivatedRoute, Router} from "@angular/router";
-import {HttpClient} from "@angular/common/http";
-import {CategoryService} from "../../services/category.service";
+import { FormBuilder } from '@angular/forms';
+import { ActivatedRoute, Router } from '@angular/router';
+import { HttpClient } from '@angular/common/http';
+import { CategoryService } from '../../services/category.service';
 
 @Component({
   selector: 'app-category-list',
@@ -10,16 +10,15 @@ import {CategoryService} from "../../services/category.service";
   styleUrls: ['./category-list.component.css']
 })
 export class CategoryListComponent implements OnInit {
+  categories: any;
 
-  categories : string;
-
-  constructor(private fb: FormBuilder,
-              private categoryService: CategoryService,
-              private route: Router,
-              private activatedRoute: ActivatedRoute,
-              private http: HttpClient
-  ) {
-  }
+  constructor(
+    private fb: FormBuilder,
+    private categoryService: CategoryService,
+    private route: Router,
+    private activatedRoute: ActivatedRoute,
+    private http: HttpClient
+  ) {}
 
   ngOnInit() {
     this.getCategory();
@@ -30,6 +29,4 @@ export class CategoryListComponent implements OnInit {
       this.categories = response;
     });
   }
-
-
 }

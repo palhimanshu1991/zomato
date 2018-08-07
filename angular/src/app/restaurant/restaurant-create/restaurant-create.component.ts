@@ -1,13 +1,13 @@
 import {Component, ElementRef, OnInit} from '@angular/core';
 import {FormBuilder} from '@angular/forms';
 import {Validators} from '@angular/forms';
-import {RestaurantService} from "../../services/restaurant.service";
-import {ImageUploadService} from "../../services/image-upload.service";
-import {ActivatedRoute, Router} from "@angular/router";
+import {RestaurantService} from '../../services/restaurant.service';
+import {ImageUploadService} from '../../services/image-upload.service';
+import {ActivatedRoute, Router} from '@angular/router';
 import {FileUploader} from 'ng2-file-upload';
-import {Http} from "@angular/http";
-import {HttpClient} from "@angular/common/http";
-import {environment} from "../../../environments/environment";
+import {Http} from '@angular/http';
+import {HttpClient} from '@angular/common/http';
+import {environment} from '../../../environments/environment';
 
 
 @Component({
@@ -50,27 +50,27 @@ export class RestaurantCreateComponent implements OnInit {
   }
 
   onFileChange(name) {
-    var element: HTMLInputElement = this.el.nativeElement.querySelector('#fileupload');
+    const element: HTMLInputElement = this.el.nativeElement.querySelector('#fileupload');
 
-    var file = element.files.item(0);
+    const file = element.files.item(0);
     console.log(file);
-    var type = "restaurant";
+    const type = 'restaurant';
     this.formData.append(name, file);
 
   }
 
   onSubmit() {
 
-    this.service.submitForm(this.restaurantCreateForm.value).subscribe(response => {
+    this.service.submitForm(this.restaurantCreateForm.value).subscribe( response => {
 
 
       console.log(response);
       this.restaurant = response;
       console.log(this.restaurant.id);
-      const url = environment.api_url + 'image-upload/' + this.restaurant.id + '?type=restaurant';
+      const url = environment.apiUrl + 'image-upload/' + this.restaurant.id + '?type=restaurant';
 
-      this.http.post(url, this.formData).subscribe(response => {
-        this.route.navigate(['restaurant/' + this.restaurant.id]);
+      this.http.post(url, this.formData).subscribe( response => {
+        this.route.navigate(['restaurants/' + this.restaurant.id]);
       });
 
     });

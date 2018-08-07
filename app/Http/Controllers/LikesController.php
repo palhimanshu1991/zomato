@@ -13,6 +13,7 @@ class LikesController extends Controller
 
         $review = Review::find($id);
 
+
         $task = new CreateLikeTask($review);
         $task->handle();
 

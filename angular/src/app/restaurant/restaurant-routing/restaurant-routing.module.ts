@@ -8,7 +8,7 @@ import { ReviewsModule } from '../../reviews/reviews.module';
 
 const routes: Routes = [
   {path: '', component: RestaurantListComponent },
-  {path: 'add', component: RestaurantCreateComponent},
+  {path: 'create', component: RestaurantCreateComponent},
   {path: ':id', component: RestaurantShowComponent},
   {path: ':id/reviews', loadChildren: () => ReviewsModule },
 ];

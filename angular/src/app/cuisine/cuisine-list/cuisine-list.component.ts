@@ -1,8 +1,8 @@
-import {Component, OnInit} from '@angular/core';
-import {FormBuilder} from "@angular/forms";
-import {ActivatedRoute, Router} from "@angular/router";
-import {HttpClient} from "@angular/common/http";
-import {CuisineService} from "../../services/cuisine.service";
+import { Component, OnInit } from '@angular/core';
+import { FormBuilder } from '@angular/forms';
+import { ActivatedRoute, Router } from '@angular/router';
+import { HttpClient } from '@angular/common/http';
+import { CuisineService } from '../../services/cuisine.service';
 
 @Component({
   selector: 'app-cuisine-list',
@@ -10,16 +10,15 @@ import {CuisineService} from "../../services/cuisine.service";
   styleUrls: ['./cuisine-list.component.css']
 })
 export class CuisineListComponent implements OnInit {
+  cuisines: any;
 
-  cuisines : string;
-
-  constructor(private fb: FormBuilder,
-              private cuisineService: CuisineService,
-              private route: Router,
-              private activatedRoute: ActivatedRoute,
-              private http: HttpClient
-  ) {
-  }
+  constructor(
+    private fb: FormBuilder,
+    private cuisineService: CuisineService,
+    private route: Router,
+    private activatedRoute: ActivatedRoute,
+    private http: HttpClient
+  ) {}
 
   ngOnInit() {
     this.getCuisines();
@@ -27,9 +26,7 @@ export class CuisineListComponent implements OnInit {
 
   getCuisines() {
     this.cuisineService.list().subscribe(response => {
-    this.cuisines = response;
+      this.cuisines = response;
     });
   }
-
-
 }

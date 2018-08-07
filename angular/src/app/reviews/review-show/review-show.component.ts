@@ -58,7 +58,7 @@ export class ReviewShowComponent implements OnInit {
   }
 
   postLike() {
-    this.reviewService.postLike(this.review_id).subscribe(() => {
+    this.reviewService.postLike(this.id).subscribe(() => {
       console.log('liked');
     });
 
