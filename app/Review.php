@@ -13,7 +13,7 @@ use Illuminate\Database\Eloquent\Model;
 
 class Review extends Model implements Commentable, Likeable, Imageable
 {
-    use HasComments, HasLikes, HasPhotos, getPrefix;
+    use HasComments, HasLikes, HasPhotos, GetPrefix;
 
     protected $guarded = ['id'];
 

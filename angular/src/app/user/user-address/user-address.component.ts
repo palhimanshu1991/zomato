@@ -6,6 +6,7 @@ import { AddressService } from '../../services/address.service';
   templateUrl: './user-address.component.html',
   styleUrls: ['./user-address.component.css']
 })
+// user edit show
 export class UserAddressComponent implements OnInit {
   addresses: any;
 

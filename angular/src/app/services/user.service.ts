@@ -3,15 +3,16 @@ import { HttpClient, HttpHeaders, HttpErrorResponse } from '@angular/common/http
 import { Response } from '@angular/http';
 import { Observable } from 'rxjs';
 import { catchError } from 'rxjs/operators';
-import * as appConstant from './app.constant';
+import { environment} from '../../environments/environment';
+import { ApiService } from './api.service';
 
 @Injectable()
 export class UserService {
 
-  readonly rootUrl = appConstant.apiUrl;
+  readonly rootUrl = environment.apiUrl;
   userToken: string;
 
-  constructor(private http: HttpClient) {
+  constructor(private http: HttpClient, private apiService: ApiService) {
     const loggedInToken = localStorage.getItem('userToken');
     if (loggedInToken) {
       this.userToken = loggedInToken;
@@ -21,7 +22,7 @@ export class UserService {
   registerUser(user) {
     const reqHeader = new HttpHeaders({ 'No-Auth': 'True' });
 
-    return this.http.post(this.rootUrl + '/register', user, {
+    return this.http.post(this.rootUrl + 'register', user, {
       headers: reqHeader
     }).pipe(
       catchError(this._handleError)
@@ -33,9 +34,11 @@ export class UserService {
   userAuthentication(email, password) {
     const data = { 'email': email, 'password': password };
     // tslint:disable-next-line:max-line-length
-    const reqHeader = new HttpHeaders({ 'Content-Type': 'application/json', 'Accept': 'application/json', 'Access-Control-Allow-Origin': '*', 'Access-Control-Allow-Headers': 'Authorization, Content-Type' });
+    const reqHeader = new HttpHeaders(
+      { 'Content-Type': 'application/json', 'Accept': 'application/json', 'Access-Control-Allow-Origin': '*',
+      'Access-Control-Allow-Headers': 'Authorization, Content-Type' });
 
-    return this.http.post(this.rootUrl + '/login', data, { headers: reqHeader });
+    return this.http.post(this.rootUrl + 'login', data, { headers: reqHeader });
   }
 
   private _handleError(err: HttpErrorResponse | any) {
@@ -53,6 +56,10 @@ export class UserService {
     } else {
       return false;
     }
+  }
+
+  userDetails() {
+    return this.apiService.get('details');
   }
 
   logout() {

@@ -24,8 +24,7 @@ class CreateReviewRequest extends FormRequest
     public function rules()
     {
         return [
-            'rating' => 'required',
-            'text' => 'required'
+            
         ];
     }
 }

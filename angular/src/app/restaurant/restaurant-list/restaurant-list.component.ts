@@ -1,4 +1,7 @@
 import { Component, OnInit } from '@angular/core';
+import { Router, ActivatedRoute } from "@angular/router";
+import { UserService } from "../../services/user.service";
+import { RestaurantService } from "../../services/restaurant.service";
 
 @Component({
   selector: 'restaurant-list',
@@ -7,19 +10,22 @@ import { Component, OnInit } from '@angular/core';
 })
 export class RestaurantListComponent implements OnInit {
 
-  restaurants = [
-    'ekta kitchen', 
-    'nisit foods',
-    'haldirams',
-    'btw',
-    'nathus sweet'
-  ];
+  restaurants: any;
 
-  constructor() {
-  
-   }
+  constructor(private restaurantService: RestaurantService, private router: Router,private activatedRoute: ActivatedRoute) {
 
-  ngOnInit() {
   }
 
-}
+  ngOnInit() {
+    this.getRestaurants();
+  }
+
+  getRestaurants() {
+    this.restaurantService.restaurantList().subscribe((response: any) => {
+      this.restaurants = response;
+    }
+
+
+  )}
+
+  }
