@@ -14,7 +14,6 @@ import { FooterComponent } from './shared/footer/footer.component';
 import { RestaurantModule } from './restaurant/restaurant.module';
 import { LayoutComponent } from './shared/layout/layout.component';
 import {PageNotFoundComponent} from './shared/page-not-found/page-not-found.component';
-import {ApiService} from './services/api.service';
 import { CuisineCreateComponent } from './cuisine/cuisine-create/cuisine-create.component';
 import { CuisineListComponent } from './cuisine/cuisine-list/cuisine-list.component';
 import { CategoryCreateComponent } from './category/category-create/category-create.component';
@@ -49,8 +48,7 @@ import { CategoryListComponent } from './category/category-list/category-list.co
   ],
   providers: [
     UserService,
-    AuthGuard,
-    ApiService
+    AuthGuard
   ],
   bootstrap: [AppComponent]
 })
