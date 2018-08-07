@@ -25,10 +25,9 @@ class ImagesController extends Controller
                 break;
         }
 
-
         $task = (new CreateImageTask($request, $instance));
         $task->handle();
-        return "success";
+        return ['response' => "success"];
 
     }
 

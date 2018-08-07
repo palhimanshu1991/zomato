@@ -15,8 +15,8 @@ use Illuminate\Http\Request;
 
 Route::post('login', 'PassportController@login');
 Route::post('register', 'PassportController@register');
-
 Route::post('image-upload/{id}', 'ImagesController@createImage');
+
 
 Route::group(['middleware' => 'auth:api'],
     function () {
@@ -47,6 +47,8 @@ Route::group(['middleware' => 'auth:api'],
 
         Route::post('cuisines/create/', 'CuisinesController@store');
         Route::get('cuisines', 'CuisinesController@index');
+
+
 
 
     });

@@ -54,6 +54,7 @@ export class RestaurantCreateComponent implements OnInit {
 
     var file = element.files.item(0);
     console.log(file);
+    var type = "restaurant";
     this.formData.append(name, file);
 
   }
@@ -69,7 +70,7 @@ export class RestaurantCreateComponent implements OnInit {
       const url = environment.api_url + 'image-upload/' + this.restaurant.id + '?type=restaurant';
 
       this.http.post(url, this.formData).subscribe(response => {
-        console.log(13);
+        this.route.navigate(['restaurant/' + this.restaurant.id]);
       });
 
     });
