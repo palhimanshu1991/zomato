@@ -6,7 +6,7 @@ use App\Address;
 use App\Http\Requests\Restaurants\CreateRestaurantRequest;
 use Illuminate\Http\Request;
 use App\Restaurant;
- use App\Tasks\CreateImageTask;
+use App\Tasks\CreateImageTask;
 
 class RestaurantsController extends Controller
 {
@@ -59,11 +59,6 @@ class RestaurantsController extends Controller
         $restaurant->cuisines()->attach($request->cuisine_id);
 
 
-        if (isset($request->image)) {
-            $task = (new CreateImageTask($request, $restaurant));
-            $task->handle();
-        }
-
         return $this->transformToArray($restaurant);
     }
 
@@ -84,7 +79,7 @@ class RestaurantsController extends Controller
     {
         $image = $item->images->first();
 
-        return isset($image) ? "/Users/instaveritas/Code/zomato/storage/app/" . $image->path : 'https://media.istockphoto.com/photos/tapas-food-picture-id603267744?k=6&m=603267744&s=612x612&w=0&h=-gkuUeHYUaBvFN1RLCI4gMWih1qJgsKi2jhUHoQKmWs=';
+        return isset($image) ? storage_path('app/') . $image->path : 'https://media.istockphoto.com/photos/tapas-food-picture-id603267744?k=6&m=603267744&s=612x612&w=0&h=-gkuUeHYUaBvFN1RLCI4gMWih1qJgsKi2jhUHoQKmWs=';
     }
 
 

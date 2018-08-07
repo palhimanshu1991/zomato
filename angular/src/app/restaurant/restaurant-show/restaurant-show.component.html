@@ -1,15 +1,13 @@
 <br>
 <br><br>
 
-<div class="jumbotron">
-  <img data-src="holder.js/32x32?theme=thumb&amp;bg=007bff&amp;fg=007bff&amp;size=1" alt="32x32"
-       class="mr-2 rounded" style="width: 32px; height: 32px;"
-       src="{{restaurant.image}}"
-       data-holder-rendered="true" alt="image">
+<div class="jumbotron" *ngIf="loaded">
+  <img src="{{restaurant.image}}">
+
   <h1 class="display-4">{{restaurant.name }} </h1>
-  <h3>category :  {{restaurant.category}}, cuisine : {{restaurant.cuisine}}</h3>
-  <p class="lead">{{restaurant.street}} ,  {{restaurant.locality}}, {{restaurant.landmark}}</p>
-  <p class="lead">{{restaurant.district}} ,  {{restaurant.state}}</p>
+  <h3>category : {{restaurant.category}}, cuisine : {{restaurant.cuisine}}</h3>
+  <p class="lead">{{restaurant.street}} , {{restaurant.locality}}, {{restaurant.landmark}}</p>
+  <p class="lead">{{restaurant.district}} , {{restaurant.state}}</p>
   <hr class="my-4">
   <p></p>
 </div>

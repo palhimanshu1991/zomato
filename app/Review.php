@@ -17,6 +17,8 @@ class Review extends Model implements Commentable, Likeable, Imageable
 
     protected $guarded = ['id'];
 
+    protected $title = 'review';
+
     public function user()
     {
         return $this->belongsTo(User::class);

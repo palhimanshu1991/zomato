@@ -5,7 +5,6 @@ import {RestaurantService} from "../../services/restaurant.service";
 import {ImageUploadService} from "../../services/image-upload.service";
 import {ActivatedRoute, Router} from "@angular/router";
 import {FileUploader} from 'ng2-file-upload';
-import {Http} from "@angular/http";
 import {HttpClient} from "@angular/common/http";
 import {environment} from "../../../environments/environment";
 
