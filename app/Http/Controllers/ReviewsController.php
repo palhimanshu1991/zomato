@@ -29,21 +29,7 @@ class ReviewsController extends Controller
         return response()->json(['review' => $reviews->get()]);
     }
 
-    public function postRating(CreateRatingRequest $request, $id)
-    {
-        // find the restaurant. use the relation to add review.
-
-        Review::updateOrCreate([
-            'user_id' => auth()->user()->id,
-            'restaurant_id' => $id
-        ], [
-            'rating' => $request->rating,
-        ]);
-
-        return [
-            'message' => '200'
-        ];
-    }
+   
 
     public function postReview(CreateReviewRequest $request, $id)
     {
@@ -52,6 +38,7 @@ class ReviewsController extends Controller
             'user_id' => auth()->user()->id,
             'restaurant_id' => $id
         ], [
+            'rating' => $request->rating,
             'text' => $request->text,
         ]);
 

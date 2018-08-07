@@ -66,11 +66,7 @@ export class ReviewEditComponent implements OnInit {
         console.log('review updated');
       });
 
-    this.reviewService
-      .postRating(this.reviewForm.value, this.restaurant_id)
-      .subscribe(() => {
-        console.log('rating updated');
-      });
+
 
       this._location.back();
 

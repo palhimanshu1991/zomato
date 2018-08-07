@@ -39,9 +39,7 @@ export class ReviewAddComponent implements OnInit {
         console.log('review posted');
     });
 
-    this.reviewService.postRating(this.reviewForm.value, this.id).subscribe(() => {
-      console.log('review posted');
-  });
+
 
   }
 
