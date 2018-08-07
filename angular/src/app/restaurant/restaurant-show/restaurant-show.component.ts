@@ -1,7 +1,6 @@
 import {Component, OnInit} from '@angular/core';
 import {RestaurantService} from "../../services/restaurant.service";
 import {Router, ActivatedRoute} from "@angular/router";
-import {Restaurant} from "../../components/models/Restaurant";
 
 @Component({
   selector: 'app-restaurant-show',
@@ -10,7 +9,7 @@ import {Restaurant} from "../../components/models/Restaurant";
 })
 export class RestaurantShowComponent implements OnInit {
 
-  restaurant: Restaurant;
+  restaurant: any;
   id: number;
   loaded: boolean = false;
   image: any;
@@ -32,26 +31,26 @@ export class RestaurantShowComponent implements OnInit {
     });
   }
 
-  getImageFromService(route: string) {
-    this.isImageLoading = true;
-    this.restaurantService.getImage(route).subscribe(data => {
-      this.createImageFromBlob(data);
-      this.isImageLoading = false;
-    }, error => {
-      this.isImageLoading = false;
-      console.log(error);
-    });
-  }
-
-  createImageFromBlob(image: Blob) {
-    let reader = new FileReader();
-    reader.addEventListener("load", () => {
-      this.imageToShow = reader.result;
-    }, false);
-
-    if (image) {
-      reader.readAsDataURL(image);
-    }
-  }
+  // getImageFromService(route: string) {
+  //   this.isImageLoading = true;
+  //   this.restaurantService.getImage(route).subscribe(data => {
+  //     this.createImageFromBlob(data);
+  //     this.isImageLoading = false;
+  //   }, error => {
+  //     this.isImageLoading = false;
+  //     console.log(error);
+  //   });
+  // }
+  //
+  // createImageFromBlob(image: Blob) {
+  //   let reader = new FileReader();
+  //   reader.addEventListener("load", () => {
+  //     this.imageToShow = reader.result;
+  //   }, false);
+  //
+  //   if (image) {
+  //     reader.readAsDataURL(image);
+  //   }
+  // }
 
 }

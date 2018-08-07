@@ -26,10 +26,14 @@ export class RestaurantService {
     return this.apiService.get('restaurants/' + value);
   }
 
-
-  getImage(imageUrl: string): Observable<Blob> {
-    return this.httpClient.get(imageUrl, {responseType: 'blob'});
+  updateForm(values, id) {
+    return this.apiService.post('restaurants/' + id + '/update', values);
   }
+
+
+  // getImage(imageUrl: string): Observable<Blob> {
+  //   return this.httpClient.get(imageUrl, {responseType: 'blob'});
+  // }
 
 
 }

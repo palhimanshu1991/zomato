@@ -8,6 +8,7 @@ import {FileUploader} from 'ng2-file-upload';
 import {Http} from "@angular/http";
 import {HttpClient} from "@angular/common/http";
 import {environment} from "../../../environments/environment";
+import {ApiService} from "../../services/api.service";
 
 
 @Component({
@@ -20,8 +21,13 @@ import {environment} from "../../../environments/environment";
 export class RestaurantCreateComponent implements OnInit {
 
   restaurant: any;
-  public uploader: FileUploader = new FileUploader({url: ''});
+  states: any;
+  districts: any;
+  categories: any;
+  cuisines: any;
+
   formData = new FormData();
+
   restaurantCreateForm = this.fb.group({
     name: ['fg ', Validators.required],
     category_id: ['1', Validators.required],
@@ -42,11 +48,18 @@ export class RestaurantCreateComponent implements OnInit {
               private route: Router,
               private activatedRoute: ActivatedRoute,
               private el: ElementRef,
-              private http: HttpClient
+              private http: HttpClient,
+              private apiService : ApiService
   ) {
   }
 
   ngOnInit() {
+    this.showStates();
+    this.showDistricts();
+    this.showCategories();
+    this.showCuisines();
+
+
   }
 
   onFileChange(name) {
@@ -67,14 +80,51 @@ export class RestaurantCreateComponent implements OnInit {
       console.log(response);
       this.restaurant = response;
       console.log(this.restaurant.id);
-      const url = environment.api_url + 'image-upload/' + this.restaurant.id + '?type=restaurant';
+      const url = environment.apiUrl + 'image-upload/' + this.restaurant.id + '?type=restaurant';
 
       this.http.post(url, this.formData).subscribe(response => {
-        this.route.navigate(['restaurant/' + this.restaurant.id]);
+        this.route.navigate(['restaurants/' + this.restaurant.id]);
       });
 
     });
 
+  }
+
+  // showDropDown(url: string) {
+  //   console.log(url);
+  //    this.apiService.get(url);
+  // }
+
+  showStates() {
+    this.apiService.get('states').subscribe(response => {
+
+      this.states = response;
+     console.log(this.states);
+    });
+  }
+
+  showDistricts() {
+    this.apiService.get('districts').subscribe(response => {
+
+      this.districts = response;
+
+    });
+  }
+
+  showCategories() {
+    this.apiService.get('categories').subscribe(response => {
+
+      this.categories = response;
+
+    });
+  }
+
+  showCuisines() {
+    this.apiService.get('cuisines').subscribe(response => {
+
+      this.cuisines = response;
+
+    });
   }
 
 

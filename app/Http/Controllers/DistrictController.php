@@ -14,8 +14,9 @@ class DistrictController extends Controller
      */
     public function index()
     {
-        $district = District::all();
-        return response()->json(['district'=>$district]);
+        //$district
+        return District::all();
+            //response()->json(['district'=>$district]);
     }
 
     /**

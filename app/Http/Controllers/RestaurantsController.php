@@ -75,6 +75,27 @@ class RestaurantsController extends Controller
 
     }
 
+    public function update(CreateRestaurantRequest $request, $id) {
+       $restaurant = Restaurant::find($id);
+       $address = $restaurant->address()->update([
+           'street' => $request->street,
+           'locality' => $request->locality,
+           'landmark' => $request->pincode,
+           'pincode' => $request->pincode,
+           'state_id' => $request->state_id,
+           'district_id' => $request->district_id
+       ]);
+
+
+        Restaurant::where('id', $id)
+            ->update([
+                'name' => $request->name,
+                'address_id' => $address->id
+            ]);
+
+        return $restaurant;
+    }
+
     private function getImages($item)
     {
         $image = $item->images->first();
@@ -89,21 +110,27 @@ class RestaurantsController extends Controller
         $values = [
             'id' => $item->id,
             'name' => $item->name,
-            'street' => $item->address->street,
-            'locality' => $item->address->locality,
-            'landmark' => $item->address->landmark,
-            'pincode' => $item->address->pincode,
-            'district' => $item->address->district->name,
-            'state' => $item->address->state->name,
+            'category_id' => $item->categories[0]->id,
+            'cuisine_id' => $item->cuisines[0]->id,
             'category' => $item->categories[0]->name,
             'cuisine' => $item->cuisines[0]->name,
             'image' => $this->getImages($item),
+            'address' => [
+                'street' => $item->address->street,
+                'locality' => $item->address->locality,
+                'landmark' => $item->address->landmark,
+                'pincode' => $item->address->pincode,
+                'district' => $item->address->district->name,
+                'state' => $item->address->state->name,
+                'state_id' => $item->address->state->id,
+                'district_id' => $item->address->district->id
+
+            ]
+
         ];
 
         return $values;
     }
-
-    
 
 
 }
