@@ -12,6 +12,7 @@ import {CuisineCreateComponent} from "./cuisine/cuisine-create/cuisine-create.co
 import {CuisineListComponent} from "./cuisine/cuisine-list/cuisine-list.component";
 import {CategoryCreateComponent} from "./category/category-create/category-create.component";
 import {CategoryListComponent} from "./category/category-list/category-list.component";
+import { RestaurantUpdateComponent } from './restaurant/restaurant-update/restaurant-update.component';
 
 
 const routes: Routes = [
@@ -22,6 +23,7 @@ const routes: Routes = [
   {path: 'restaurants', canActivate: [AuthGuard], component: RestaurantListComponent},
   {path: 'restaurants/create', component: RestaurantCreateComponent},
   {path: 'restaurant/:id', component: RestaurantShowComponent},
+  {path: 'restaurants/:id/update', component: RestaurantUpdateComponent},
   {path: 'cuisines/create', component: CuisineCreateComponent},
   {path: 'cuisines', component: CuisineListComponent},
   {path : 'categories', component : CategoryListComponent},

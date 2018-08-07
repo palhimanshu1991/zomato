@@ -48,6 +48,7 @@ Route::group(['middleware' => 'auth:api'],
         Route::post('cuisines/create/', 'CuisinesController@store');
         Route::get('cuisines', 'CuisinesController@index');
 
+       // Route::get('image')
 
 
 
