@@ -34,6 +34,7 @@ export class ReviewShowComponent implements OnInit {
 
   ngOnInit() {
     this.getReview();
+    console.log('review_id', this.id);
   }
 
 
@@ -57,7 +58,6 @@ export class ReviewShowComponent implements OnInit {
   }
 
   postLike() {
-    console.log('like button clicked');
     this.reviewService.postLike(this.review_id).subscribe(() => {
       console.log('liked');
     });
