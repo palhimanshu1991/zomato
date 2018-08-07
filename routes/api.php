@@ -30,7 +30,7 @@ Route::group(['middleware' => 'auth:api'],
 
 
         Route::post('reviews/comment/{id}', 'CommentsController@createReviewComment');
-        Route::post('reviews/like/{id}', 'LikesController@createReviewLike');
+        Route::post('like/{id}', 'LikesController@createReviewLike');
         //Route::post('/reviews/images/{id}', 'ImagesController@createReviewImage');
 
         Route::get('restaurants', 'RestaurantsController@index');
