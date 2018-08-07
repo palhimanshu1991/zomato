@@ -13,7 +13,7 @@ class CreateRatingRequest extends FormRequest
      */
     public function authorize()
     {
-        return false;
+        return true;
     }
 
     /**
@@ -24,8 +24,7 @@ class CreateRatingRequest extends FormRequest
     public function rules()
     {
         return [
-            'user_id' => 'required',
-            'restaurant_id' => 'required'
+            
         ];
     }
 }

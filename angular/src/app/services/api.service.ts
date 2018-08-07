@@ -1,5 +1,5 @@
 import { Injectable } from '@angular/core';
-import { apiUrl } from '../../environments/environment';
+import { environment } from '../../environments/environment';
 import {
   HttpClient,
   HttpHeaders,
@@ -12,7 +12,7 @@ import { catchError } from 'rxjs/operators';
   providedIn: 'root'
 })
 export class ApiService {
-  readonly rootUrl = apiUrl;
+  readonly rootUrl = environment.apiUrl;
   userToken: string;
   requestHeader: any;
 
@@ -44,6 +44,12 @@ export class ApiService {
   post(route: string, data: any) {
     return this.http
       .post(this.rootUrl + route, data, { headers: this.requestHeader })
+      .pipe(catchError(this._handleError));
+  }
+
+  postLike(route: string) {
+    return this.http
+      .post(this.rootUrl + route, { headers: this.requestHeader })
       .pipe(catchError(this._handleError));
   }
 

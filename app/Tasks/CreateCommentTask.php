@@ -21,6 +21,7 @@ class CreateCommentTask extends AbstractTask
      */
     public function __construct($text, Commentable $model)
     {
+        // rename Commentable to CommentInterface
         $this->text = $text;
         $this->model = $model;
     }
