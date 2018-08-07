@@ -1,45 +1,65 @@
 import { Injectable } from '@angular/core';
-import {HttpClient, HttpErrorResponse, HttpHeaders} from "@angular/common/http";
 import { environment } from '../../environments/environment';
+import {
+  HttpClient,
+  HttpHeaders,
+  HttpErrorResponse
+} from '@angular/common/http';
+import { Observable } from 'rxjs';
+import { catchError } from 'rxjs/operators';
 
-
-@Injectable()
+@Injectable({
+  providedIn: 'root'
+})
 export class ApiService {
+  readonly rootUrl = environment.apiUrl;
+  userToken: string;
+  requestHeader: any;
 
-  readonly rootUrl = environment.api_url;
-  userToken : string;
-  reqHeader : HttpHeaders;
+  header = new HttpHeaders({
+    Authorization: 'Bearer ' + this.userToken,
+    'Content-Type': 'application/json',
+    Accept: 'application/json',
+    'Access-Control-Allow-Origin': '*',
+    'Access-Control-Allow-Headers': 'Authorization, Content-Type'
+  });
 
-  constructor(private http : HttpClient ) {
-    this.reqHeader = new HttpHeaders({
+  constructor(private http: HttpClient) {
+    this.userToken = localStorage.getItem('userToken');
+    this.requestHeader = new HttpHeaders({
+      Authorization: 'Bearer ' + this.userToken,
       'Content-Type': 'application/json',
-    'Authorization': 'Bearer ' + localStorage.getItem('userToken')});
-
-    const LoginToken = localStorage.getItem('userToken');
-    if(LoginToken) {
-      this.userToken = LoginToken;
-    }
-
-
+      Accept: 'application/json',
+      'Access-Control-Allow-Origin': '*',
+      'Access-Control-Allow-Headers': 'Authorization, Content-Type'
+    });
   }
 
   get(route: string) {
-
-    return this.http.get(this.rootUrl + route, {
-      headers : this. reqHeader});
-
-
-    }
-
-
-  post(route : string, data: any) {
-
-    return this.http.post(this.rootUrl + route,
-    data, {
-    headers: this.reqHeader
-    });
-
+    return this.http
+      .get(this.rootUrl + route, { headers: this.requestHeader })
+      .pipe(catchError(this._handleError));
   }
 
-}
+  post(route: string, data: any) {
+    return this.http
+      .post(this.rootUrl + route, data, { headers: this.requestHeader })
+      .pipe(catchError(this._handleError));
+  }
 
+  postLike(route: string) {
+    return this.http
+      .post(this.rootUrl + route, { headers: this.requestHeader });
+  }
+
+  put(route: string, data: any) {
+    return this.http
+      .put(this.rootUrl + route, data, { headers: this.requestHeader })
+      .pipe(catchError(this._handleError));
+  }
+
+  private _handleError(err: HttpErrorResponse | any) {
+    const errorMsg = err;
+    return Observable.throw(errorMsg);
+  }
+}

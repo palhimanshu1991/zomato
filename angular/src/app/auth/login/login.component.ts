@@ -1,7 +1,7 @@
 import { Component, OnInit } from '@angular/core';
 import { FormGroup, FormControl, Validators } from '@angular/forms';
 import { UserService } from '../../services/user.service';
-import { Router } from '../../../../node_modules/@angular/router';
+import { Router } from '@angular/router';
 import { HttpErrorResponse } from '@angular/common/http';
 @Component({
   selector: 'app-login',
@@ -10,9 +10,9 @@ import { HttpErrorResponse } from '@angular/common/http';
 })
 export class LoginComponent implements OnInit {
 
-  loginForm: FormGroup
-  loading: boolean = true;
-  loginError: boolean = false;
+  loginForm: FormGroup;
+  loading = true;
+  loginError = false;
 
   constructor(private userService: UserService, private router: Router) { }
 
@@ -33,14 +33,7 @@ export class LoginComponent implements OnInit {
       localStorage.setItem('userToken', data.success.token);
       localStorage.setItem('userInfo', JSON.stringify(data.success.user));
       this.router.navigate(['/home']);
-    }, (err: HttpErrorResponse) => {
-      this.loading = false;
-      this.loginError = true;
-      const data = err.error.error;
-      Object.keys(data).forEach((fieldName) => {
-        this.loginForm.controls[fieldName].setErrors({ backend: data[fieldName] });
-      });
-    });
+     });
   }
 
 }

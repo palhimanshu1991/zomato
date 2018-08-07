@@ -9,7 +9,12 @@ use App\Address;
 
 class UserAddressController extends Controller
 {
-
+     public function index()
+     {
+         $userAddress = UserAddress::with(['address','address.state','address.district'])->where('user_id',auth()->user()->id)->get();
+         return response()->json(['address' => $userAddress]);
+         
+     }
 
     /**
      * Store a newly created resource in storage.
@@ -46,7 +51,27 @@ class UserAddressController extends Controller
      */
     public function show($id)
     {
-       return  $userAddress = UserAddress::find($id);
+        $userAddress = UserAddress::find($id);
+        $address = Address::find($userAddress->address_id);
+        return response()->json(['title'=> $userAddress->title,'address'=>$address]);
+         
+    }
+
+    public function update(Request $request, $id)
+    {
+        $address = Address::find($id);
+        $address->street = $request->street;
+        $address->locality = $request->locality;
+        $address->landmark = $request->landmark;
+        $address->pincode = $request->pincode;
+        $address->state_id = $request->state_id;
+        $address->district_id = $request->district_id;
+        $address->save();
+
+        $userAddress = UserAddress::find($id);
+        $userAddress->title = $request->title;
+        $userAddress->save();
+
     }
 
 

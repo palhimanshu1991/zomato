@@ -12,7 +12,7 @@ import { HttpErrorResponse } from '@angular/common/http';
 export class RegisterComponent implements OnInit {
 
   registerForm: FormGroup;
-  isError: boolean = false;
+  isError = false;
 
   constructor(private userService: UserService, private router: Router) { }
 

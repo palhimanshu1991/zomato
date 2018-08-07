@@ -12,24 +12,52 @@ import {CuisineCreateComponent} from "./cuisine/cuisine-create/cuisine-create.co
 import {CuisineListComponent} from "./cuisine/cuisine-list/cuisine-list.component";
 import {CategoryCreateComponent} from "./category/category-create/category-create.component";
 import {CategoryListComponent} from "./category/category-list/category-list.component";
-import { RestaurantUpdateComponent } from './restaurant/restaurant-update/restaurant-update.component';
 
 
 const routes: Routes = [
-  {path: '', redirectTo: '/login', pathMatch: 'full'},
-  {path: 'register', component: RegisterComponent},
-  {path: 'login', component: LoginComponent},
-  {path: 'home', canActivate: [AuthGuard], component: HomeComponent},
-  {path: 'restaurants', canActivate: [AuthGuard], component: RestaurantListComponent},
-  {path: 'restaurants/create', component: RestaurantCreateComponent},
-  {path: 'restaurant/:id', component: RestaurantShowComponent},
-  {path: 'restaurants/:id/update', component: RestaurantUpdateComponent},
-  {path: 'cuisines/create', component: CuisineCreateComponent},
-  {path: 'cuisines', component: CuisineListComponent},
-  {path : 'categories', component : CategoryListComponent},
-  {path : 'categories/create', component : CategoryCreateComponent},
-  {path: '**', component: PageNotFoundComponent}
 
+
+  { path: '', redirectTo: '/login', pathMatch: 'full' },
+  { path: 'register', component: RegisterComponent },
+  { path: 'login', component: LoginComponent },
+  {
+    path: 'restaurants',
+    canActivate: [AuthGuard],
+    component: LayoutComponent,
+    loadChildren: () => RestaurantModule
+  },
+
+  {
+    path: 'home',
+    canActivate: [AuthGuard],
+    component: LayoutComponent,
+    children: [{ path: '', component: HomeComponent }]
+  },
+  {
+    path: 'profile',
+    canActivate: [AuthGuard],
+    component: LayoutComponent,
+    loadChildren: () => UserModule
+  },
+  { path: 'cuisines/create', component: CuisineCreateComponent },
+  {
+    path: 'cuisines',
+    canActivate: [AuthGuard],
+    component: LayoutComponent,
+    children: [
+      { path: '', component: CuisineListComponent },
+      { path: 'create', component: CuisineCreateComponent }
+    ]
+  },
+  {
+    path: 'categories',
+    canActivate: [AuthGuard],
+    component: LayoutComponent,
+    children: [
+      { path: '', component: CategoryListComponent },
+      { path: 'create', component: CategoryCreateComponent }
+    ]
+  }
 ];
 
 @NgModule({

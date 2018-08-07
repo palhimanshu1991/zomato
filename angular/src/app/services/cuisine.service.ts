@@ -1,9 +1,11 @@
 import {Injectable} from '@angular/core';
-import {HttpClientModule} from "@angular/common/http";
-import {ActivatedRoute, Router} from "@angular/router";
+import {HttpClientModule} from '@angular/common/http';
+import {ActivatedRoute, Router} from '@angular/router';
 import {ApiService} from './api.service';
 
-@Injectable()
+@Injectable({
+  providedIn: 'root'
+})
 export class CuisineService {
 
   constructor(private apiService: ApiService) {

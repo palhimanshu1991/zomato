@@ -13,13 +13,11 @@ return [
     */
    
     'supportsCredentials' => false,
-    'allowedOrigins' => array('*'),
+    'allowedOrigins' => ['*'],
     'allowedOriginsPatterns' => [],
-    'allowedHeaders' => array('*'),
-    'allowedMethods' => array('*'),
+    'allowedHeaders' => ['*'],
+    'allowedMethods' => ['*'],
     'exposedHeaders' => [],
     'maxAge' => 0,
 
 ];
-
-

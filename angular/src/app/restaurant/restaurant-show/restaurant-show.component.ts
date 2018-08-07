@@ -27,12 +27,7 @@ export class RestaurantShowComponent implements OnInit {
 
   showRestaurant() {
     this.restaurantService.find(this.id).subscribe((response: any) => {
-      this.loaded = true;
-      this.restaurant = response;
-      this.getImageFromService(this.restaurant.image);
-
-      //this.image = 'data:image/png;base64 ' + this.restaurant.image;
-      // console.log(this.restaurant);
+     this.restaurant = response;
 
     });
   }
