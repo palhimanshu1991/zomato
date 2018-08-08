@@ -1,4 +1,5 @@
 import { Component, OnInit } from '@angular/core';
+import { ApiService } from '../../services/api.service';
 
 @Component({
   selector: 'home',
@@ -6,10 +7,20 @@ import { Component, OnInit } from '@angular/core';
   styleUrls: ['./home.component.css']
 })
 export class HomeComponent implements OnInit {
+  image: any;
 
-  constructor() { }
+  constructor(private apiService: ApiService) { }
 
   ngOnInit() {
+    this.getImage();
+    console.log(this.image);
+
+  }
+
+  getImage() {
+    this.apiService.getImage().subscribe((data: any) => {
+      this.image = 'http://instafoods.test' + data.url;
+    });
   }
 
 }

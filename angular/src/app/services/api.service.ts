@@ -15,6 +15,7 @@ export class ApiService {
   readonly rootUrl = environment.apiUrl;
   userToken: string;
   requestHeader: any;
+  imageHeader: any;
 
   header = new HttpHeaders({
     Authorization: 'Bearer ' + this.userToken,
@@ -29,6 +30,14 @@ export class ApiService {
     this.requestHeader = new HttpHeaders({
       Authorization: 'Bearer ' + this.userToken,
       'Content-Type': 'application/json',
+      Accept: 'application/json',
+      'Access-Control-Allow-Origin': '*',
+      'Access-Control-Allow-Headers': 'Authorization, Content-Type'
+    });
+
+    this.imageHeader = new HttpHeaders({
+      Authorization: 'Bearer ' + this.userToken,
+      'Content-Type': 'image/jpeg',
       Accept: 'application/json',
       'Access-Control-Allow-Origin': '*',
       'Access-Control-Allow-Headers': 'Authorization, Content-Type'
@@ -61,5 +70,9 @@ export class ApiService {
   private _handleError(err: HttpErrorResponse | any) {
     const errorMsg = err;
     return Observable.throw(errorMsg);
+  }
+
+  getImage() {
+    return this.http.get(this.rootUrl + 'image' , {headers: this.header });
   }
 }

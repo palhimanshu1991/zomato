@@ -12,7 +12,7 @@ export class RestaurantListComponent implements OnInit {
 
   restaurants: any;
 
-  constructor(private restaurantService: RestaurantService, private router: Router,private activatedRoute: ActivatedRoute) {
+  constructor(private restaurantService: RestaurantService, private router: Router, private activatedRoute: ActivatedRoute) {
 
   }
 

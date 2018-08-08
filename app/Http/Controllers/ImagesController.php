@@ -7,6 +7,8 @@ use App\Http\Requests\CreateImageRequest;
 use App\Tasks\CreateImageTask;
 use App\Restaurant;
 use App\Review;
+use Illuminate\Support\Facades\Storage;
+use Image;
 
 class ImagesController extends Controller
 {
@@ -28,6 +30,17 @@ class ImagesController extends Controller
         $task = (new CreateImageTask($request, $instance));
         $task->handle();
         return ['response' => "success"];
+
+    }
+
+    public function getImage(Request $request) {
+
+        $file = Storage::get('media/App/Restaurant-21.jpeg');
+        
+        $image = Image::make($file);
+        return $image->response();
+    
+        
 
     }
 

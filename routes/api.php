@@ -16,6 +16,7 @@ use Illuminate\Http\Request;
 Route::post('login', 'PassportController@login');
 Route::post('register', 'PassportController@register');
 Route::post('image-upload/{id}', 'ImagesController@createImage');
+Route::get('image', 'ImagesController@getImage');
 
 
 Route::group(['middleware' => 'auth:api'],
@@ -59,6 +60,9 @@ Route::group(['middleware' => 'auth:api'],
         //State
         Route::get('/states','StateController@index');
         Route::get('/districts','DistrictController@index');
+
+        
+        
 
 
     });
