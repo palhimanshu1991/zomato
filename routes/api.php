@@ -32,12 +32,13 @@ Route::group(['middleware' => 'auth:api'],
 
         Route::post('reviews/comment/{id}', 'CommentsController@createReviewComment');
         Route::post('like/{id}', 'LikesController@createReviewLike');
-        //Route::post('/reviews/images/{id}', 'ImagesController@createReviewImage');
+
 
         Route::get('restaurants', 'RestaurantsController@index');
         Route::post('/restaurants/create', 'RestaurantsController@store');
         Route::get('/restaurants/{id}', 'RestaurantsController@show');
-        //Route::post('/restaurants/images/{id}', 'ImagesController@createRestaurantImage');
+        Route::post('/restaurants/{id}/update', 'RestaurantsController@update');
+
 
         Route::get('/categories', 'CategoriesController@index');
         Route::post('/categories/create', 'CategoriesController@store');
@@ -52,6 +53,7 @@ Route::group(['middleware' => 'auth:api'],
         Route::post('cuisines/create/', 'CuisinesController@store');
         Route::get('cuisines', 'CuisinesController@index');
 
+       // Route::get('image')
 
 
         Route::get('/details','PassportController@details');

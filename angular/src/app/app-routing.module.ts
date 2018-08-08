@@ -1,17 +1,21 @@
-import { NgModule } from '@angular/core';
-import { Routes, RouterModule } from '@angular/router';
-import { HomeComponent } from './shared/home/home.component';
-import { RegisterComponent } from './auth/register/register.component';
-import { LoginComponent } from './auth/login/login.component';
-import { AuthGuard } from './auth/auth.guard';
-import { LayoutComponent } from './shared/layout/layout.component';
-import { UserModule } from './user/user.module';
-import { RestaurantModule } from './restaurant/restaurant.module';
-import { PageNotFoundComponent } from './shared/page-not-found/page-not-found.component';
-import { CuisineCreateComponent } from './cuisine/cuisine-create/cuisine-create.component';
-import { CuisineListComponent } from './cuisine/cuisine-list/cuisine-list.component';
-import { CategoryCreateComponent } from './category/category-create/category-create.component';
-import { CategoryListComponent } from './category/category-list/category-list.component';
+import {NgModule} from '@angular/core';
+import {Routes, RouterModule} from '@angular/router';
+import {RestaurantListComponent} from './restaurant/restaurant-list/restaurant-list.component';
+import {LoginComponent} from './auth/login/login.component';
+import {RegisterComponent} from './auth/register/register.component';
+import {AuthGuard} from './auth/auth.guard';
+import {RestaurantCreateComponent} from "./restaurant/restaurant-create/restaurant-create.component";
+import {RestaurantShowComponent} from "./restaurant/restaurant-show/restaurant-show.component";
+import {CuisineCreateComponent} from "./cuisine/cuisine-create/cuisine-create.component";
+import {CuisineListComponent} from "./cuisine/cuisine-list/cuisine-list.component";
+import {CategoryCreateComponent} from "./category/category-create/category-create.component";
+import {CategoryListComponent} from "./category/category-list/category-list.component";
+import {LayoutComponent} from "./shared/layout/layout.component";
+import {RestaurantModule} from "./restaurant/restaurant.module";
+import {UserModule} from "./user/user.module";
+import {HomeComponent} from "./shared/home/home.component";
+
+
 
 const routes: Routes = [
 
@@ -58,9 +62,16 @@ const routes: Routes = [
     ]
   }
 ];
+
 @NgModule({
-  exports: [RouterModule],
-  imports: [RouterModule.forRoot(routes)],
+  exports: [
+    RouterModule
+  ],
+  imports: [
+    RouterModule.forRoot(routes)
+  ],
   declarations: []
 })
-export class AppRoutingModule {}
+
+export class AppRoutingModule {
+}

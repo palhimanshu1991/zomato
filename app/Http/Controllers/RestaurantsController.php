@@ -6,7 +6,7 @@ use App\Address;
 use App\Http\Requests\Restaurants\CreateRestaurantRequest;
 use Illuminate\Http\Request;
 use App\Restaurant;
- use App\Tasks\CreateImageTask;
+use App\Tasks\CreateImageTask;
 
 class RestaurantsController extends Controller
 {
@@ -39,7 +39,6 @@ class RestaurantsController extends Controller
 
     public function store(CreateRestaurantRequest $request)
     {
-        \Log::info($request->all());
         $address = Address::create([
             'street' => $request->address['street'],
             'locality' => $request->address['locality'],
@@ -59,11 +58,6 @@ class RestaurantsController extends Controller
         $restaurant->cuisines()->attach($request->cuisine_id);
 
 
-        if (isset($request->image)) {
-            $task = (new CreateImageTask($request, $restaurant));
-            $task->handle();
-        }
-
         return $this->transformToArray($restaurant);
     }
 
@@ -80,11 +74,38 @@ class RestaurantsController extends Controller
 
     }
 
+    public function update(Request $request, $id)
+    {
+
+        $restaurant = Restaurant::find($id);
+        $address = $restaurant->address()->update([
+            'street' => $request->address['street'],
+            'locality' => $request->address['locality'],
+            'landmark' => $request->address['landmark'],
+            'pincode' => $request->address['pincode'],
+            'state_id' => $request->address['state_id'],
+            'district_id' => $request->address['district_id']
+        ]);
+
+
+        $category = $restaurant->categories()->sync([$request->category_id]);
+
+        $cuisine = $restaurant->cuisines()->sync([$request->cuisine_id]);
+
+
+        $restaurant
+            ->update([
+                'name' => $request->name
+            ]);
+
+        return $this->transformToArray($restaurant);
+    }
+
     private function getImages($item)
     {
         $image = $item->images->first();
 
-        return isset($image) ? "/Users/instaveritas/Code/zomato/storage/app/" . $image->path : 'https://media.istockphoto.com/photos/tapas-food-picture-id603267744?k=6&m=603267744&s=612x612&w=0&h=-gkuUeHYUaBvFN1RLCI4gMWih1qJgsKi2jhUHoQKmWs=';
+        return isset($image) ? storage_path('app/') . $image->path : 'https://media.istockphoto.com/photos/tapas-food-picture-id603267744?k=6&m=603267744&s=612x612&w=0&h=-gkuUeHYUaBvFN1RLCI4gMWih1qJgsKi2jhUHoQKmWs=';
     }
 
 
@@ -94,21 +115,27 @@ class RestaurantsController extends Controller
         $values = [
             'id' => $item->id,
             'name' => $item->name,
-            'street' => $item->address->street,
-            'locality' => $item->address->locality,
-            'landmark' => $item->address->landmark,
-            'pincode' => $item->address->pincode,
-            'district' => $item->address->district->name,
-            'state' => $item->address->state->name,
+            'category_id' => $item->categories[0]->id,
+            'cuisine_id' => $item->cuisines[0]->id,
             'category' => $item->categories[0]->name,
             'cuisine' => $item->cuisines[0]->name,
             'image' => $this->getImages($item),
+            'address' => [
+                'street' => $item->address->street,
+                'locality' => $item->address->locality,
+                'landmark' => $item->address->landmark,
+                'pincode' => $item->address->pincode,
+                'district' => $item->address->district->name,
+                'state' => $item->address->state->name,
+                'state_id' => $item->address->state->id,
+                'district_id' => $item->address->district->id
+
+            ]
+
         ];
 
         return $values;
     }
-
-    
 
 
 }

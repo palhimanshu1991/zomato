@@ -13,6 +13,7 @@ class Restaurant extends Model implements Imageable
     protected $guarded = [
         'id'
     ];
+    protected $title = 'restaurant';
 
     public function categories()
     {

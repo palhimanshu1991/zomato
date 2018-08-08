@@ -1,4 +1,5 @@
 <?php
+
 namespace App\Traits;
 /**
  * Created by PhpStorm.
@@ -7,11 +8,13 @@ namespace App\Traits;
  * Time: 5:20 PM
  */
 
-trait GetPrefix {
-    
-    public function getPrefix() {
+trait GetPrefix
+{
 
-    return get_class($this);
-}
+    public function getPrefix()
+    {
+
+        return $this->title;
+    }
 
 }

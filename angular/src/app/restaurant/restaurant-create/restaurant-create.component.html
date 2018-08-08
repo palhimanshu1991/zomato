@@ -6,15 +6,21 @@
     <input type="text" formControlName="name" required>
   </label>
 
-  <label>
-    category_id:
-    <input type="text" formControlName="category_id" required>
-  </label>
 
-  <label>
-    cuisine_id:
-    <input type="text" formControlName="cuisine_id" required>
-  </label>
+    <div class="form-group">
+      <label for="sel1">Select category</label>
+      <select  class="form-control" id="sel1" formControlName="category_id">
+        <option *ngFor = "let category of categories" value="{{category.id}}" > {{category.name}}</option>
+      </select>
+    </div>
+
+
+
+  <label for="sel1">Select cuisine</label>
+  <select  class="form-control"  formControlName="cuisine_id">
+    <option *ngFor = "let cuisine of cuisines" value="{{cuisine.id}}" > {{cuisine.name}}</option>
+  </select>
+
 
   <div formGroupName="address">
     <h3>Address</h3>
@@ -39,15 +45,21 @@
       <input type="text" formControlName="pincode" required>
     </label>
     <br>
-    <label>
-      state_id:
-      <input type="text" formControlName="state_id" required>
-    </label>
+
+    <label for="sel1">Select state</label>
+    <select class="form-control" formControlName="state_id">
+      <option *ngFor="let state of states" value="{{state.id}}"> {{state.name}}</option>
+    </select>
+
     <br>
-    <label>
-      district_id:
-      <input type="text" formControlName="district_id" required/>
-    </label>
+
+    <label for="sel1">Select district</label>
+    <select  class="form-control"  formControlName="district_id">
+      <option *ngFor = "let district of districts" value="{{district.id}}" > {{district.name}}</option>
+    </select>
+
+    <br>
+
 
   </div>
 
@@ -55,7 +67,7 @@
   <label>
     Image
     <input type="file" accept="*/*" id="fileupload"
-           (change)="onFileChange('image')" />
+           (change)="onFileChange('image')"/>
   </label>
 
   <button type=" submit" [disabled]="!restaurantCreateForm.valid">create this restaurant</button>
@@ -65,13 +77,6 @@
 <hr>
 
 
-<!--<p>-->
-<!--Form Value: {{ RestaurantCreateForm.value | json }}-->
-<!--</p>-->
 
-
-<!--<p>-->
-<!--Form Status: {{ RestaurantCreateForm.status }}-->
-<!--</p>-->
 
 
