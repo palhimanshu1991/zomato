@@ -4,6 +4,8 @@
       <h5>Rating {{review .rating}}</h5>
       <p>{{review.text}}</p>
 
+      <img src={{imageUrl}} alt="">
+
       <p>
 
         <button (click)="postLike()"><i class="fa fa-thumbs-o-up" aria-hidden="true"></i>{{review.likes_count}}</button>

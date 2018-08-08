@@ -41,7 +41,12 @@ class ImagesController extends Controller
         $type = $params['type'];
         switch ($type) {
             case 'review':
-                $instance = Review::find($id);
+            $image = Photo::where('imageable_id',$id)->where('imageable_type','App\Review')->first();
+                
+            $file = Storage::get($image->path);
+
+            $image = Image::make($file);
+            return $image->response();
                 break;
             case 'restaurant':
                 

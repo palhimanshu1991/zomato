@@ -1,13 +1,16 @@
 import { Injectable } from '@angular/core';
 import { ApiService } from './api.service';
+import { HttpClient } from '@angular/common/http';
+import { environment } from '../../environments/environment';
 
 @Injectable({
   providedIn: 'root'
 })
 export class ReviewService {
   reviewRoutes = '/reviews';
+  rootUrl = environment.apiUrl;
 
-  constructor(private apiService: ApiService) { }
+  constructor(private apiService: ApiService, private http: HttpClient) { }
 
 
   getReviews(id) {
@@ -32,5 +35,9 @@ export class ReviewService {
 
   postLike(data, id) {
     return this.apiService.post('like/' + id, data);
+  }
+
+  addImage(data, id) {
+    return this.http.post(this.rootUrl + 'image-upload/' + id + '?type=review', data);
   }
 }

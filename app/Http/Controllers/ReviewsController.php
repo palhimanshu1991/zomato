@@ -34,7 +34,7 @@ class ReviewsController extends Controller
     public function postReview(CreateReviewRequest $request, $id)
     {
         // find restaurant, use relation to update
-        Review::updateOrCreate([
+        $review =  Review::updateOrCreate([
             'user_id' => auth()->user()->id,
             'restaurant_id' => $id
         ], [
@@ -43,7 +43,8 @@ class ReviewsController extends Controller
         ]);
 
         return [
-            'message' => '200'
+            'message' => '200',
+            'id' => $review->id
         ];
     }
 
