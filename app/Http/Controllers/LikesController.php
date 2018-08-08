@@ -5,30 +5,54 @@ namespace App\Http\Controllers;
 use Illuminate\Http\Request;
 use App\Review;
 use App\Tasks\CreateLikeTask;
+use App\Image;
 
 class LikesController extends Controller
 {
-    public function createReviewLike($id)
+    public function createReviewLike(Request $request, $id)
     {
+        $params = $request->all();
+        $type = $params['type'];
 
-        $review = Review::find($id);
+        switch ($type) {
+            case 'review':
+                $review = Review::find($id);
 
 
-        $task = new CreateLikeTask($review);
-        $task->handle();
+                $task = new CreateLikeTask($review);
+                $task->handle();
 
-        return [
-            "message" => '200',
-            "success" => 'liked'
-        ];
+                return [
+                    "message" => '200',
+                    "success" => 'liked'
+                ];
+                break;
+
+                case 'image':
+                $image = Image::find($id);
+
+
+                $task = new CreateLikeTask($review);
+                $task->handle();
+
+                return [
+                    "message" => '200',
+                    "success" => 'liked'
+                ];
+                break;    
+
+        }
+
+
+
 
 
     }
 
-    
-    
-    
-    
+
+
+
+
     /**
      * Display a listing of the resource.
      *

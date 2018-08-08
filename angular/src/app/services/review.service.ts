@@ -34,7 +34,7 @@ export class ReviewService {
   }
 
   postLike(data, id) {
-    return this.apiService.post('like/' + id, data);
+    return this.apiService.post('like/' + id + '/?type=review', data);
   }
 
   addImage(data, id) {
