@@ -15,7 +15,13 @@ use Illuminate\Http\Request;
 
 Route::post('login', 'PassportController@login');
 Route::post('register', 'PassportController@register');
-Route::post('image-upload/{id}', 'ImagesController@createImage');
+
+Route::post('image-upload/{id}', function (){
+    dd(12);
+});
+Route::post('image-upload/{id}', 'ImagesController@store');
+Route::post('image-update/{id}', 'ImagesController@update');
+
 Route::get('image', 'ImagesController@getImage');
 
 
@@ -34,14 +40,16 @@ Route::group(['middleware' => 'auth:api'],
         Route::post('like/{id}', 'LikesController@createReviewLike');
 
 
+        Route::delete('restaurants/{id}', 'RestaurantsController@destroy');
         Route::get('restaurants', 'RestaurantsController@index');
-        Route::post('/restaurants/create', 'RestaurantsController@store');
+        Route::post('/restaurants', 'RestaurantsController@store');
         Route::get('/restaurants/{id}', 'RestaurantsController@show');
-        Route::post('/restaurants/{id}/update', 'RestaurantsController@update');
+        Route::put('/restaurants/{id}', 'RestaurantsController@update');
+
 
 
         Route::get('/categories', 'CategoriesController@index');
-        Route::post('/categories/create', 'CategoriesController@store');
+        Route::post('/categories', 'CategoriesController@store');
 
         //UserAddress
         Route::get('/useraddress', 'UserAddressController@index');
@@ -50,7 +58,7 @@ Route::group(['middleware' => 'auth:api'],
         Route::get('/useraddress/{id}', 'UserAddressController@show');
         Route::delete('useraddress/{id}', 'UserAddressController@destroy');
 
-        Route::post('cuisines/create/', 'CuisinesController@store');
+        Route::post('cuisines', 'CuisinesController@store');
         Route::get('cuisines', 'CuisinesController@index');
 
        // Route::get('image')

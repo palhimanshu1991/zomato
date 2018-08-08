@@ -18,7 +18,7 @@ export class RestaurantService {
   }
 
   submitForm(values) {
-    return this.apiService.post('restaurants/create', values);
+    return this.apiService.post('restaurants', values);
   }
 
   find(value: number) {
@@ -28,13 +28,13 @@ export class RestaurantService {
 
   updateForm(values: any, id: number) {
     console.log(values);
-    return this.apiService.post('restaurants/' + id + '/update', values);
+    return this.apiService.put('restaurants/' + id, values);
   }
 
+  delete(id : number)  {
+    return this.apiService.delete('restaurants/' + id );
+  }
 
-  // getImage(imageUrl: string): Observable<Blob> {
-  //   return this.httpClient.get(imageUrl, {responseType: 'blob'});
-  // }
 
 
 }

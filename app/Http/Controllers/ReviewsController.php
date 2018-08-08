@@ -21,11 +21,6 @@ class ReviewsController extends Controller
     public function index($id)
     {
         $reviews = Review::where('restaurant_id', $id)->with(['comments','user'])->withCount('likes');
-       
-     
-       
-        
-
         return response()->json(['review' => $reviews->get()]);
     }
 
@@ -63,15 +58,6 @@ class ReviewsController extends Controller
     }
 
 
-
-    // public function createPhotoComment(CreateCommentRequest $request, $id)
-    // {
-    //     $photo = Image::find($request->photo_id);
-
-    //     (new CreateCommentTask($request->text, $photo))->handle();
-    // }
-
-// move this to its specific controller
 
 
    

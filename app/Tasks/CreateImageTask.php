@@ -33,6 +33,8 @@ class CreateImageTask extends AbstractTask
      */
     private $imagePath;
 
+    private $id;
+
     /**
      * CreateImageTask constructor.
      *
@@ -51,14 +53,37 @@ class CreateImageTask extends AbstractTask
     public function handle()
     {
         $file = $this->request->file('image');
-
+        $random = uniqid();
         $extension = $file->extension();
-        $filename = $this->filenamePrefix . "-" . $this->model->id . "." . $extension;
+        $filename = $this->filenamePrefix . "-" . $this->model->id .$random."." . $extension;
 
         $this->uploadImage($file, $filename);
 
         $this->createImage();
     }
+
+    public function updateHandle() {
+        $file = $this->request->file('image');
+        $random = uniqid();
+        $extension = $file->extension();
+        $filename = $this->filenamePrefix . "-" . $this->model->id .$random. "." . $extension;
+
+        $this->uploadImage($file, $filename);
+
+        $this->updateImage();
+    }
+
+    private function updateImage() {
+       // dd($this->imagePath);
+        $image = $this->model->images->first();
+        $image->path = $this->imagePath;
+
+        //dd($this->model->images()->save());
+        $this->model->images()->save($image);
+        dd($image->path);
+    }
+
+
 
     private function createImage()
     {

@@ -12,7 +12,7 @@ export class CuisineService {
   }
 
   create( data: any) {
-    return this.apiService.post('cuisines/create', data);
+    return this.apiService.post('cuisines', data);
   }
 
   list() {

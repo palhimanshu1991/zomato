@@ -1,8 +1,8 @@
-import { Component, OnInit } from '@angular/core';
-import { FormGroup, FormBuilder, Validators, FormControl } from '@angular/forms';
-import { ReviewService } from '../../services/review.service';
-import { ActivatedRoute } from '@angular/router';
-import { Review } from '../../models/Review';
+import {Component, OnInit} from '@angular/core';
+import {FormGroup, FormBuilder, Validators, FormControl} from '@angular/forms';
+import {ReviewService} from '../../services/review.service';
+import {ActivatedRoute} from '@angular/router';
+import {Review} from '../../models/Review';
 
 @Component({
   selector: 'app-review-add',
@@ -16,10 +16,10 @@ export class ReviewAddComponent implements OnInit {
   data: Review;
 
   constructor(private fb: FormBuilder, private reviewService: ReviewService,
-    private activatedRoute: ActivatedRoute) {
-      this.activatedRoute.params.subscribe(params => this.id = params.id );
+              private activatedRoute: ActivatedRoute) {
+    this.activatedRoute.params.subscribe(params => this.id = params.id);
 
-     }
+  }
 
   ngOnInit() {
     this.buildForm();
@@ -30,15 +30,14 @@ export class ReviewAddComponent implements OnInit {
       rating: new FormControl(''),
       text: new FormControl(''),
     });
-     // difference between formbuilder and formgroup
+    // difference between formbuilder and formgroup
   }
 
   onSubmit() {
 
     this.reviewService.postReview(this.reviewForm.value, this.id).subscribe(() => {
-        console.log('review posted');
+      console.log('review posted');
     });
-
 
 
   }

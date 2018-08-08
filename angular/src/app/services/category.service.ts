@@ -10,7 +10,7 @@ export class CategoryService {
   }
 
   create( data: any) {
-    return this.apiService.post('categories/create', data);
+    return this.apiService.post('categories', data);
   }
 
   list() {

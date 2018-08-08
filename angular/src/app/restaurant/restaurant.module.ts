@@ -10,6 +10,7 @@ import {RouterModule} from '@angular/router';
 import {FileUploadModule} from 'ng2-file-upload';
 import {ImageUploadService} from '../services/image-upload.service';
 import { RestaurantUpdateComponent } from './restaurant-update/restaurant-update.component';
+import { RestaurantDeleteComponent } from './restaurant-delete/restaurant-delete.component';
 
 
 @NgModule({
@@ -23,13 +24,15 @@ import { RestaurantUpdateComponent } from './restaurant-update/restaurant-update
     RestaurantListComponent,
     RestaurantCreateComponent,
     RestaurantShowComponent,
-    RestaurantUpdateComponent
+    RestaurantUpdateComponent,
+    RestaurantDeleteComponent
   ],
   exports : [
     RestaurantListComponent,
     RestaurantCreateComponent,
     RestaurantShowComponent,
-    RestaurantUpdateComponent
+    RestaurantUpdateComponent,
+    RestaurantDeleteComponent
   ],
   providers : [
     RestaurantService,

@@ -21,6 +21,7 @@ class CreateRatingRequest extends FormRequest
      *
      * @return array
      */
+    //rules to be added
     public function rules()
     {
         return [

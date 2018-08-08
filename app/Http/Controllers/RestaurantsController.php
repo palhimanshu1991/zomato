@@ -101,6 +101,27 @@ class RestaurantsController extends Controller
         return $this->transformToArray($restaurant);
     }
 
+    public function destroy($id)
+    {
+
+        $restaurant = Restaurant::find($id);
+        if($restaurant) {
+            $restaurant->categories()->detach();
+            $restaurant->cuisines()->detach();
+            $restaurant->reviews()->delete();
+            $restaurant->images()->delete();
+
+            $restaurant->delete();
+            $restaurant->address()->delete();
+            return $restaurant;
+        }
+        else
+        {
+            return "already deleted";
+        }
+
+    }
+
     private function getImages($item)
     {
         $image = $item->images->first();

@@ -20,6 +20,7 @@ export class RestaurantUpdateComponent implements OnInit {
   districts: any;
   categories: any;
   cuisines: any;
+  imageSelected : boolean;
 
   formData = new FormData();
 
@@ -50,6 +51,7 @@ export class RestaurantUpdateComponent implements OnInit {
   }
 
   ngOnInit() {
+    this.imageSelected = false;
     this.patchForm(this.id);
     this.showStates();
     this.showDistricts();
@@ -60,6 +62,7 @@ export class RestaurantUpdateComponent implements OnInit {
 
 
   onFileChange(name) {
+    this.imageSelected = true;
     var element: HTMLInputElement = this.el.nativeElement.querySelector('#fileupload');
 
     var file = element.files.item(0);
@@ -80,7 +83,7 @@ export class RestaurantUpdateComponent implements OnInit {
       if (this.imageSelected) {
         const url = environment.apiUrl + 'image-upload/' + this.restaurant.id + '?type=restaurant';
 
-        this.http.post(url, this.formData).subscribe(response => {
+        this.http.put(url, this.formData).subscribe(response => {
           this.route.navigate(['restaurants/' + this.restaurant.id]);
         });
       }

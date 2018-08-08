@@ -14,7 +14,7 @@ class ImagesController extends Controller
 {
 
 
-    public function createImage(CreateImageRequest $request, $id)
+    public function store(CreateImageRequest $request, $id)
     {
         $params = $request->all();
         $type = $params['type'];
@@ -33,14 +33,35 @@ class ImagesController extends Controller
 
     }
 
-    public function getImage(Request $request) {
+    public function update(Request $request, $id)
+    {
+        $params = $request->all();
+        $type = $params['type'];
+        switch ($type) {
+            case 'review':
+                $instance = Review::find($id);
+                break;
+            case 'restaurant':
+                $instance = Restaurant::find($id);
+                break;
+        }
+           // dd($instance);
+        $task = (new CreateImageTask($request, $instance));
+        $task->updateHandle();
+        return ['response' => "success"];
+
+
+    }
+
+
+    public function getImage(Request $request)
+    {
 
         $file = Storage::get('media/App/Restaurant-21.jpeg');
-        
+
         $image = Image::make($file);
         return $image->response();
-    
-        
+
 
     }
 

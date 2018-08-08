@@ -1,12 +1,12 @@
-import { Injectable } from '@angular/core';
-import { environment } from '../../environments/environment';
+import {Injectable} from '@angular/core';
+import {environment} from '../../environments/environment';
 import {
   HttpClient,
   HttpHeaders,
   HttpErrorResponse
 } from '@angular/common/http';
-import { Observable } from 'rxjs';
-import { catchError } from 'rxjs/operators';
+import {Observable} from 'rxjs';
+import {catchError} from 'rxjs/operators';
 
 @Injectable({
   providedIn: 'root'
@@ -46,25 +46,31 @@ export class ApiService {
 
   get(route: string) {
     return this.http
-      .get(this.rootUrl + route, { headers: this.requestHeader })
+      .get(this.rootUrl + route, {headers: this.requestHeader})
       .pipe(catchError(this._handleError));
   }
 
   post(route: string, data: any) {
     return this.http
-      .post(this.rootUrl + route, data, { headers: this.requestHeader })
+      .post(this.rootUrl + route, data, {headers: this.requestHeader})
       .pipe(catchError(this._handleError));
   }
 
   postLike(route: string) {
     return this.http
-      .post(this.rootUrl + route, { headers: this.requestHeader });
+      .post(this.rootUrl + route, {headers: this.requestHeader});
   }
 
   put(route: string, data: any) {
     return this.http
-      .put(this.rootUrl + route, data, { headers: this.requestHeader })
+      .put(this.rootUrl + route, data, {headers: this.requestHeader})
       .pipe(catchError(this._handleError));
+  }
+
+  delete(route: string) {
+    return this.http.delete(this.rootUrl + route, {headers: this.requestHeader})
+      .pipe(catchError(this._handleError));
+
   }
 
   private _handleError(err: HttpErrorResponse | any) {
@@ -73,6 +79,6 @@ export class ApiService {
   }
 
   getImage() {
-    return this.http.get(this.rootUrl + 'image' , {headers: this.header });
+    return this.http.get(this.rootUrl + 'image', {headers: this.header});
   }
 }

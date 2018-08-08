@@ -9,17 +9,17 @@ use App\Address;
 
 class UserAddressController extends Controller
 {
-     public function index()
-     {
-         $userAddress = UserAddress::with(['address','address.state','address.district'])->where('user_id',auth()->user()->id)->get();
-         return response()->json(['address' => $userAddress]);
-         
-     }
+    public function index()
+    {
+        $userAddress = UserAddress::with(['address', 'address.state', 'address.district'])->where('user_id', auth()->user()->id)->get();
+        return response()->json(['address' => $userAddress]);
+
+    }
 
     /**
      * Store a newly created resource in storage.
      *
-     * @param  \Illuminate\Http\Request  $request
+     * @param  \Illuminate\Http\Request $request
      * @return \Illuminate\Http\Response
      */
     public function store(CreateUserAddressRequest $request)
@@ -39,22 +39,22 @@ class UserAddressController extends Controller
             'address_id' => $address->id
         ]);
 
-        return response()->json(["success"=>200,"message"=>"Created"]);
+        return response()->json(["success" => 200, "message" => "Created"]);
 
     }
 
     /**
      * Display the specified resource.
      *
-     * @param  int  $id
+     * @param  int $id
      * @return \Illuminate\Http\Response
      */
     public function show($id)
     {
         $userAddress = UserAddress::find($id);
         $address = Address::find($userAddress->address_id);
-        return response()->json(['title'=> $userAddress->title,'address'=>$address]);
-         
+        return response()->json(['title' => $userAddress->title, 'address' => $address]);
+
     }
 
     public function update(Request $request, $id)
@@ -75,17 +75,16 @@ class UserAddressController extends Controller
     }
 
 
-
     /**
      * Remove the specified resource from storage.
      *
-     * @param  int  $id
+     * @param  int $id
      * @return \Illuminate\Http\Response
      */
     public function destroy($id)
     {
         $userAddress = UserAddress::find($id);
         $userAddress->delete;
-        return response()->json(["message"=>"Success","success"=>200]);
+        return response()->json(["message" => "Success", "success" => 200]);
     }
 }

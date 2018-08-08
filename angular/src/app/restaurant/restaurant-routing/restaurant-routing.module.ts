@@ -6,6 +6,7 @@ import { RestaurantCreateComponent } from '../restaurant-create/restaurant-creat
 import { RestaurantShowComponent } from '../restaurant-show/restaurant-show.component';
 import { RestaurantUpdateComponent } from '../restaurant-update/restaurant-update.component';
 import { ReviewsModule } from '../../reviews/reviews.module';
+import {RestaurantDeleteComponent} from "../restaurant-delete/restaurant-delete.component";
 
 const routes: Routes = [
   {path: '', component: RestaurantListComponent },
@@ -13,6 +14,7 @@ const routes: Routes = [
   {path: ':id', component: RestaurantShowComponent},
   {path: ':id/update', component: RestaurantUpdateComponent},
   {path: ':id/reviews', loadChildren: () => ReviewsModule },
+  {path: ':id/delete', component: RestaurantDeleteComponent}
 
 ];
 

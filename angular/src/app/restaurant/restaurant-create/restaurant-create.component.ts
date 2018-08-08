@@ -91,7 +91,7 @@ export class RestaurantCreateComponent implements OnInit {
         });
       }
 
-      this.route.navigate(['restaurants/' + this.restaurant.id]);
+      //this.route.navigate(['restaurants/' + this.restaurant.id]);
 
     });
 
