@@ -17,7 +17,7 @@ Route::post('login', 'PassportController@login');
 Route::post('register', 'PassportController@register');
 Route::post('image-upload/{id}', 'ImagesController@createImage');
 Route::get('image', 'ImagesController@getImage');
-
+Route::get('image/{id}', 'ImagesController@getImage');
 
 Route::group(['middleware' => 'auth:api'],
     function () {
@@ -54,14 +54,18 @@ Route::group(['middleware' => 'auth:api'],
         Route::get('cuisines', 'CuisinesController@index');
 
        // Route::get('image')
+   
 
 
-        Route::get('/details','PassportController@details');
+        Route::get('details','PassportController@details');
         Route::post('/details','PassportController@updateDetails');
 
         //State
         Route::get('/states','StateController@index');
         Route::get('/districts','DistrictController@index');
+
+       
+
 
         
         

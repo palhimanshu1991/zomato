@@ -9,6 +9,7 @@ use App\Restaurant;
 use App\Review;
 use Illuminate\Support\Facades\Storage;
 use Image;
+use App\Image as Photo;
 
 class ImagesController extends Controller
 {
@@ -33,14 +34,31 @@ class ImagesController extends Controller
 
     }
 
-    public function getImage(Request $request) {
+    public function getImage(Request $request, $id)
+    {
 
-        $file = Storage::get('media/App/Restaurant-21.jpeg');
-        
-        $image = Image::make($file);
-        return $image->response();
-    
-        
+        $params = $request->all();
+        $type = $params['type'];
+        switch ($type) {
+            case 'review':
+                $instance = Review::find($id);
+                break;
+            case 'restaurant':
+                
+                $image = Photo::where('imageable_id',$id)->where('imageable_type','App\Restaurant')->first();
+                
+                $file = Storage::get($image->path);
+
+                $image = Image::make($file);
+                return $image->response();
+                break;
+        }
+
+
+
+
+
+
 
     }
 

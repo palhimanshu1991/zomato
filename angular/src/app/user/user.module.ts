@@ -19,7 +19,6 @@ import { UserAddressCreateComponent } from './user-address-create/add-address.co
   declarations: [ProfileComponent, UserAddressCreateComponent, UserAddressComponent, UserAddressEditComponent],
 
   providers: [
-    { provide: HTTP_INTERCEPTORS, useClass: AddHeaderInterceptor, multi: true },
     ProfileService
   ],
   exports: [

@@ -70,6 +70,10 @@ class RestaurantsController extends Controller
     public function show($id)
     {
         $restaurant = Restaurant::find($id)->load('address', 'categories', 'cuisines', 'reviews', 'images');
+        
+
+        
+
         return $this->transformToArray($restaurant);
 
     }

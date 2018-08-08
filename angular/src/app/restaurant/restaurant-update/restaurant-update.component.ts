@@ -20,6 +20,7 @@ export class RestaurantUpdateComponent implements OnInit {
   districts: any;
   categories: any;
   cuisines: any;
+  imageSelected: any;
 
   formData = new FormData();
 
