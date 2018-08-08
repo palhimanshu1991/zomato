@@ -30,7 +30,7 @@ export class ReviewService {
   }
 
   postComment(data, id) {
-    return this.apiService.post('reviews/comment/' + id, data);
+    return this.apiService.post('reviews/comment/' + id + '/?type=review', data);
   }
 
   postLike(data, id) {
