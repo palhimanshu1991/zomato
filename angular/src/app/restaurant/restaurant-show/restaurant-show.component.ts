@@ -1,6 +1,7 @@
 import {Component, OnInit} from '@angular/core';
 import {RestaurantService} from "../../services/restaurant.service";
 import {Router, ActivatedRoute} from "@angular/router";
+import {Restaurant} from "../../shared/models/Restaurant";
 
 @Component({
   selector: 'app-restaurant-show',
@@ -9,7 +10,7 @@ import {Router, ActivatedRoute} from "@angular/router";
 })
 export class RestaurantShowComponent implements OnInit {
 
-  restaurant: any;
+  restaurant: Restaurant;
   id: number;
   loaded: boolean = false;
   image: any;
@@ -27,7 +28,7 @@ export class RestaurantShowComponent implements OnInit {
   showRestaurant() {
     this.restaurantService.find(this.id).subscribe((response: any) => {
      this.restaurant = response;
-
+      console.log(this.restaurant);
     });
   }
 

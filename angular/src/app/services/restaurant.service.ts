@@ -26,7 +26,8 @@ export class RestaurantService {
     return this.apiService.get('restaurants/' + value);
   }
 
-  updateForm(values, id) {
+  updateForm(values: any, id: number) {
+    console.log(values);
     return this.apiService.post('restaurants/' + id + '/update', values);
   }
 

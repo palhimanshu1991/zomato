@@ -25,6 +25,7 @@ export class RestaurantCreateComponent implements OnInit {
   districts: any;
   categories: any;
   cuisines: any;
+  imageSelected: boolean;
 
   formData = new FormData();
 
@@ -49,11 +50,12 @@ export class RestaurantCreateComponent implements OnInit {
               private activatedRoute: ActivatedRoute,
               private el: ElementRef,
               private http: HttpClient,
-              private apiService : ApiService
+              private apiService: ApiService
   ) {
   }
 
   ngOnInit() {
+    this.imageSelected = false;
     this.showStates();
     this.showDistricts();
     this.showCategories();
@@ -63,6 +65,7 @@ export class RestaurantCreateComponent implements OnInit {
   }
 
   onFileChange(name) {
+    this.imageSelected = true;
     var element: HTMLInputElement = this.el.nativeElement.querySelector('#fileupload');
 
     var file = element.files.item(0);
@@ -80,26 +83,25 @@ export class RestaurantCreateComponent implements OnInit {
       console.log(response);
       this.restaurant = response;
       console.log(this.restaurant.id);
-      const url = environment.apiUrl + 'image-upload/' + this.restaurant.id + '?type=restaurant';
+      if (this.imageSelected) {
+        const url = environment.apiUrl + 'image-upload/' + this.restaurant.id + '?type=restaurant';
 
-      this.http.post(url, this.formData).subscribe(response => {
-        this.route.navigate(['restaurants/' + this.restaurant.id]);
-      });
+        this.http.post(url, this.formData).subscribe(response => {
+          this.route.navigate(['restaurants/' + this.restaurant.id]);
+        });
+      }
+
+      this.route.navigate(['restaurants/' + this.restaurant.id]);
 
     });
 
   }
 
-  // showDropDown(url: string) {
-  //   console.log(url);
-  //    this.apiService.get(url);
-  // }
-
   showStates() {
     this.apiService.get('states').subscribe(response => {
 
       this.states = response;
-     console.log(this.states);
+      console.log(this.states);
     });
   }
 

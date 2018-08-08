@@ -39,7 +39,6 @@ class RestaurantsController extends Controller
 
     public function store(CreateRestaurantRequest $request)
     {
-        \Log::info($request->all());
         $address = Address::create([
             'street' => $request->address['street'],
             'locality' => $request->address['locality'],
@@ -75,25 +74,31 @@ class RestaurantsController extends Controller
 
     }
 
-    public function update(CreateRestaurantRequest $request, $id) {
-       $restaurant = Restaurant::find($id);
-       $address = $restaurant->address()->update([
-           'street' => $request->street,
-           'locality' => $request->locality,
-           'landmark' => $request->pincode,
-           'pincode' => $request->pincode,
-           'state_id' => $request->state_id,
-           'district_id' => $request->district_id
-       ]);
+    public function update(Request $request, $id)
+    {
+
+        $restaurant = Restaurant::find($id);
+        $address = $restaurant->address()->update([
+            'street' => $request->address['street'],
+            'locality' => $request->address['locality'],
+            'landmark' => $request->address['landmark'],
+            'pincode' => $request->address['pincode'],
+            'state_id' => $request->address['state_id'],
+            'district_id' => $request->address['district_id']
+        ]);
 
 
-        Restaurant::where('id', $id)
+        $category = $restaurant->categories()->sync([$request->category_id]);
+
+        $cuisine = $restaurant->cuisines()->sync([$request->cuisine_id]);
+
+
+        $restaurant
             ->update([
-                'name' => $request->name,
-                'address_id' => $address->id
+                'name' => $request->name
             ]);
 
-        return $restaurant;
+        return $this->transformToArray($restaurant);
     }
 
     private function getImages($item)

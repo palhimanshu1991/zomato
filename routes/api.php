@@ -36,7 +36,7 @@ Route::group(['middleware' => 'auth:api'],
         Route::get('restaurants', 'RestaurantsController@index');
         Route::post('/restaurants/create', 'RestaurantsController@store');
         Route::get('/restaurants/{id}', 'RestaurantsController@show');
-        Route::get('/restaurants/{id}/update', 'RestaurantsController@update');
+        Route::post('/restaurants/{id}/update', 'RestaurantsController@update');
 
 
         Route::get('/categories', 'CategoriesController@index');
