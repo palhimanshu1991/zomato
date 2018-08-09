@@ -16,9 +16,7 @@ class StateController extends Controller
     {
         $states = State::all();
 
-        return State::all();
-
-        //response()->json(['state'=>$states]);
+        return response()->json(['states'=>$states]);
     }
 
     /**
