@@ -23,11 +23,11 @@ export class UserAddressEditComponent implements OnInit {
    }
 
   ngOnInit() {
+    this.buildForm();
     this.getUserAddress();
     this.getDistricts();
     this.getStates();
-    this.buildForm();
-    this.addressForm.patchValue(this.address);
+
   }
 
   getStates() {

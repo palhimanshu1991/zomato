@@ -9,7 +9,6 @@ import { Router } from '@angular/router';
   styleUrls: ['./add-address.component.css']
 })
 
-// rename this to UserAddressCreateComponent.
 export class UserAddressCreateComponent implements OnInit {
   addressForm: FormGroup;
   states: any[];
@@ -23,9 +22,9 @@ export class UserAddressCreateComponent implements OnInit {
   ) {}
 
   ngOnInit() {
+    this.buildForm();
     this.getStates();
     this.getDistricts();
-    this.buildForm();
   }
 
   buildForm() {

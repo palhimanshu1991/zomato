@@ -1,7 +1,7 @@
 import { Component, OnInit } from '@angular/core';
 import { ReviewService } from '../../services/review.service';
-import { ActivatedRoute, Router } from '../../../../node_modules/@angular/router';
-import { Location } from '../../../../node_modules/@angular/common';
+import { ActivatedRoute, Router } from '@angular/router';
+import { Location } from '@angular/common';
 import { environment } from '../../../environments/environment';
 
 @Component({
@@ -64,6 +64,7 @@ export class ReviewShowComponent implements OnInit {
   postLike() {
     this.reviewService.postLike(2, this.review_id).subscribe(() => {
       console.log('liked');
+      window.location.reload();
     });
 
   }

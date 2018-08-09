@@ -4,16 +4,14 @@ import {RestaurantListComponent} from './restaurant/restaurant-list/restaurant-l
 import {LoginComponent} from './auth/login/login.component';
 import {RegisterComponent} from './auth/register/register.component';
 import {AuthGuard} from './auth/auth.guard';
-import {RestaurantCreateComponent} from "./restaurant/restaurant-create/restaurant-create.component";
-import {RestaurantShowComponent} from "./restaurant/restaurant-show/restaurant-show.component";
-import {CuisineCreateComponent} from "./cuisine/cuisine-create/cuisine-create.component";
-import {CuisineListComponent} from "./cuisine/cuisine-list/cuisine-list.component";
-import {CategoryCreateComponent} from "./category/category-create/category-create.component";
-import {CategoryListComponent} from "./category/category-list/category-list.component";
-import {LayoutComponent} from "./shared/layout/layout.component";
-import {RestaurantModule} from "./restaurant/restaurant.module";
-import {UserModule} from "./user/user.module";
-import {HomeComponent} from "./shared/home/home.component";
+import {CuisineCreateComponent} from './cuisine/cuisine-create/cuisine-create.component';
+import {CuisineListComponent} from './cuisine/cuisine-list/cuisine-list.component';
+import {CategoryCreateComponent} from './category/category-create/category-create.component';
+import {CategoryListComponent} from './category/category-list/category-list.component';
+import {LayoutComponent} from './shared/layout/layout.component';
+import {RestaurantModule} from './restaurant/restaurant.module';
+import {UserModule} from './user/user.module';
+import {HomeComponent} from './shared/home/home.component';
 
 
 

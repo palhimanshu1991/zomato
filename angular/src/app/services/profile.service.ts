@@ -3,9 +3,8 @@ import { HttpClient, HttpHeaders, HttpErrorResponse } from '@angular/common/http
 import { Response } from '@angular/http';
 import { Observable } from 'rxjs';
 import { catchError } from 'rxjs/operators';
-import * as appConstant from '../../services/app.constant';
-import { environment } from '../../../environments/environment';
-import { ApiService } from '../../services/api.service';
+import { environment } from '../../environments/environment';
+import { ApiService } from '../services/api.service';
 
 @Injectable()
 export class ProfileService {

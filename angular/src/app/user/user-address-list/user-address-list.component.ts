@@ -2,12 +2,12 @@ import { Component, OnInit } from '@angular/core';
 import { AddressService } from '../../services/address.service';
 
 @Component({
-  selector: 'app-user-address',
-  templateUrl: './user-address.component.html',
-  styleUrls: ['./user-address.component.css']
+  selector: 'app-user-address-list',
+  templateUrl: './user-address-list.component.html',
+  styleUrls: ['./user-address-list.component.css']
 })
-// user edit show
-export class UserAddressComponent implements OnInit {
+// user address list
+export class UserAddressListComponent implements OnInit {
   addresses: any;
 
   constructor(private addressService: AddressService) { }
