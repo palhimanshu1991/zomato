@@ -1,0 +1,31 @@
+<button class="btn btn-danger mr-auto" (click)="back()">Back</button>
+<div class="col-md-5">
+    <div class="card">
+      <h5>Rating {{review .rating}}</h5>
+      <p>{{review.text}}</p>
+
+      <img src={{imageUrl}} alt="">
+
+      <p>
+
+        <button (click)="postLike()"><i class="fa fa-thumbs-o-up" aria-hidden="true"></i>{{review.likes_count}}</button>
+        <button (click)="showComments()"><i class="fa fa-comments-o" aria-hidden="true"></i></button>
+
+     </p>
+
+     <div *ngIf="showComment">
+        <button class="btn btn-warning" (click)="hideComments()">Hide Comments </button>
+        <div *ngFor="let comment of review.comments">
+      <app-show-comments  [comment] = "comment">
+         </app-show-comments>
+        </div>
+       <app-add-comment></app-add-comment>
+    </div>
+
+
+
+
+
+
+    </div>
+  </div>

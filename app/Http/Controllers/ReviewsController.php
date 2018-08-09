@@ -13,36 +13,38 @@ use App\Tasks\CreateCommentTask;
 use App\Tasks\CreateLikeTask;
 use Illuminate\Http\Request;
 use Auth;
+use App\Restaurant;
+use App\Contracts\Commentable;
 
 class ReviewsController extends Controller
 {
-
-
-    public function postRating(CreateRatingRequest $request)
+    public function index($id)
     {
-        Review::updateOrCreate([
-            'user_id' => auth()->user()->id,
-            'restaurant_id' => $request->restaurant_id
-        ], [
-            'rating' => $request->rating,
-        ]);
+        $reviews = Review::where('restaurant_id', $id)->with(['comments','user'])->withCount('likes');
+       
+     
+       
+        
 
-        return [
-            'message' => '200'
-        ];
+        return response()->json(['review' => $reviews->get()]);
     }
 
-    public function postReview(CreateReviewRequest $request)
+   
+
+    public function postReview(CreateReviewRequest $request, $id)
     {
-        Review::updateOrCreate([
+        // find restaurant, use relation to update
+        $review =  Review::updateOrCreate([
             'user_id' => auth()->user()->id,
-            'restaurant_id' => $request->restaurant_id
+            'restaurant_id' => $id
         ], [
+            'rating' => $request->rating,
             'text' => $request->text,
         ]);
 
         return [
-            'message' => '200'
+            'message' => '200',
+            'id' => $review->id
         ];
     }
 
@@ -55,42 +57,23 @@ class ReviewsController extends Controller
      */
     public function show($id)
     {
-        $review = Review::find($id);
-        return $review->load('comments', 'likes', 'user', 'restaurant');
+        
+        $review = Review::where('id',$id)->with(['comments','user'])->withCount('likes')->first();
+
+        return response()->json(['review' => $review]);
     }
 
 
-    public function createReviewComment(CreateCommentRequest $request, $id)
-    {
-        $review = Review::find($id);
 
-        $task = (new CreateCommentTask($request->text, $review));
-        $task->handle();
+    // public function createPhotoComment(CreateCommentRequest $request, $id)
+    // {
+    //     $photo = Image::find($request->photo_id);
 
-        return [
-            "message" => '200'
-        ];
-    }
+    //     (new CreateCommentTask($request->text, $photo))->handle();
+    // }
 
-    public function createPhotoComment(CreateCommentRequest $request, $id)
-    {
-        $photo = Image::find($request->photo_id);
-
-        (new CreateCommentTask($request->text, $photo))->handle();
-    }
+// move this to its specific controller
 
 
-    public function createReviewLike($id)
-    {
-        $review = Review::find($id);
-
-        $task = new CreateLikeTask($review);
-        $task->handle();
-
-        return [
-            "message" => '200'
-        ];
-
-
-    }
+   
 }

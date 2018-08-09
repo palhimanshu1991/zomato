@@ -26,12 +26,12 @@ class CreateRestaurantRequest extends AbstractApiRequest
     {
         return [
             'name' => 'required',
-            'street' => 'required',
-            'locality' => 'required',
-            'landmark' => 'required',
-            'pincode' => 'required',
-            'state_id' => 'required | exists:states,id',
-            'district_id' => 'required | exists:districts,id',
+            'address.street' => 'required',
+            'address.locality' => 'required',
+            'address.landmark' => 'required',
+            'address.pincode' => 'required',
+            'address.state_id' => 'required | exists:states,id',
+            'address.district_id' => 'required | exists:districts,id',
             'category_id' => 'required | exists:categories,id',
             'cuisine_id' => 'required | exists:cuisines,id',
         ];
