@@ -20,7 +20,7 @@ export class RestaurantUpdateComponent implements OnInit {
   districts: any;
   categories: any;
   cuisines: any;
-  imageSelected : boolean;
+  imageSelected: boolean;
 
   formData = new FormData();
 
@@ -83,7 +83,8 @@ export class RestaurantUpdateComponent implements OnInit {
       if (this.imageSelected) {
         const url = environment.apiUrl + 'image-upload/' + this.restaurant.id + '?type=restaurant';
 
-        this.http.put(url, this.formData).subscribe(response => {
+        this.http.post(url, this.formData).subscribe(response => {
+          console.log(response);
           this.route.navigate(['restaurants/' + this.restaurant.id]);
         });
       }
