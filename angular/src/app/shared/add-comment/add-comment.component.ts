@@ -1,7 +1,12 @@
-import { Component, OnInit } from '@angular/core';
-import { FormGroup, FormBuilder, FormControl, Validators } from '../../../../node_modules/@angular/forms';
+import { Component, OnInit, Input } from '@angular/core';
+import {
+  FormGroup,
+  FormBuilder,
+  FormControl,
+  Validators
+} from '@angular/forms';
 import { ReviewService } from '../../services/review.service';
-import { ActivatedRoute } from '../../../../node_modules/@angular/router';
+import { ActivatedRoute } from '@angular/router';
 
 @Component({
   selector: 'app-add-comment',
@@ -22,7 +27,7 @@ export class AddCommentComponent implements OnInit {
     this.activatedRoute.params.subscribe(
       params => (this.id = params.review_id)
     );
-   }
+  }
 
   ngOnInit() {
     this.commentForm = new FormGroup({
@@ -31,9 +36,12 @@ export class AddCommentComponent implements OnInit {
   }
 
   onSubmit() {
-    this.reviewService.postComment(this.commentForm.value, this.id).subscribe(() => {
-      console.log('commented');
-    });
-  }
+    this.reviewService
+      .postComment(this.commentForm.value, this.id)
+      .subscribe(() => {
+        console.log('commented');
 
+        window.location.reload();
+      });
+  }
 }

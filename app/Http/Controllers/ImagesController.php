@@ -33,15 +33,31 @@ class ImagesController extends Controller
 
     }
 
-
-
-    public function getImage(Request $request)
+    public function getImage(Request $request, $id)
     {
+        $params = $request->all();
+        $type = $params['type'];
+        switch ($type) {
+            case 'review':
 
-        $file = Storage::get('media/App/Restaurant-21.jpeg');
+                $image = Photo::where('imageable_id', $id)->where('imageable_type', 'App\Review')->first();
 
-        $image = Image::make($file);
-        return $image->response();
+                $file = Storage::get($image->path);
+
+                $image = Image::make($file);
+                return $image->response();
+                break;
+            case 'restaurant':
+
+                $image = Photo::where('imageable_id', $id)->where('imageable_type', 'App\Restaurant')->first();
+
+                $file = Storage::get($image->path);
+
+                $image = Image::make($file);
+                return $image->response();
+                break;
+        }
+
 
 
     }

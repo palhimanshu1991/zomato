@@ -1,14 +1,15 @@
 import { Component, OnInit } from '@angular/core';
 import {
   FormGroup,
-  FormControl
-} from '../../../../node_modules/@angular/forms';
+  FormControl,
+  FormBuilder
+} from '@angular/forms';
 import { ReviewService } from '../../services/review.service';
 import {
   ActivatedRoute,
   Router
-} from '../../../../node_modules/@angular/router';
-import { Location } from '../../../../node_modules/@angular/common';
+} from '@angular/router';
+import { Location } from '@angular/common';
 
 @Component({
   selector: 'app-review-edit',
@@ -18,7 +19,7 @@ import { Location } from '../../../../node_modules/@angular/common';
 export class ReviewEditComponent implements OnInit {
   reviewForm: FormGroup;
   reviews: any;
-  id: any;
+  review_id: any;
   restaurant_id: number;
   review: string;
   rating: any;
@@ -28,10 +29,11 @@ export class ReviewEditComponent implements OnInit {
     private reviewService: ReviewService,
     private activatedRoute: ActivatedRoute,
     private router: Router,
-    private _location: Location
+    private _location: Location,
+    private fb: FormBuilder
   ) {
     this.activatedRoute.params.subscribe(
-      params => (this.id = params.review_id)
+      params => (this.review_id = params.review_id)
     );
     this.activatedRoute.params.subscribe(
       params => (this.restaurant_id = params.id)
@@ -41,19 +43,20 @@ export class ReviewEditComponent implements OnInit {
   // route fix: reviews/{id}/edit
 
   ngOnInit() {
-    this.getReviews();
     this.buildForm();
+    this.getReviews();
+
   }
 
   buildForm() {
-    this.reviewForm = new FormGroup({
-      rating: new FormControl(''),
-      text: new FormControl('')
+    this.reviewForm = this.fb.group({
+      rating: [''],
+      text: ['']
     });
   }
 
   getReviews() {
-    this.reviewService.getReview(this.id).subscribe((data: any) => {
+    this.reviewService.getReview(this.review_id).subscribe((data: any) => {
       this.reviews = data.review;
       console.log(this.reviews);
     });
@@ -64,11 +67,11 @@ export class ReviewEditComponent implements OnInit {
       .postReview(this.reviewForm.value, this.restaurant_id)
       .subscribe(() => {
         console.log('review updated');
+        this.router.navigateByUrl('restaurants/' + this.restaurant_id + '/reviews');
       });
 
 
 
-      this._location.back();
 
   }
 

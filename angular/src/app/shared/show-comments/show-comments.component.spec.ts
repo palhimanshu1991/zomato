@@ -1,20 +1,20 @@
 import { async, ComponentFixture, TestBed } from '@angular/core/testing';
 
-import { UserAddressComponent } from './user-address.component';
+import { ShowCommentsComponent } from './show-comments.component';
 
-describe('UserAddressComponent', () => {
-  let component: UserAddressComponent;
-  let fixture: ComponentFixture<UserAddressComponent>;
+describe('ShowCommentsComponent', () => {
+  let component: ShowCommentsComponent;
+  let fixture: ComponentFixture<ShowCommentsComponent>;
 
   beforeEach(async(() => {
     TestBed.configureTestingModule({
-      declarations: [ UserAddressComponent ]
+      declarations: [ ShowCommentsComponent ]
     })
     .compileComponents();
   }));
 
   beforeEach(() => {
-    fixture = TestBed.createComponent(UserAddressComponent);
+    fixture = TestBed.createComponent(ShowCommentsComponent);
     component = fixture.componentInstance;
     fixture.detectChanges();
   });

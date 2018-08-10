@@ -4,6 +4,8 @@
       <h5>Rating {{review .rating}}</h5>
       <p>{{review.text}}</p>
 
+      <img src={{imageUrl}} alt="">
+
       <p>
 
         <button (click)="postLike()"><i class="fa fa-thumbs-o-up" aria-hidden="true"></i>{{review.likes_count}}</button>
@@ -13,9 +15,10 @@
 
      <div *ngIf="showComment">
         <button class="btn btn-warning" (click)="hideComments()">Hide Comments </button>
-      <div *ngFor="let comment of review.comments">
-        <p>{{comment.text}}</p>
-       </div>
+        <div *ngFor="let comment of review.comments">
+      <app-show-comments  [comment] = "comment">
+         </app-show-comments>
+        </div>
        <app-add-comment></app-add-comment>
     </div>
 

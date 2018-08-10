@@ -1,7 +1,8 @@
 import { Component, OnInit } from '@angular/core';
 import { ReviewService } from '../../services/review.service';
-import { ActivatedRoute, Router } from '../../../../node_modules/@angular/router';
-import { Location } from '../../../../node_modules/@angular/common';
+import { ActivatedRoute, Router } from '@angular/router';
+import { Location } from '@angular/common';
+import { environment } from '../../../environments/environment';
 
 @Component({
   selector: 'app-review-show',
@@ -19,6 +20,8 @@ export class ReviewShowComponent implements OnInit {
   showComment = false;
   user_id: number;
   review_id: number;
+  imageUrl: string;
+  rootUrl: string = environment.apiUrl;
 
   constructor(
     private reviewService: ReviewService,
@@ -35,6 +38,7 @@ export class ReviewShowComponent implements OnInit {
   ngOnInit() {
     this.getReview();
     console.log('review_id', this.id);
+    this.imageUrl = this.rootUrl + 'image/' + this.id + '/?type=review';
   }
 
 
@@ -60,6 +64,7 @@ export class ReviewShowComponent implements OnInit {
   postLike() {
     this.reviewService.postLike(2, this.review_id).subscribe(() => {
       console.log('liked');
+      window.location.reload();
     });
 
   }

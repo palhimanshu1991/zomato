@@ -18,6 +18,8 @@ import { CuisineCreateComponent } from './cuisine/cuisine-create/cuisine-create.
 import { CuisineListComponent } from './cuisine/cuisine-list/cuisine-list.component';
 import { CategoryCreateComponent } from './category/category-create/category-create.component';
 import { CategoryListComponent } from './category/category-list/category-list.component';
+import { ProfileService } from './services/profile.service';
+
 
 
 
@@ -37,7 +39,7 @@ import { CategoryListComponent } from './category/category-list/category-list.co
     CuisineCreateComponent,
     CuisineListComponent,
     CategoryCreateComponent,
-    CategoryListComponent
+    CategoryListComponent,
   ],
   imports: [
     BrowserAnimationsModule,
@@ -49,7 +51,8 @@ import { CategoryListComponent } from './category/category-list/category-list.co
   ],
   providers: [
     UserService,
-    AuthGuard
+    AuthGuard,
+    ProfileService
   ],
   bootstrap: [AppComponent]
 })

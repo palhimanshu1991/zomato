@@ -1,5 +1,5 @@
 import { Component, OnInit } from '@angular/core';
-import { ProfileService } from '../services/profile.service';
+import { ProfileService } from '../../services/profile.service';
 import {
   FormGroup,
   FormControl,
@@ -21,8 +21,8 @@ export class ProfileComponent implements OnInit {
   constructor(private userService: ProfileService, private fb: FormBuilder) {}
 
   ngOnInit() {
-    this.details();
     this.buildForm();
+    this.details();
   }
 
   buildForm() {
@@ -45,6 +45,7 @@ export class ProfileComponent implements OnInit {
     this.data = this.profileForm.value;
     this.userService.updateDetails(this.data).subscribe(() => {
       console.log('updated');
+      window.location.reload();
     });
   }
 }
