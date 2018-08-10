@@ -78,6 +78,10 @@ export class ApiService {
     return Observable.throw(errorMsg);
   }
 
+  postImage(url:string, data: any) {
+    return this.http.post(this.rootUrl + url , data,  {headers: this.header});
+  }
+
   getImage() {
     return this.http.get(this.rootUrl + 'image', {headers: this.header});
   }

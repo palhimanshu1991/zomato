@@ -6,8 +6,6 @@ use Illuminate\Contracts\Console\Kernel;
 
 trait CreatesApplication
 {
-    protected $baseUrl = 'http://instafoods.test/';
-
     /**
      * Creates the application.
      *

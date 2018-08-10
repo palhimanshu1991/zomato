@@ -1,13 +1,15 @@
 import {Injectable} from '@angular/core';
 import {ApiService} from './api.service';
+import {HttpClient} from "@angular/common/http";
 
 @Injectable()
 export class ImageUploadService {
 
-  constructor(private apiService: ApiService) {
+  constructor(private apiService: ApiService, private http: HttpClient) {
   }
 
-  imageUpload(route: string, data: any) {
-    return this.apiService.post(route, data);
+  imageUpload(url: string, data: any) {
+
+
   }
 }

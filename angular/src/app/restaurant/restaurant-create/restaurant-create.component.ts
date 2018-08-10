@@ -97,7 +97,7 @@ export class RestaurantCreateComponent implements OnInit {
   }
 
   showStates() {
-    this.apiService.get('states').subscribe(response => {
+    this.apiService.get('states').subscribe((response) => {
 
       this.states = response.states;
       console.log(this.states);
@@ -105,7 +105,7 @@ export class RestaurantCreateComponent implements OnInit {
   }
 
   showDistricts() {
-    this.apiService.get('districts').subscribe(response => {
+    this.apiService.get('districts').subscribe((response) => {
 
       this.districts = response.districts;
 

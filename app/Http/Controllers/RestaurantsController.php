@@ -76,7 +76,6 @@ class RestaurantsController extends Controller
 
     public function update(Request $request, $id)
     {
-
         $restaurant = Restaurant::find($id);
         $address = $restaurant->address()->update([
             'street' => $request->address['street'],

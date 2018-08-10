@@ -7,6 +7,7 @@
  */
 
 namespace App\Http\Transformers;
+
 use App\Address;
 use App\Http\Requests\Restaurants\CreateRestaurantRequest;
 use Illuminate\Http\Request;
@@ -35,27 +36,27 @@ class RestaurantTransformer
     public function transformToArray($item)
     {
         $values = [
-        'id' => $item->id,
-        'name' => $item->name,
-        'category_id' => $item->categories[0]->id,
-        'cuisine_id' => $item->cuisines[0]->id,
-        'category' => $item->categories[0]->name,
-        'cuisine' => $item->cuisines[0]->name,
-        'image' => $this->getImages($item),
-        'address' => [
-            'street' => $item->address->street,
-            'locality' => $item->address->locality,
-            'landmark' => $item->address->landmark,
-            'pincode' => $item->address->pincode,
-            'district' => $item->address->district->name,
-            'state' => $item->address->state->name,
-            'state_id' => $item->address->state->id,
-            'district_id' => $item->address->district->id
+            'id' => $item->id,
+            'name' => $item->name,
+            'category_id' => $item->categories[0]->id,
+            'cuisine_id' => $item->cuisines[0]->id,
+            'category' => $item->categories[0]->name,
+            'cuisine' => $item->cuisines[0]->name,
+            'image' => $this->getImages($item),
+            'address' => [
+                'street' => $item->address->street,
+                'locality' => $item->address->locality,
+                'landmark' => $item->address->landmark,
+                'pincode' => $item->address->pincode,
+                'district' => $item->address->district->name,
+                'state' => $item->address->state->name,
+                'state_id' => $item->address->state->id,
+                'district_id' => $item->address->district->id
 
-        ]
+            ]
 
-];
-        //dd($alues);
+        ];
+
         return $values;
     }
 

@@ -33,25 +33,6 @@ class ImagesController extends Controller
 
     }
 
-    public function update(Request $request, $id)
-    {
-        $params = $request->all();
-        $type = $params['type'];
-        switch ($type) {
-            case 'review':
-                $instance = Review::find($id);
-                break;
-            case 'restaurant':
-                $instance = Restaurant::find($id);
-                break;
-        }
-           // dd($instance);
-        $task = (new CreateImageTask($request, $instance));
-        $task->updateHandle();
-        return ['response' => "success"];
-
-
-    }
 
 
     public function getImage(Request $request)
