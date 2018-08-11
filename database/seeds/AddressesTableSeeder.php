@@ -11,6 +11,6 @@ class AddressesTableSeeder extends Seeder
      */
     public function run()
     {
-        factory(App\Address::class,20)->create();
+        factory(App\Address::class,10)->create();
     }
 }

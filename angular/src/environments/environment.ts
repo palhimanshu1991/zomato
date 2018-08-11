@@ -4,7 +4,7 @@
 
 export const environment = {
   production: false,
-  apiUrl: 'http://instafoods.test/api/'
+  apiUrl: 'http://zomato.test/api/'
 };
 
 

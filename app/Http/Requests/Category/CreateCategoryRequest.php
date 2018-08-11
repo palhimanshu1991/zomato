@@ -25,7 +25,7 @@ class CreateCategoryRequest extends FormRequest
     public function rules()
     {
         return [
-            'name' =>'required'
+            'name' =>'required|string'
         ];
     }
 }

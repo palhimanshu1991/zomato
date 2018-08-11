@@ -1,10 +1,10 @@
-import { Injectable } from '@angular/core';
-import { HttpClient, HttpHeaders, HttpErrorResponse } from '@angular/common/http';
-import { Response } from '@angular/http';
-import { Observable } from 'rxjs';
-import { catchError } from 'rxjs/operators';
-import { environment} from '../../environments/environment';
-import { ApiService } from './api.service';
+import {Injectable} from '@angular/core';
+import {HttpClient, HttpHeaders, HttpErrorResponse} from '@angular/common/http';
+import {Response} from '@angular/http';
+import {Observable} from 'rxjs';
+import {catchError} from 'rxjs/operators';
+import {environment} from '../../environments/environment';
+import {ApiService} from './api.service';
 
 @Injectable()
 export class UserService {
@@ -20,7 +20,7 @@ export class UserService {
   }
 
   registerUser(user) {
-    const reqHeader = new HttpHeaders({ 'No-Auth': 'True' });
+    const reqHeader = new HttpHeaders({'No-Auth': 'True'});
 
     return this.http.post(this.rootUrl + 'register', user, {
       headers: reqHeader
@@ -30,15 +30,16 @@ export class UserService {
   }
 
 
-
   userAuthentication(email, password) {
-    const data = { 'email': email, 'password': password };
+    const data = {'email': email, 'password': password};
     // tslint:disable-next-line:max-line-length
     const reqHeader = new HttpHeaders(
-      { 'Content-Type': 'application/json', 'Accept': 'application/json', 'Access-Control-Allow-Origin': '*',
-      'Access-Control-Allow-Headers': 'Authorization, Content-Type' });
+      {
+        'Content-Type': 'application/json', 'Accept': 'application/json', 'Access-Control-Allow-Origin': '*',
+        'Access-Control-Allow-Headers': 'Authorization, Content-Type'
+      });
 
-    return this.http.post(this.rootUrl + 'login', data, { headers: reqHeader });
+    return this.http.post(this.rootUrl + 'login', data, {headers: reqHeader});
   }
 
   private _handleError(err: HttpErrorResponse | any) {

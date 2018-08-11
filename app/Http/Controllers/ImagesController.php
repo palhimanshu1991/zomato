@@ -9,6 +9,7 @@ use App\Restaurant;
 use App\Review;
 use Illuminate\Support\Facades\Storage;
 use Image;
+use App\Image as Photo;
 
 class ImagesController extends Controller
 {

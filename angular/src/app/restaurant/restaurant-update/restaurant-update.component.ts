@@ -6,6 +6,9 @@ import {environment} from "../../../environments/environment";
 import {HttpClient} from "@angular/common/http";
 import {ImageUploadService} from "../../services/image-upload.service";
 import {ApiService} from "../../services/api.service";
+import {CuisineService} from "../../services/cuisine.service";
+import {AddressService} from "../../services/address.service";
+import {CategoryService} from "../../services/category.service";
 
 @Component({
   selector: 'app-restaurant-update',
@@ -45,18 +48,39 @@ export class RestaurantUpdateComponent implements OnInit {
               private activatedRoute: ActivatedRoute,
               private el: ElementRef,
               private http: HttpClient,
-              private apiService: ApiService
+              private apiService: ApiService,
+              private addressService: AddressService,
+              private categoryService: CategoryService,
+              private cuisineService: CuisineService
   ) {
     this.activatedRoute.params.subscribe(params => this.id = params.id);
   }
 
   ngOnInit() {
+
     this.imageSelected = false;
+
     this.patchForm(this.id);
-    this.showStates();
-    this.showDistricts();
-    this.showCategories();
-    this.showCuisines();
+
+    this.addressService.getStates().subscribe((response) => {
+      this.states = response;
+    });
+
+    this.addressService.getDistricts().subscribe((response) => {
+      this.districts = response;
+    });
+
+    this.categoryService.list().subscribe((response) => {
+
+      this.categories = response;
+
+    });
+
+    this.cuisineService.list().subscribe((response) => {
+
+      this.cuisines = response;
+
+    });
 
   }
 
@@ -106,36 +130,6 @@ export class RestaurantUpdateComponent implements OnInit {
 
   }
 
-  showStates() {
-    this.apiService.get('states').subscribe(response => {
-
-      this.states = response.states;
-    });
-  }
-
-  showDistricts() {
-    this.apiService.get('districts').subscribe(response => {
-
-      this.districts = response.districts;
-
-    });
-  }
-
-  showCategories() {
-    this.apiService.get('categories').subscribe(response => {
-
-      this.categories = response;
-
-    });
-  }
-
-  showCuisines() {
-    this.apiService.get('cuisines').subscribe(response => {
-
-      this.cuisines = response;
-
-    });
-  }
 
 }
 

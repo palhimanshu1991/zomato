@@ -16,4 +16,5 @@ export class CategoryService {
   list() {
     return this.apiService.get('categories');
   }
+
 }

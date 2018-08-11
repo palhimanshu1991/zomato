@@ -4,12 +4,12 @@
 <div class="jumbotron">
   <img data-src="holder.js/32x32?theme=thumb&amp;bg=007bff&amp;fg=007bff&amp;size=1" alt="32x32"
        class="mr-2 rounded" style="width: 32px; height: 32px;"
-       src="http://instafoods.test/api/image/{{restaurant.id}}/?type=restaurant"
+       src={{imageUrl}}
        data-holder-rendered="true" alt="image">
   <h1 class="display-4">{{restaurant.name}} </h1>
   <h3>category :  {{restaurant.category}}, cuisine : {{restaurant.cuisine}}</h3>
-  <p class="lead">{{restaurant.street}} ,  {{restaurant.locality}}, {{restaurant.landmark}}</p>
-  <p class="lead">{{restaurant.district}} ,  {{restaurant.state}}</p>
+  <p class="lead">{{restaurant.address.street}} ,  {{restaurant.address.locality}}, {{restaurant.address.landmark}}</p>
+  <p class="lead">{{restaurant.address.district}} ,  {{restaurant.address.state}}</p>
   <a routerLink="reviews"> <button class="btn btn-primary">View reviews</button></a>
   <hr class="my-4">
   <p></p>

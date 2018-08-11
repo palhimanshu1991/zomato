@@ -11,6 +11,6 @@ class CreateCuisineTableSeeder extends Seeder
      */
     public function run()
     {
-        factory(App\Cuisine::class,20)->create();
+        factory(App\Cuisine::class,10)->create();
     }
 }

@@ -29,7 +29,7 @@ class RestaurantsController extends Controller
      */
     public function index()
     {
-        $restaurants = Restaurant::all()->load('address', 'address.district', 'address.district.state', 'categories', 'cuisines', 'reviews', 'images');
+        $restaurants = Restaurant::paginate(10)->load('address', 'address.district', 'address.district.state', 'categories', 'cuisines', 'reviews', 'images');
 
         return $this->transformer->transformLoop($restaurants);
 
@@ -69,7 +69,14 @@ class RestaurantsController extends Controller
      */
     public function show($id)
     {
-        $restaurant = Restaurant::find($id)->load('address', 'categories', 'cuisines', 'reviews', 'images');
+        $restaurant = Restaurant::find($id);
+
+        if (!$restaurant) {
+            return ['response' => 'Restaurant not found'];
+        }
+
+        $restaurant->load('address', 'categories', 'cuisines', 'reviews', 'images');
+
         return $this->transformer->transformToArray($restaurant);
 
     }
@@ -77,6 +84,9 @@ class RestaurantsController extends Controller
     public function update(Request $request, $id)
     {
         $restaurant = Restaurant::find($id);
+        if(!$restaurant) {
+            return ['response' => 'Restaurant not found'];
+        }
         $address = $restaurant->address()->update([
             'street' => $request->address['street'],
             'locality' => $request->address['locality'],
