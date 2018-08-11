@@ -13,31 +13,27 @@ export class ReviewService {
   constructor(private apiService: ApiService, private http: HttpClient) { }
 
 
-  getReviews(id) {
-    return this.apiService.get('restaurants/' + id + this.reviewRoutes);
+  getReviewsList(restaurant_id) {
+    return this.apiService.get('restaurants/' + restaurant_id + this.reviewRoutes);
   }
 
-  postReview(data, id) {
-    return this.apiService.post('reviews/' + id, data);
+  postReview(data, restaurant_id) {
+    return this.apiService.post('reviews/' + restaurant_id, data);
   }
 
-  postRating(data, id) {
-    return this.apiService.post('ratings/' + id, data);
+  getReview(review_id) {
+    return this.apiService.get('reviews/' + review_id);
   }
 
-  getReview(id) {
-    return this.apiService.get('reviews/' + id);
+  postComment(data, review_id) {
+    return this.apiService.post('comment/' + review_id + '?type=review', data);
   }
 
-  postComment(data, id) {
-    return this.apiService.post('reviews/comment/' + id + '/?type=review', data);
+  postLike(data, review_id) {
+    return this.apiService.post('like/' + review_id + '/?type=review', data);
   }
 
-  postLike(data, id) {
-    return this.apiService.post('like/' + id + '/?type=review', data);
-  }
-
-  addImage(data, id) {
-    return this.http.post(this.rootUrl + 'image-upload/' + id + '?type=review', data);
+  addImage(data, review_id) {
+    return this.http.post(this.rootUrl + 'image-upload/' + review_id + '?type=review', data);
   }
 }

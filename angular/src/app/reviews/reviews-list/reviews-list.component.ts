@@ -30,7 +30,7 @@ export class ReviewsListComponent implements OnInit {
   }
 
   getReviews() {
-    this.reviewService.getReviews(this.restaurant_id).subscribe((data: any) => {
+    this.reviewService.getReviewsList(this.restaurant_id).subscribe((data: any) => {
       this.reviews = data.review;
     });
 

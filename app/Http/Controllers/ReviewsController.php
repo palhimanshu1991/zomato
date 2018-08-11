@@ -13,30 +13,24 @@ use App\Tasks\CreateCommentTask;
 use App\Tasks\CreateLikeTask;
 use Illuminate\Http\Request;
 use Auth;
-use App\Restaurant;
 use App\Contracts\Commentable;
 
 class ReviewsController extends Controller
 {
-    public function index($id)
+    public function index($restaurant_id)
     {
-        $reviews = Review::where('restaurant_id', $id)->with(['comments','user'])->withCount('likes');
-       
-     
-       
-        
-
-        return response()->json(['review' => $reviews->get()]);
+        $reviews = Review::where('restaurant_id', $restaurant_id)->with(['comments', 'user'])->withCount('likes')->get();
+        return response()->json(['review' => $reviews]);
     }
 
-   
 
-    public function postReview(CreateReviewRequest $request, $id)
+
+    public function postReview(CreateReviewRequest $request, $restaurant_id)
     {
-        // find restaurant, use relation to update
-        $review =  Review::updateOrCreate([
+        
+        $review = Review::updateOrCreate([
             'user_id' => auth()->user()->id,
-            'restaurant_id' => $id
+            'restaurant_id' => $restaurant_id
         ], [
             'rating' => $request->rating,
             'text' => $request->text,
@@ -57,23 +51,16 @@ class ReviewsController extends Controller
      */
     public function show($id)
     {
-        
-        $review = Review::where('id',$id)->with(['comments','user'])->withCount('likes')->first();
+
+        $review = Review::where('id', $id)->with(['comments', 'user'])->withCount('likes')->first();
 
         return response()->json(['review' => $review]);
     }
 
 
 
-    // public function createPhotoComment(CreateCommentRequest $request, $id)
-    // {
-    //     $photo = Image::find($request->photo_id);
-
-    //     (new CreateCommentTask($request->text, $photo))->handle();
-    // }
-
-// move this to its specific controller
 
 
-   
+
+
 }

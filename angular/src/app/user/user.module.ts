@@ -4,7 +4,7 @@ import { ProfileComponent } from './profile/profile.component';
 import { UserRoutingModule } from './user-routing/user-routing.module';
 import { ReactiveFormsModule } from '@angular/forms';
 import { UserAddressEditComponent } from './user-address-edit/user-address-edit.component';
-import { UserAddressCreateComponent } from './user-address-create/add-address.component';
+import { UserAddressCreateComponent } from './user-address-create/user-address-create';
 import { UserAddressListComponent } from './user-address-list/user-address-list.component';
 
 @NgModule({

@@ -58,8 +58,12 @@ class UserAddressController extends Controller
     }
 
     public function update(Request $request, $id)
-    {
-        $address = Address::find($id);
+    {   
+        $userAddress = UserAddress::find($id);
+        $userAddress->title = $request->title;
+        $userAddress->save();
+
+        $address = Address::find($userAddress->address_id);
         $address->street = $request->street;
         $address->locality = $request->locality;
         $address->landmark = $request->landmark;
@@ -68,9 +72,9 @@ class UserAddressController extends Controller
         $address->district_id = $request->district_id;
         $address->save();
 
-        $userAddress = UserAddress::find($id);
-        $userAddress->title = $request->title;
-        $userAddress->save();
+        
+
+        return response()->json(['message' => 'updated']);
 
     }
 
@@ -85,7 +89,7 @@ class UserAddressController extends Controller
     public function destroy($id)
     {
         $userAddress = UserAddress::find($id);
-        $userAddress->delete;
-        return response()->json(["message"=>"Success","success"=>200]);
+        $userAddress->delete();
+        return response()->json(["message"=>"Deleted"]);
     }
 }

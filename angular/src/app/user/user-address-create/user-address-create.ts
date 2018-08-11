@@ -41,14 +41,14 @@ export class UserAddressCreateComponent implements OnInit {
 
   getStates() {
     this.addressService.getStates().subscribe((data: any) => {
-      this.states = data.state;
+      this.states = data;
       console.log(this.states);
     });
   }
 
   getDistricts() {
     this.addressService.getDistricts().subscribe((data: any) => {
-      this.districts = data.district;
+      this.districts = data;
       console.log(this.districts);
     });
   }

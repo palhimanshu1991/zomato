@@ -24,13 +24,12 @@ Route::group(['middleware' => 'auth:api'],
 
         //Reviews
 
-        Route::get('reviews/post', 'ReviewsController@postRating');
         Route::post('reviews/{id}', 'ReviewsController@postReview');
         Route::get('reviews/{id}', 'ReviewsController@show');
         Route::get('restaurants/{id}/reviews','ReviewsController@index');
 
 
-        Route::post('reviews/comment/{id}', 'CommentsController@createReviewComment');
+        Route::post('comment/{id}', 'CommentsController@createReviewComment');
         Route::post('like/{id}', 'LikesController@createReviewLike');
 
 
@@ -58,11 +57,11 @@ Route::group(['middleware' => 'auth:api'],
 
 
         Route::get('details','PassportController@details');
-        Route::post('/details','PassportController@updateDetails');
+        Route::post('details','PassportController@updateDetails');
 
         //State
-        Route::get('/states','StateController@index');
-        Route::get('/districts','DistrictController@index');
+        Route::get('states','StateController@index');
+        Route::get('districts','DistrictController@index');
 
        
 

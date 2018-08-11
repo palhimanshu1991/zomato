@@ -3,7 +3,7 @@ import { CommonModule } from '@angular/common';
 import { Routes, RouterModule } from '@angular/router';
 import { ProfileComponent } from '../profile/profile.component';
 import { UserAddressEditComponent } from '../user-address-edit/user-address-edit.component';
-import { UserAddressCreateComponent } from '../user-address-create/add-address.component';
+import { UserAddressCreateComponent } from '../user-address-create/user-address-create';
 import { UserAddressListComponent } from '../user-address-list/user-address-list.component';
 
 const routes: Routes = [
