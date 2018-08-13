@@ -77,7 +77,7 @@ class ReviewTest extends TestCase
         $response = $this->json('POST', '/api/comment/'.$review_id.'?type=review', [
             'text' => 'abc'
         ])
-        ->assertJson(['message' => 200]);
+        ->assertOk();
     }
 
     public function test_post_a_like()
@@ -89,7 +89,7 @@ class ReviewTest extends TestCase
         $response = $this->json('POST', '/api/like/'.$review_id.'?type=review', [
             
         ])
-        ->assertJson(['message' => 200]);
+        ->assertOk();
     }
 
 
