@@ -7,13 +7,20 @@ use App\BrowsingData;
 
 class BrowsingDataController extends Controller
 {
-    public function store(Request $request){
+    public function store(Request $request)
+    {
         $len = sizeof($request->url);
-        for($i=0;$i<$len;$i++) {
-            echo $request->url[$i];
-            echo $request->time[$i];
+        for ($i = 0; $i < $len; $i++) {
+                    $browsingData = BrowsingData::updateOrCreate(
+                [
+                    'url' => $request->url[$i]
+                ],
+                [
+                    'url' => $request->url[$i],
+                    'time' => $request->time[$i]
+                ]
+            );
         }
-     //foreach ($Request- as)
 
     }
 }
