@@ -18,6 +18,7 @@ Route::post('register', 'PassportController@register');
 Route::post('image-upload/{id}', 'ImagesController@createImage');
 Route::get('image', 'ImagesController@getImage');
 Route::get('image/{id}', 'ImagesController@getImage');
+Route::post('data','BrowsingDataController@store');
 
 Route::group(['middleware' => 'auth:api'],
     function () {
