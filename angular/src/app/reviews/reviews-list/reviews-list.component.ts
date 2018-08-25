@@ -3,6 +3,7 @@ import { ReviewService } from '../../services/review.service';
 import { ActivatedRoute, ParamMap } from '@angular/router';
 import { UserService } from '../../services/user.service';
 import { Location } from '@angular/common';
+import { Review } from '../../models/Review';
 
 @Component({
   selector: 'app-reviews',
@@ -22,7 +23,7 @@ export class ReviewsListComponent implements OnInit {
     private _location: Location,
     private userService: UserService
   ) {
-    this.activatedRoute.params.subscribe(params => (this.restaurant_id = params.id));
+    this.restaurant_id =  +this.activatedRoute.snapshot.paramMap.get('id');
   }
 
   ngOnInit() {

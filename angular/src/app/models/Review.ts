@@ -1,5 +1,6 @@
 export class Review {
-  restaurant_id: number;
+  rating: number;
   text: string;
-
+  user_id: number;
+  restaurant_id: number;
 }
